@@ -72,7 +72,7 @@
         <div class="absolute inset-0 rounded-full bg-amber-400/20 blur-2xl animate-pulse"></div>
 
         <!-- Inner Sunrise & Sacred Unalome Disc -->
-        <img id="preloaderInner" src="assets/images/logo-inner.png" alt="Ishadam Inner" class="absolute inset-0 w-full h-full object-contain z-10 preloader-inner-disc">
+        <img id="preloaderInner" src="assets/images/logo-inner.webp" alt="Ishadam Inner" class="absolute inset-0 w-full h-full object-contain z-10 preloader-inner-disc">
 
         <!-- Outer Paint Stroke Drawing Animation via Hardware-Accelerated SVG Mask -->
         <svg class="absolute inset-0 w-full h-full z-20 pointer-events-none preloader-stroke-svg" viewBox="0 0 887 887">
@@ -86,7 +86,7 @@
                       transform="rotate(6 443.5 443.5)" />
             </mask>
           </defs>
-          <image href="assets/images/logo-stroke.png" width="887" height="887" mask="url(#paintStrokeMask)" />
+          <image href="assets/images/logo-stroke.webp" width="887" height="887" mask="url(#paintStrokeMask)" />
         </svg>
       </div>
 
@@ -918,35 +918,54 @@
            class="corner-leaf-tr absolute top-0 right-0 w-24 sm:w-40 md:w-52 max-h-[26vh] object-contain object-right-top pointer-events-none select-none z-10 floating-leaf"
            style="animation-delay: -4.5s;">
 
-      <div class="max-w-4xl mx-auto text-center space-y-4 relative z-10">
-        <div class="sacred-divider">
-          <span class="swastik-symbol sacred-swastik-spin">卐</span>
-        </div>
-        
-        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-[#173722]">
-          Begin Your Journey with Ishadam
-        </h2>
-        
-        <p class="font-serif italic text-base sm:text-lg text-[#4A5D4E] flex flex-wrap items-center justify-center gap-3">
-          <span>Heal</span> <span class="text-amber-600">✦</span>
-          <span>Learn</span> <span class="text-amber-600">✦</span>
-          <span>Transform</span> <span class="text-amber-600">✦</span>
-          <span>Create a Life in Alignment</span>
-        </p>
+      <div class="max-w-6xl mx-auto relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-12">
+          
+          <!-- Altar Image (Moroccan Lantern, Candles & Crystals on Wood Slice) to the left -->
+          <div class="lg:col-span-5 flex justify-center lg:justify-end">
+            <div class="relative w-full max-w-sm sm:max-w-md lg:max-w-none">
+              <picture>
+                <source srcset="assets/images/journey-altar.webp" type="image/webp">
+                <img src="assets/images/journey-altar.png" 
+                     alt="Sacred spiritual altar with Moroccan lantern and healing crystals"
+                     class="w-full h-auto object-contain drop-shadow-[0_12px_28px_rgba(23,55,34,0.08)] pointer-events-none select-none">
+              </picture>
+            </div>
+          </div>
 
-        <p class="text-stone-700 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed pt-2">
-          Whether you are seeking healing, clarity, spiritual learning or simply a higher connection with yourself, Ishadam welcomes you with an open heart.
-        </p>
+          <!-- Journey Content to the right -->
+          <div class="lg:col-span-7 text-center lg:text-left space-y-4">
+            <div class="sacred-divider lg:justify-start lg:mx-0">
+              <span class="swastik-symbol sacred-swastik-spin">卐</span>
+            </div>
+            
+            <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-[#173722] leading-tight">
+              Begin Your Journey with Ishadam
+            </h2>
+            
+            <p class="font-serif italic text-base sm:text-lg text-[#4A5D4E] flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3">
+              <span>Heal</span> <span class="text-amber-600">✦</span>
+              <span>Learn</span> <span class="text-amber-600">✦</span>
+              <span>Transform</span> <span class="text-amber-600">✦</span>
+              <span>Create a Life in Alignment</span>
+            </p>
 
-        <p class="font-script text-4xl sm:text-5xl text-[#24422E] tracking-wider py-2">
-          Take it.. It's all Yours!!
-        </p>
+            <p class="text-stone-700 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed pt-1">
+              Whether you are seeking healing, clarity, spiritual learning or simply a higher connection with yourself, Ishadam welcomes you with an open heart.
+            </p>
 
-        <div class="pt-2">
-          <a href="https://wa.me/918138881308?text=Hello%20Ishadam,%20I%20would%20like%20to%20begin%20my%20spiritual%20journey" target="_blank" class="inline-flex items-center gap-3 px-10 py-3.5 rounded-full text-white font-medium text-sm tracking-wide btn-forest-pill">
-            <span>Explore Ishadam</span>
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-          </a>
+            <p class="font-script text-4xl sm:text-5xl text-[#24422E] tracking-wider py-1">
+              Take it.. It's all Yours!!
+            </p>
+
+            <div class="pt-2">
+              <a href="https://wa.me/918138881308?text=Hello%20Ishadam,%20I%20would%20like%20to%20begin%20my%20spiritual%20journey" target="_blank" class="inline-flex items-center gap-3 px-10 py-3.5 rounded-full text-white font-medium text-sm tracking-wide btn-forest-pill">
+                <span>Explore Ishadam</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
