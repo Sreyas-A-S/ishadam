@@ -1,4 +1,8 @@
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: #FAF6EE;
   color: #2D312E;
@@ -89,42 +93,55 @@ body {
 
 .services-corner-leaf {
   opacity: 0;
-  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1), 
-              transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  perspective: 1000px;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
 .services-corner-leaf.leaf-tl {
-  transform: translate3d(-35px, -35px, 0) scale(0.92) rotate(-3deg);
+  transform: translate3d(-25px, -25px, 0) scale(0.96);
   transform-origin: top left;
 }
 
 .services-corner-leaf.leaf-tr {
-  transform: translate3d(35px, -35px, 0) scale(0.92) rotate(3deg);
+  transform: translate3d(25px, -25px, 0) scale(0.96);
   transform-origin: top right;
 }
 
 .services-corner-leaf.leaf-bl {
-  transform: translate3d(-30px, 30px, 0) scale(0.94);
+  transform: translate3d(-20px, 20px, 0) scale(0.96);
   transform-origin: bottom left;
 }
 
 .services-corner-leaf.leaf-br {
-  transform: translate3d(30px, 30px, 0) scale(0.94);
+  transform: translate3d(20px, 20px, 0) scale(0.96);
   transform-origin: bottom right;
 }
 
 .services-corner-leaf.is-visible {
   opacity: 1;
-  transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  transform: translate3d(0, 0, 0) scale(1);
 }
 
 .floating-leaf {
-  animation: floatLeaf 6s ease-in-out infinite alternate;
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform;
+  animation: floatLeaf 7s ease-in-out infinite alternate;
 }
 @keyframes floatLeaf {
-  0% { transform: translateY(0px) rotate(0deg); }
-  100% { transform: translateY(-8px) rotate(2deg); }
+  0% { 
+    transform: translate3d(0, 0, 0) rotate(0deg); 
+  }
+  100% { 
+    transform: translate3d(0, -6px, 0) rotate(1.2deg); 
+  }
 }
 
 .wind-leaf {
@@ -222,33 +239,38 @@ body {
 
 /* Preloader Drawing Stroke Animation */
 .preloader-emblem-wrap {
-  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.5s ease-out;
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease-out;
+  will-change: transform;
 }
 
 .preloader-inner-disc {
   opacity: 0;
-  transform: scale(0.88);
-  filter: blur(4px);
-  animation: preloaderInnerFade 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.1s;
+  transform: scale(0.92) translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: opacity, transform;
+  animation: preloaderInnerFade 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.1s;
 }
 
 @keyframes preloaderInnerFade {
   0% {
     opacity: 0;
-    transform: scale(0.88);
-    filter: blur(4px);
+    transform: scale(0.92) translate3d(0, 0, 0);
   }
   100% {
     opacity: 1;
-    transform: scale(1);
-    filter: blur(0px);
+    transform: scale(1) translate3d(0, 0, 0);
   }
 }
 
 .preloader-stroke-circle {
   stroke-dasharray: 2200;
   stroke-dashoffset: 2200;
-  animation: drawPaintStroke 1.55s cubic-bezier(0.25, 0.1, 0.25, 1) forwards 0.25s;
+  will-change: stroke-dashoffset;
+  animation: drawPaintStroke 1.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards 0.2s;
 }
 
 @keyframes drawPaintStroke {
@@ -261,30 +283,35 @@ body {
 }
 
 .preloader-stroke-svg {
-  filter: drop-shadow(0 4px 12px rgba(23, 55, 34, 0.18));
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .preloader-text-group {
   opacity: 0;
-  transform: translateY(6px);
+  transform: translate3d(0, 6px, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: opacity, transform;
   animation: preloaderTextFade 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.3s;
 }
 
 @keyframes preloaderTextFade {
   0% {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translate3d(0, 6px, 0);
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 /* Completion flourish when stroke finishes */
 #preloader.stroke-finished .preloader-emblem-wrap {
-  transform: scale(1.035);
-  filter: drop-shadow(0 0 24px rgba(212, 175, 55, 0.65));
+  transform: scale(1.035) translate3d(0, 0, 0);
+  filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.5));
 }
 
 .service-card,
@@ -295,6 +322,31 @@ body {
 .authentic-vine-leaf {
   pointer-events: none;
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.14));
+}
+
+/* Corner Foliage Docking: Ensures leaves hug section corners with zero unwanted margins */
+.corner-leaf-tl {
+  top: 0 !important;
+  left: 0 !important;
+  object-position: left top !important;
+}
+
+.corner-leaf-tr {
+  top: 0 !important;
+  right: 0 !important;
+  object-position: right top !important;
+}
+
+.corner-leaf-bl {
+  bottom: 0 !important;
+  left: 0 !important;
+  object-position: left bottom !important;
+}
+
+.corner-leaf-br {
+  bottom: 0 !important;
+  right: 0 !important;
+  object-position: right bottom !important;
 }
 
 .vine-curly-tendril {
