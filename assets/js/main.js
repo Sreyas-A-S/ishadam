@@ -4,17 +4,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initSmoothScroll();
 
-  window.addEventListener('load', () => {
-    const preloader = document.getElementById('preloader');
-    if (preloader) preloader.classList.add('loaded');
-    setTimeout(triggerWindLeaves, 300);
-  });
+  // Orchestrated Preloader Lifecycle:
+  // Guarantees the authentic paint stroke drawing (1.55s) + inner bloom + golden flourish fully completes
+  const preloader = document.getElementById('preloader');
+  const preloaderStartTime = performance.now();
+  const MIN_STROKE_ANIMATION_TIME = 2100; // 0.25s delay + 1.55s draw + 0.3s flourish
 
-  if (document.readyState === 'complete') {
-    const preloader = document.getElementById('preloader');
-    if (preloader) preloader.classList.add('loaded');
-    triggerWindLeaves();
+  let isWindowLoaded = (document.readyState === 'complete');
+  let isPreloaderDismissed = false;
+
+  function dismissPreloader() {
+    if (!preloader || isPreloaderDismissed) return;
+    isPreloaderDismissed = true;
+
+    // Trigger golden completion bloom on the emblem
+    preloader.classList.add('stroke-finished');
+
+    // Hold the completed sacred emblem for 400ms before dissolving into homepage
+    setTimeout(() => {
+      preloader.classList.add('loaded');
+      setTimeout(triggerWindLeaves, 300);
+    }, 420);
   }
+
+  function handlePreloaderReady() {
+    const elapsed = performance.now() - preloaderStartTime;
+    const remaining = Math.max(0, MIN_STROKE_ANIMATION_TIME - elapsed);
+
+    setTimeout(() => {
+      dismissPreloader();
+    }, remaining);
+  }
+
+  if (isWindowLoaded) {
+    handlePreloaderReady();
+  } else {
+    window.addEventListener('load', () => {
+      isWindowLoaded = true;
+      handlePreloaderReady();
+    });
+  }
+
+  // Safety fallback so user is never trapped if a slow external resource hangs
+  setTimeout(() => {
+    if (!isPreloaderDismissed) {
+      dismissPreloader();
+    }
+  }, 4500);
 
   if (window.lucide) {
     lucide.createIcons();

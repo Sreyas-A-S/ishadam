@@ -168,12 +168,14 @@ body {
 }
 
 #preloader {
-  transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
+  transition: opacity 0.75s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.75s cubic-bezier(0.4, 0, 0.2, 1), transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform, visibility;
 }
 #preloader.loaded {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  transform: scale(1.04);
 }
 @keyframes pulseGlow {
   0%, 100% {
@@ -219,36 +221,70 @@ body {
 }
 
 /* Preloader Drawing Stroke Animation */
+.preloader-emblem-wrap {
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.5s ease-out;
+}
+
 .preloader-inner-disc {
   opacity: 0;
-  transform: scale(0.9);
-  animation: preloaderInnerFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.15s;
+  transform: scale(0.88);
+  filter: blur(4px);
+  animation: preloaderInnerFade 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.1s;
 }
 
 @keyframes preloaderInnerFade {
   0% {
     opacity: 0;
-    transform: scale(0.9);
+    transform: scale(0.88);
+    filter: blur(4px);
   }
   100% {
     opacity: 1;
     transform: scale(1);
+    filter: blur(0px);
   }
 }
 
 .preloader-stroke-circle {
-  stroke-dasharray: 1822;
-  stroke-dashoffset: 1822;
-  animation: drawPaintStroke 1.4s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.3s;
+  stroke-dasharray: 2200;
+  stroke-dashoffset: 2200;
+  animation: drawPaintStroke 1.55s cubic-bezier(0.25, 0.1, 0.25, 1) forwards 0.25s;
 }
 
 @keyframes drawPaintStroke {
   0% {
-    stroke-dashoffset: 1822;
+    stroke-dashoffset: 2200;
   }
   100% {
     stroke-dashoffset: 0;
   }
+}
+
+.preloader-stroke-svg {
+  filter: drop-shadow(0 4px 12px rgba(23, 55, 34, 0.18));
+}
+
+.preloader-text-group {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: preloaderTextFade 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.3s;
+}
+
+@keyframes preloaderTextFade {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Completion flourish when stroke finishes */
+#preloader.stroke-finished .preloader-emblem-wrap {
+  transform: scale(1.035);
+  filter: drop-shadow(0 0 24px rgba(212, 175, 55, 0.65));
 }
 
 .service-card,
