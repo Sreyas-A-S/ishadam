@@ -187,7 +187,7 @@ function initWildRollercoasterVine() {
       scrollTrigger: {
         trigger: '#services',
         endTrigger: '#crystals',
-        start: 'top 85%',
+        start: 'top top',
         end: 'bottom bottom',
         scrub: 1.2
       }
