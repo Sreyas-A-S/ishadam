@@ -1,0 +1,143 @@
+
+body {
+  background-color: #FAF6EE;
+  color: #2D312E;
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+}
+
+.botanical-bg {
+  background-image: 
+    radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.7) 0%, rgba(250,246,238,0.95) 80%);
+}
+
+.swastik-symbol {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #A67C24;
+  font-size: 26px;
+  line-height: 1;
+  font-weight: bold;
+}
+
+.sacred-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 10px auto;
+}
+.sacred-divider::before, .sacred-divider::after {
+  content: "";
+  height: 1.5px;
+  width: 70px;
+  background: linear-gradient(90deg, transparent, #C59A3F);
+}
+.sacred-divider::after {
+  background: linear-gradient(90deg, #C59A3F, transparent);
+}
+
+.ornate-card {
+  border: 1px solid rgba(217, 186, 120, 0.45);
+  border-radius: 20px;
+  background: #FFFDF9;
+  transition: all 0.35s ease;
+}
+.ornate-card:hover {
+  border-color: #C59A3F;
+  transform: translateY(-5px);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, #966D1B 0%, #A67C24 100%);
+  color: #FFFFFF;
+  transition: all 0.3s ease;
+}
+.btn-gold:hover {
+  background: linear-gradient(135deg, #7D5911 0%, #8A641A 100%);
+  box-shadow: 0 4px 15px rgba(150, 109, 27, 0.4);
+}
+
+.btn-forest-pill {
+  background: linear-gradient(90deg, #132E1C 0%, #1E432A 100%);
+  border: 1.5px solid #DFC789;
+  color: #FFFFFF;
+  transition: all 0.3s ease;
+}
+.btn-forest-pill:hover {
+  background: #112818;
+  border-color: #F3E5AB;
+  box-shadow: 0 6px 20px rgba(19, 46, 28, 0.35);
+  transform: translateY(-2px);
+}
+
+.floating-leaf {
+  animation: floatLeaf 6s ease-in-out infinite alternate;
+}
+@keyframes floatLeaf {
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(-8px) rotate(2deg); }
+}
+
+.wind-leaf {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, opacity, filter;
+  animation: windBlow 4.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.wind-leaf.depth-fg {
+  z-index: 45;
+  filter: blur(2.5px);
+}
+
+.wind-leaf.depth-mid {
+  z-index: 35;
+  filter: blur(0px);
+}
+
+.wind-leaf.depth-bg {
+  z-index: 25;
+  filter: blur(1.8px);
+}
+
+@keyframes windBlow {
+  0% {
+    opacity: 0;
+    transform: translate3d(-12vw, -10vh, 0) rotate(-45deg) scale(0.6);
+  }
+  15% {
+    opacity: 0.95;
+  }
+  75% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(115vw, 65vh, 0) rotate(420deg) scale(1.1);
+  }
+}
+
+#preloader {
+  transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
+}
+#preloader.loaded {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
+  }
+  50% {
+    transform: scale(1.04);
+    filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.8));
+  }
+}
+.preloader-emblem {
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}

@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ishadam — From the House of Niyyati | A Soulful Space for Healing & Growth</title>
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/images/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/images/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/images/favicon-512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#173722">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Sacramento&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              cream: '#FAF6EE',
+              creamCard: '#FFFDF9',
+              creamLight: '#FDFBF7',
+              forest: '#1E432A',
+              forestDark: '#132E1C',
+              gold: '#C59A3F',
+              goldDark: '#A67C24',
+              goldLight: '#E8D5A3',
+              goldBorder: '#DFC789',
+              goldBtn: '#966D1B',
+              goldBtnHover: '#7D5911',
+              charcoal: '#2D312E',
+              sand: '#EFE7D5'
+            }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            display: ['"Cinzel"', 'serif'],
+            playfair: ['"Playfair Display"', 'serif'],
+            script: ['"Great Vibes"', 'cursive'],
+            body: ['"Montserrat"', 'sans-serif'],
+          },
+          boxShadow: {
+            'card': '0 10px 30px -5px rgba(184, 150, 77, 0.12), 0 4px 12px -2px rgba(0, 0, 0, 0.04)',
+            'card-hover': '0 20px 35px -5px rgba(166, 124, 36, 0.22), 0 8px 16px -2px rgba(0, 0, 0, 0.08)',
+            'gold-glow': '0 0 25px rgba(212, 175, 55, 0.35)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="selection:bg-amber-100 selection:text-emerald-950">
+
+  <div id="preloader" class="fixed inset-0 z-[100] bg-[#FAF6EE] flex flex-col items-center justify-center p-6 text-center">
+    <div class="relative flex flex-col items-center max-w-sm w-full">
+      
+      <div class="relative w-64 sm:w-72 mb-6 flex items-center justify-center">
+        <div class="absolute inset-0 rounded-full bg-amber-400/20 blur-2xl animate-pulse"></div>
+        <img src="assets/images/ishadam-logo.png" alt="Ishadam — From the House of Niyyati" class="w-full h-auto object-contain preloader-emblem relative z-10">
+      </div>
+
+      <div class="w-48 h-1 bg-[#E8DEC7] rounded-full overflow-hidden mt-4 relative">
+        <div class="h-full bg-gradient-to-r from-[#966D1B] via-[#DFC789] to-[#966D1B] rounded-full animate-[progress_1.8s_ease-in-out_infinite]"></div>
+      </div>
+      <p class="font-serif italic text-stone-500 text-sm mt-3 tracking-wide">Connecting to stillness...</p>
+    </div>
+  </div>
+
+  <header class="bg-[#2D451E] text-[#EDE7D8] text-[12px] sm:text-[13px] py-1.5 sm:py-2 px-3 sm:px-8 lg:px-12 border-b border-[#3D562A] font-serif shrink-0">
+    <div class="w-full flex items-center justify-between">
+      
+      <div class="flex items-center space-x-1.5 sm:space-x-2 tracking-wide">
+        
+        <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C8DCB6] stroke-[1.8]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+          <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+        </svg>
+        <span class="text-[12px] sm:text-[13.5px] tracking-wide text-[#FFFFFF] font-medium whitespace-nowrap">From the House of Niyyati</span>
+      </div>
+
+      <div class="flex items-center space-x-3 sm:space-x-6 text-[12px] sm:text-[13.5px]">
+        
+        <a href="https://wa.me/918138881308" target="_blank" class="flex items-center gap-1 sm:gap-1.5 hover:text-[#C59A3F] transition-colors font-medium">
+          <i data-lucide="phone" class="w-3.5 h-3.5 text-[#D1E0C4]"></i>
+          <span class="tracking-wide text-[#FFFFFF] hidden xs:inline sm:inline">+91 8138881308</span>
+        </a>
+        
+        <a href="mailto:saneejjaa@ishadam.com" class="hidden md:flex items-center gap-1.5 hover:text-[#C59A3F] transition-colors font-medium">
+          <i data-lucide="mail" class="w-3.5 h-3.5 text-[#D1E0C4]"></i>
+          <span class="tracking-wide text-[#FFFFFF]">saneejjaa@ishadam.com</span>
+        </a>
+        
+        <div class="flex items-center space-x-2.5 sm:space-x-3.5 pl-0.5 sm:pl-1">
+          <a href="#" class="hover:text-[#C59A3F] transition-colors text-[#F3EFE6] flex items-center">
+            <i data-lucide="instagram" class="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[1.75]"></i>
+          </a>
+          <a href="#" class="hover:text-[#C59A3F] transition-colors text-[#F3EFE6] flex items-center">
+            <i data-lucide="youtube" class="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[1.75]"></i>
+          </a>
+          <a href="#" class="hover:text-[#C59A3F] transition-colors text-[#F3EFE6] flex items-center">
+            <i data-lucide="facebook" class="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[1.75]"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="bg-[#FDF9EE] sticky top-0 z-50 border-b border-[#EADFC7] transition-all shrink-0">
+    <div class="w-full px-4 sm:px-8 lg:px-12 py-2.5 flex items-center justify-between">
+
+      <div class="flex items-center shrink-0">
+        <a href="#" class="flex items-center group py-0.5">
+          <img src="assets/images/ishadam-header-logo-hd.png" alt="Ishadam — From the House of Niyyati" class="h-11 sm:h-12 w-auto object-contain">
+        </a>
+        <div class="h-8 w-[1px] bg-[#D8C89E] ml-5 mr-8 opacity-85"></div>
+      </div>
+
+      <div class="hidden md:flex items-center space-x-9 font-serif text-[18px] text-[#111111]">
+        <a href="#home" class="relative text-[#9E731B] font-semibold py-1">
+          <span>Home</span>
+          <span class="absolute bottom-[-1px] left-0 right-0 h-[2px] bg-[#9E731B]"></span>
+        </a>
+
+        <div class="relative group">
+          <button class="flex items-center gap-1 hover:text-[#9E731B] font-medium py-1 transition-colors text-[#111111]">
+            <span>Services</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-[#222] transition-transform group-hover:rotate-180 stroke-[2]"></i>
+          </button>
+          <div class="absolute left-0 mt-2 w-56 bg-[#FFFDF9] rounded-xl shadow-xl border border-[#DFC789]/50 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 font-serif text-[16px]">
+            <a href="#services" class="block px-4 py-2 hover:bg-amber-50 text-stone-900 hover:text-[#9E731B] font-medium">Crystals & Tools</a>
+            <a href="#services" class="block px-4 py-2 hover:bg-amber-50 text-stone-900 hover:text-[#9E731B] font-medium">Psychic Readings</a>
+            <a href="#classes" class="block px-4 py-2 hover:bg-amber-50 text-stone-900 hover:text-[#9E731B] font-medium">Spiritual Classes</a>
+            <a href="#services" class="block px-4 py-2 hover:bg-amber-50 text-stone-900 hover:text-[#9E731B] font-medium">Energy Healing</a>
+          </div>
+        </div>
+
+        <a href="#founders" class="hover:text-[#9E731B] font-medium transition-colors py-1">About Us</a>
+        <a href="#contact" class="hover:text-[#9E731B] font-medium transition-colors py-1">Contact Us</a>
+      </div>
+
+      <div class="flex items-center space-x-6 text-[#111111]">
+        <button aria-label="Search" class="hover:text-[#9E731B] transition-colors flex items-center">
+          <i data-lucide="search" class="w-5 h-5 stroke-[1.8]"></i>
+        </button>
+        <button aria-label="User Account" class="hover:text-[#9E731B] transition-colors flex items-center">
+          <i data-lucide="user" class="w-5 h-5 stroke-[1.8]"></i>
+        </button>
+        <button aria-label="Shopping Cart" class="relative hover:text-[#9E731B] transition-colors flex items-center">
+          <i data-lucide="shopping-cart" class="w-5 h-5 stroke-[1.8]"></i>
+          <span class="absolute -top-1.5 -right-2 bg-[#9B7421] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold font-sans">0</span>
+        </button>
+
+        <button id="mobileMenuBtn" aria-label="Toggle Menu" class="md:hidden text-[#111111] hover:text-[#9E731B]">
+          <i data-lucide="menu" class="w-6 h-6 stroke-[2]"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileMenu" class="hidden md:hidden px-6 pt-3 pb-6 bg-[#FAF6EE] border-b border-amber-200/50 space-y-3 font-medium text-sm">
+      <a href="#home" class="block py-2 text-[#966D1B] font-semibold">Home</a>
+      <a href="#services" class="block py-2 text-stone-800 hover:text-[#966D1B]">Services</a>
+      <a href="#crystals" class="block py-2 text-stone-800 hover:text-[#966D1B]">Featured Crystals</a>
+      <a href="#classes" class="block py-2 text-stone-800 hover:text-[#966D1B]">Live Classes</a>
+      <a href="#founders" class="block py-2 text-stone-800 hover:text-[#966D1B]">About Founders</a>
+      <a href="#testimonials" class="block py-2 text-stone-800 hover:text-[#966D1B]">Testimonials</a>
+      <a href="#contact" class="block py-2 text-stone-800 hover:text-[#966D1B]">Contact Us</a>
+    </div>
+  </nav>
+
+  <section id="home" class="relative w-full bg-[#FAF6EE] border-b border-[#ECE3CF] flex flex-col justify-between min-h-0 lg:min-h-[calc(100vh-100px)] overflow-hidden">
+
+    <img src="assets/images/leaf-layer-top-left.webp" 
+         alt="Top-Left Foliage" 
+         class="absolute top-0 left-0 w-24 sm:w-44 md:w-52 lg:w-60 max-h-[26vh] sm:max-h-[38vh] object-contain object-top pointer-events-none z-30 floating-leaf">
+
+    <div class="relative w-full flex-grow flex items-center justify-center px-3.5 sm:px-4 md:px-0 pt-2 md:pt-0">
+      <div class="relative w-full h-full flex items-center justify-center overflow-hidden rounded-2xl md:rounded-none shadow-sm md:shadow-none border border-[#DFC789]/40 md:border-none">
+        
+        <picture class="w-full h-full block flex items-center justify-center">
+          <source media="(max-width: 767px)" srcset="assets/images/Welcome%20to%20Ishadam_%20Crystals%20and%20Candlelight%20-%20mobile.webp">
+          <img src="assets/images/Welcome%20to%20Ishadam_%20Crystals%20and%20Candlelight%20-%20desktop.webp" 
+               alt="Welcome to Ishadam — Crystals, Psychic Readings, Spiritual Classes" 
+               class="w-full h-auto max-h-[50vh] xl:max-h-[54vh] object-cover block select-none">
+        </picture>
+
+        <div class="hidden md:block absolute inset-y-0 left-0 w-24 lg:w-36 bg-gradient-to-r from-[#FAF6EE] to-transparent pointer-events-none z-10"></div>
+
+        <div class="absolute inset-0 z-20 flex flex-col pointer-events-none justify-start md:justify-end pt-[38%] xs:pt-[40%] md:pt-0 pb-0 md:pb-4">
+          <div class="w-full flex px-3 sm:px-6 md:px-8">
+            <div class="w-full md:w-[48%] lg:w-[46%] flex flex-col items-center text-center pointer-events-auto">
+
+              <div class="flex items-center justify-center gap-1.5 sm:gap-2.5 font-serif text-[11px] sm:text-[14px] md:text-[15.5px] text-[#1E3B27] font-semibold tracking-wide">
+                <span>Crystals</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-[#B88E36] inline-block"></span>
+                <span>Psychic Readings</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-[#B88E36] inline-block"></span>
+                <span>Spiritual Classes</span>
+              </div>
+
+              <div class="my-1 sm:my-2 flex items-center justify-center w-full">
+                <img src="assets/images/sacred-moon-divider.webp" alt="Sacred Moon Phases" class="h-3 sm:h-4 md:h-4.5 w-auto object-contain">
+              </div>
+
+              <p class="font-serif italic text-[11.5px] sm:text-[15px] md:text-[16.5px] text-[#2C4533] leading-snug max-w-[270px] xs:max-w-xs sm:max-w-md text-center">
+                A soulful space for healing, learning and spiritual exploration.
+              </p>
+
+              <div class="mt-2 sm:mt-3 flex justify-center w-full">
+                <a href="#services" class="inline-flex items-center gap-2 px-4.5 xs:px-5 sm:px-7 py-1.5 sm:py-2.5 rounded-full bg-[#966D1B] hover:bg-[#7D5911] text-white font-serif text-[12px] sm:text-[15.5px] font-medium tracking-wide shadow-md hover:shadow-lg transition-all duration-300 group">
+                  <span>Explore Our Services</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1"></i>
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="w-full bg-[#FAF6EE] border-t border-[#DFC789]/60 relative z-20 shrink-0">
+      <div class="max-w-7xl mx-auto px-3 sm:px-8 py-2 sm:py-3.5">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-6 divide-y md:divide-y-0 md:divide-x divide-[#DFC789]/50">
+
+          <a href="#crystals" class="group flex items-center justify-between px-3 sm:px-5 py-2.5 sm:py-2 hover:bg-amber-50/40 rounded-lg md:rounded-none transition-all">
+            <div class="flex items-center gap-3 sm:gap-3.5">
+              <div class="w-10 h-10 shrink-0 flex items-center justify-center">
+                <img src="assets/images/icon-gem.webp" alt="Crystals" class="w-8 h-8 sm:w-9 sm:h-9 object-contain group-hover:scale-105 transition-transform">
+              </div>
+              <div>
+                <h3 class="font-serif text-[16px] sm:text-[18px] font-bold text-[#112417] leading-tight">Shop Crystals</h3>
+                <p class="text-[11.5px] sm:text-[12.5px] text-stone-700 font-serif leading-snug mt-0.5 font-medium">Thoughtfully curated crystals for your unique journey.</p>
+              </div>
+            </div>
+            <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-[#C59A3F] flex items-center justify-center text-[#9B741E] group-hover:bg-[#9B741E] group-hover:text-white transition-colors shrink-0 ml-2">
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5 stroke-[2]"></i>
+            </span>
+          </a>
+
+          <a href="#services" class="group flex items-center justify-between px-3 sm:px-5 py-2.5 sm:py-2 hover:bg-amber-50/40 rounded-lg md:rounded-none transition-all pt-2 md:pt-0">
+            <div class="flex items-center gap-3 sm:gap-3.5">
+              <div class="w-10 h-10 shrink-0 flex items-center justify-center">
+                <img src="assets/images/icon-tarot.webp" alt="Psychic Readings" class="w-8 h-8 sm:w-9 sm:h-9 object-contain group-hover:scale-105 transition-transform">
+              </div>
+              <div>
+                <h3 class="font-serif text-[16px] sm:text-[18px] font-bold text-[#112417] leading-tight">Psychic Readings</h3>
+                <p class="text-[11.5px] sm:text-[12.5px] text-stone-700 font-serif leading-snug mt-0.5 font-medium">Gain clarity and perspective with intuitive guidance.</p>
+              </div>
+            </div>
+            <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-[#C59A3F] flex items-center justify-center text-[#9B741E] group-hover:bg-[#9B741E] group-hover:text-white transition-colors shrink-0 ml-2">
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5 stroke-[2]"></i>
+            </span>
+          </a>
+
+          <a href="#classes" class="group flex items-center justify-between px-3 sm:px-5 py-2.5 sm:py-2 hover:bg-amber-50/40 rounded-lg md:rounded-none transition-all pt-2 md:pt-0">
+            <div class="flex items-center gap-3 sm:gap-3.5">
+              <div class="w-10 h-10 shrink-0 flex items-center justify-center">
+                <img src="assets/images/icon-hat.webp" alt="Spiritual Classes" class="w-8 h-8 sm:w-9 sm:h-9 object-contain group-hover:scale-105 transition-transform">
+              </div>
+              <div>
+                <h3 class="font-serif text-[16px] sm:text-[18px] font-bold text-[#112417] leading-tight">Spiritual Classes</h3>
+                <p class="text-[11.5px] sm:text-[12.5px] text-stone-700 font-serif leading-snug mt-0.5 font-medium">Learn, heal and grow through transformative classes.</p>
+              </div>
+            </div>
+            <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-[#C59A3F] flex items-center justify-center text-[#9B741E] group-hover:bg-[#9B741E] group-hover:text-white transition-colors shrink-0 ml-2">
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5 stroke-[2]"></i>
+            </span>
+          </a>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="relative w-full bg-[#FAF6EE] pt-1 sm:pt-2 pb-2.5 sm:pb-4 text-center z-20 shrink-0">
+      
+      <img src="assets/images/leaf-layer-bottom-left.webp" 
+           alt="Bottom Foliage" 
+           class="absolute bottom-0 left-0 w-28 sm:w-36 lg:w-48 pointer-events-none opacity-90 z-10">
+      <img src="assets/images/leaf-layer-bottom-right.webp" 
+           alt="Bottom Foliage" 
+           class="absolute bottom-0 right-0 w-28 sm:w-36 lg:w-48 pointer-events-none opacity-90 z-10">
+
+      <div class="w-full flex items-center justify-center my-0.5 px-4 sm:px-12 relative z-20">
+        <div class="flex-grow h-[1px] bg-gradient-to-r from-transparent via-[#DFC789] to-[#C59A3F]/80"></div>
+        <div class="px-3 sm:px-4 flex items-center justify-center">
+          <img src="assets/images/motto-swastik.webp" alt="Sacred Swastik" class="h-4.5 sm:h-5.5 w-auto object-contain">
+        </div>
+        <div class="flex-grow h-[1px] bg-gradient-to-l from-transparent via-[#DFC789] to-[#C59A3F]/80"></div>
+      </div>
+
+      <div class="flex items-center justify-center gap-2.5 sm:gap-4 mt-0.5 sm:mt-1 relative z-20">
+        <img src="assets/images/motto-sprig-left.webp" alt="" class="h-4 sm:h-5 md:h-6 w-auto object-contain opacity-90 select-none">
+        <p class="font-script text-2xl sm:text-4xl lg:text-[44px] text-[#24422E] tracking-wider leading-none">
+          Take it.. Its all Yours!!
+        </p>
+        <img src="assets/images/motto-sprig-right.webp" alt="" class="h-4 sm:h-5 md:h-6 w-auto object-contain opacity-90 select-none">
+      </div>
+    </div>
+
+  </section>
+
+  <section id="services" class="relative w-full min-h-0 lg:min-h-screen bg-[#FAF6EE] border-b border-[#ECE3CF] flex flex-col justify-center py-12 lg:py-8 px-4 sm:px-8 lg:px-14 overflow-hidden">
+
+    <img src="assets/images/leaf-layer-top-left.webp" 
+         alt="" 
+         aria-hidden="true"
+         class="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 md:-top-5 md:-left-5 w-36 sm:w-52 md:w-64 lg:w-80 max-h-[35vh] object-contain object-top-left pointer-events-none select-none z-20 floating-leaf">
+
+    <img src="assets/images/leaf-layer-top-right.webp" 
+         alt="" 
+         aria-hidden="true"
+         class="absolute top-0 right-0 w-32 sm:w-48 md:w-60 lg:w-72 max-h-[30vh] object-contain object-top-right pointer-events-none select-none z-20 floating-leaf"
+         style="animation-delay: -3s;">
+
+    <img src="assets/images/leaf-layer-bottom-left.webp" 
+         alt="" 
+         aria-hidden="true"
+         class="absolute bottom-0 left-0 w-32 sm:w-48 md:w-60 lg:w-72 max-h-[30vh] object-contain object-bottom-left pointer-events-none select-none z-20">
+
+    <img src="assets/images/leaf-layer-bottom-right.webp" 
+         alt="" 
+         aria-hidden="true"
+         class="absolute bottom-0 right-0 w-32 sm:w-48 md:w-60 lg:w-72 max-h-[30vh] object-contain object-bottom-right pointer-events-none select-none z-20">
+
+    <div class="max-w-6xl mx-auto w-full relative z-10 flex flex-col justify-between h-full py-2">
+
+      <div class="text-center space-y-1 sm:space-y-1.5 mb-6 sm:mb-8 lg:mb-9">
+        <div class="flex items-center justify-center mb-1">
+          <img src="assets/images/services-swastik-header.webp" alt="Sacred Swastik" class="h-5 sm:h-6 md:h-7 w-auto object-contain">
+        </div>
+        <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-medium tracking-[0.22em] text-[#112718] uppercase leading-tight">
+          EXPLORE OUR SERVICES
+        </h2>
+        <p class="font-serif italic text-base sm:text-lg md:text-xl text-[#3A4F3E] tracking-wide">
+          A holistic space for healing, guidance and soulful learning.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 max-w-5xl mx-auto w-full items-stretch">
+
+        <div class="bg-[#FFFDF9] rounded-2xl border border-[#E8DEC7] p-3.5 sm:p-4 pb-5 sm:pb-6 flex flex-col items-center text-center shadow-[0_10px_25px_-5px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_35px_-5px_rgba(166,124,36,0.18)] transition-all duration-300 group">
+          <div class="w-full rounded-xl overflow-hidden aspect-[4/3] mb-3 shadow-inner">
+            <img src="assets/images/service-crystals-hd.webp" alt="Healing Crystals" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="my-1 flex items-center justify-center">
+            <img src="assets/images/services-swastik-card.webp" alt="" class="h-3.5 sm:h-4 w-auto object-contain opacity-90">
+          </div>
+          <h3 class="font-serif text-2xl sm:text-[26px] font-bold text-[#142A1B] mb-2 leading-tight">Crystals</h3>
+          <p class="font-serif text-[13px] sm:text-[14px] text-[#334639] leading-relaxed flex-grow px-2 sm:px-3 mb-4">
+            Discover high-vibrational crystals for healing, protection, abundance and inner balance.
+          </p>
+          <div class="w-full flex justify-center mt-auto">
+            <a href="#crystals" class="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-2 rounded-full bg-[#966D1B] hover:bg-[#7D5911] text-white font-serif text-[13.5px] sm:text-[14.5px] font-medium tracking-wide shadow-sm hover:shadow-md transition-all duration-200 group/btn">
+              <span>Shop Crystals</span>
+              <span class="text-base leading-none group-hover/btn:translate-x-1 transition-transform">&rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-[#FFFDF9] rounded-2xl border border-[#E8DEC7] p-3.5 sm:p-4 pb-5 sm:pb-6 flex flex-col items-center text-center shadow-[0_10px_25px_-5px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_35px_-5px_rgba(166,124,36,0.18)] transition-all duration-300 group">
+          <div class="w-full rounded-xl overflow-hidden aspect-[4/3] mb-3 shadow-inner">
+            <img src="assets/images/service-tarot-hd.webp" alt="Tarot & Psychic Readings" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="my-1 flex items-center justify-center">
+            <img src="assets/images/services-swastik-card.webp" alt="" class="h-3.5 sm:h-4 w-auto object-contain opacity-90">
+          </div>
+          <h3 class="font-serif text-2xl sm:text-[26px] font-bold text-[#142A1B] mb-2 leading-tight">Psychic Readings</h3>
+          <p class="font-serif text-[13px] sm:text-[14px] text-[#334639] leading-relaxed flex-grow px-2 sm:px-3 mb-4">
+            Gain clarity, deeper insights and practical guidance for your life's journey.
+          </p>
+          <div class="w-full flex justify-center mt-auto">
+            <a href="https://wa.me/918138881308?text=Hello%20Ishadam,%20I%20would%20like%20to%20book%20a%20Psychic%20Reading" target="_blank" class="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-2 rounded-full bg-[#966D1B] hover:bg-[#7D5911] text-white font-serif text-[13.5px] sm:text-[14.5px] font-medium tracking-wide shadow-sm hover:shadow-md transition-all duration-200 group/btn">
+              <span>Book a Reading</span>
+              <span class="text-base leading-none group-hover/btn:translate-x-1 transition-transform">&rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-[#FFFDF9] rounded-2xl border border-[#E8DEC7] p-3.5 sm:p-4 pb-5 sm:pb-6 flex flex-col items-center text-center shadow-[0_10px_25px_-5px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_35px_-5px_rgba(166,124,36,0.18)] transition-all duration-300 group">
+          <div class="w-full rounded-xl overflow-hidden aspect-[4/3] mb-3 shadow-inner">
+            <img src="assets/images/service-classes-hd.webp" alt="Spiritual Classes & Meditation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="my-1 flex items-center justify-center">
+            <img src="assets/images/services-swastik-card.webp" alt="" class="h-3.5 sm:h-4 w-auto object-contain opacity-90">
+          </div>
+          <h3 class="font-serif text-2xl sm:text-[26px] font-bold text-[#142A1B] mb-2 leading-tight">Spiritual Classes</h3>
+          <p class="font-serif text-[13px] sm:text-[14px] text-[#334639] leading-relaxed flex-grow px-2 sm:px-3 mb-4">
+            Learn powerful healing modalities and spiritual tools to heal, grow and transform.
+          </p>
+          <div class="w-full flex justify-center mt-auto">
+            <a href="#classes" class="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-2 rounded-full bg-[#966D1B] hover:bg-[#7D5911] text-white font-serif text-[13.5px] sm:text-[14.5px] font-medium tracking-wide shadow-sm hover:shadow-md transition-all duration-200 group/btn">
+              <span>Explore Classes</span>
+              <span class="text-base leading-none group-hover/btn:translate-x-1 transition-transform">&rarr;</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="crystals" class="relative py-20 bg-[#FAF6EE] border-b border-[#ECE3CF] overflow-hidden">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
+
+      <div class="text-center space-y-2 mb-14">
+        <div class="sacred-divider">
+          <span class="swastik-symbol">卐</span>
+        </div>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-[#173722]">
+          Featured Crystals
+        </h2>
+        <p class="font-serif italic text-lg sm:text-xl text-[#4A5D4E]">
+          A curated selection from our crystal collection.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <div class="ornate-card p-4 flex flex-col text-center shadow-card hover:shadow-card-hover group">
+          <div class="rounded-xl overflow-hidden aspect-square mb-4 shadow-sm">
+            <img src="assets/images/crystal-pyrite.jpg" alt="Pyrite Bracelet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="sacred-divider my-1">
+            <span class="swastik-symbol text-xs">卐</span>
+          </div>
+          <h3 class="font-serif text-xl font-bold text-[#173722] mt-1 mb-1">Pyrite Bracelet</h3>
+          <p class="text-xs text-stone-500 font-medium mb-4">Abundance & Confidence</p>
+          <div class="mt-auto">
+            <button onclick="openProductModal('Pyrite Bracelet', 'Abundance & Confidence', 'assets/images/crystal-pyrite.jpg', 'Known as Fools Gold, Pyrite is a potent stone of prosperity, willpower, and financial abundance. It protects against negative energies and enhances mental clarity.')" class="w-full inline-flex items-center justify-center gap-2 py-2 px-3 rounded-full text-xs font-semibold btn-gold">
+              <span>View Product</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="ornate-card p-4 flex flex-col text-center shadow-card hover:shadow-card-hover group">
+          <div class="rounded-xl overflow-hidden aspect-square mb-4 shadow-sm">
+            <img src="assets/images/crystal-rosequartz.jpg" alt="Rose Quartz Pendant" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="sacred-divider my-1">
+            <span class="swastik-symbol text-xs">卐</span>
+          </div>
+          <h3 class="font-serif text-xl font-bold text-[#173722] mt-1 mb-1">Rose Quartz Pendant</h3>
+          <p class="text-xs text-stone-500 font-medium mb-4">Love & Compassion</p>
+          <div class="mt-auto">
+            <button onclick="openProductModal('Rose Quartz Pendant', 'Love & Compassion', 'assets/images/crystal-rosequartz.jpg', 'The stone of universal love. It restores trust and harmony in relationships, encouraging unconditional love, deep inner healing, and peace.')" class="w-full inline-flex items-center justify-center gap-2 py-2 px-3 rounded-full text-xs font-semibold btn-gold">
+              <span>View Product</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="ornate-card p-4 flex flex-col text-center shadow-card hover:shadow-card-hover group">
+          <div class="rounded-xl overflow-hidden aspect-square mb-4 shadow-sm">
+            <img src="assets/images/crystal-tourmaline.jpg" alt="Black Tourmaline Bracelet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="sacred-divider my-1">
+            <span class="swastik-symbol text-xs">卐</span>
+          </div>
+          <h3 class="font-serif text-xl font-bold text-[#173722] mt-1 mb-1">Black Tourmaline Bracelet</h3>
+          <p class="text-xs text-stone-500 font-medium mb-4">Grounding & Protection</p>
+          <div class="mt-auto">
+            <button onclick="openProductModal('Black Tourmaline Bracelet', 'Grounding & Protection', 'assets/images/crystal-tourmaline.jpg', 'A premier stone for shielding against electromagnetic pollution, psychic attack, and negative thought patterns. Superbly grounding.')" class="w-full inline-flex items-center justify-center gap-2 py-2 px-3 rounded-full text-xs font-semibold btn-gold">
+              <span>View Product</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="ornate-card p-4 flex flex-col text-center shadow-card hover:shadow-card-hover group">
+          <div class="rounded-xl overflow-hidden aspect-square mb-4 shadow-sm">
+            <img src="assets/images/crystal-amethyst.jpg" alt="Amethyst Crystal" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="sacred-divider my-1">
+            <span class="swastik-symbol text-xs">卐</span>
+          </div>
+          <h3 class="font-serif text-xl font-bold text-[#173722] mt-1 mb-1">Amethyst Crystal</h3>
+          <p class="text-xs text-stone-500 font-medium mb-4">Peace & Intuition</p>
+          <div class="mt-auto">
+            <button onclick="openProductModal('Amethyst Crystal Cluster', 'Peace & Intuition', 'assets/images/crystal-amethyst.jpg', 'A spiritual powerhouse for serenity, deep meditation, crown chakra activation, and spiritual protection. Eases stress and clarifies vision.')" class="w-full inline-flex items-center justify-center gap-2 py-2 px-3 rounded-full text-xs font-semibold btn-gold">
+              <span>View Product</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="https://wa.me/918138881308?text=Hello%20Ishadam,%20I%20would%20like%20to%20explore%20your%20full%20crystal%20catalogue" target="_blank" class="inline-flex items-center gap-3 px-10 py-3.5 rounded-full text-white font-medium text-sm tracking-wide btn-forest-pill">
+          <span>Explore All Crystals</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="classes" class="relative py-20 bg-[#FAF6EE] border-b border-[#ECE3CF] overflow-hidden">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
+
+      <div class="text-center space-y-2 mb-14">
+        <div class="sacred-divider">
+          <span class="swastik-symbol">卐</span>
+        </div>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-[#173722]">
+          Upcoming Live Classes
+        </h2>
+        <p class="font-serif italic text-lg sm:text-xl text-[#4A5D4E] flex items-center justify-center gap-2">
+          <span>Learn</span> • <span>Heal</span> • <span>Activate</span> • <span>Transform</span>
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <div class="ornate-card p-4 sm:p-5 flex flex-col text-center shadow-card hover:shadow-card-hover group">
+          <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 shadow-sm">
+            <img src="assets/images/class-angel.jpg" alt="Angel Therapy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="sacred-divider my-1">
+            <span class="swastik-symbol text-xs">卐</span>
+          </div>
+          <h3 class="font-serif text-2xl font-bold text-[#173722] mt-1 mb-2">Angel Therapy</h3>
+
+          <div class="mb-4">
+            <span class="inline-block bg-[#A67C24] text-white text-[11px] font-semibold px-4 py-1 rounded-full uppercase tracking-wider">
+              Level 1 & Level 2
+            </span>
+          </div>
+
+          <p class="text-stone-600 text-xs sm:text-sm leading-relaxed flex-grow px-2 mb-6">
+            Work with the loving guidance of Archangels for healing, protection and life transformation.
+          </p>
+          <div>
+            <a href="https://wa.me/918138881308?text=Hello%20Ishadam,%20I%20want%20to%20enroll%20in%20Angel%20Therapy" target="_blank" class="inline-flex items-center justify-center gap-2 px-8 py-2.5 rounded-full text-xs font-semibold tracking-wider bg-[#173722] hover:bg-[#112818] text-white transition-all">
+              <span>Enrol Now</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="ornate-card p-4 sm:p-5 flex flex-col text-center shadow-card hover:shadow-card-hover group">
+          <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 shadow-sm">
+            <img src="assets/images/class-reiki.jpg" alt="Reiki Healing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="sacred-divider my-1">
+            <span class="swastik-symbol text-xs">卐</span>
+          </div>
+          <h3 class="font-serif text-2xl font-bold text-[#173722] mt-1 mb-2">Reiki Healing</h3>
+
+          <div class="mb-4">
+            <span class="inline-block bg-[#A67C24] text-white text-[11px] font-semibold px-4 py-1 rounded-full uppercase tracking-wider">
+              Level 1 • Level 2 • Level 3
+            </span>
+          </div>
+
+          <p class="text-stone-600 text-xs sm:text-sm leading-relaxed flex-grow px-2 mb-6">
+            Learn a powerful, universal healing system to heal yourself and others.
+          </p>
+          <div>
+            <a href="https://wa.me/918138881308?text=Hello%20Ishadam,%20I%20want%20to%20enroll%20in%20Reiki%20Healing" target="_blank" class="inline-flex items-center justify-center gap-2 px-8 py-2.5 rounded-full text-xs font-semibold tracking-wider bg-[#173722] hover:bg-[#112818] text-white transition-all">
+              <span>Enrol Now</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="ornate-card p-4 sm:p-5 flex flex-col text-center shadow-card hover:shadow-card-hover group">
+          <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 shadow-sm">
+            <img src="assets/images/class-crystals.jpg" alt="Crystal Healing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="sacred-divider my-1">
+            <span class="swastik-symbol text-xs">卐</span>
+          </div>
+          <h3 class="font-serif text-2xl font-bold text-[#173722] mt-1 mb-2">Crystal Healing</h3>
+
+          <div class="mb-4">
+            <span class="inline-block bg-[#A67C24] text-white text-[11px] font-semibold px-4 py-1 rounded-full uppercase tracking-wider">
+              Basic & Advanced
+            </span>
+          </div>
+
+          <p class="text-stone-600 text-xs sm:text-sm leading-relaxed flex-grow px-2 mb-6">
+            Discover the healing power of crystals and learn practical ways to use them for balance and well-being.
+          </p>
+          <div>
+            <a href="https://wa.me/918138881308?text=Hello%20Ishadam,%20I%20want%20to%20enroll%20in%20Crystal%20Healing" target="_blank" class="inline-flex items-center justify-center gap-2 px-8 py-2.5 rounded-full text-xs font-semibold tracking-wider bg-[#173722] hover:bg-[#112818] text-white transition-all">
+              <span>Enrol Now</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="https://wa.me/918138881308?text=Hello%20Ishadam,%20I%20would%20like%20to%20view%20all%20upcoming%20classes" target="_blank" class="inline-flex items-center gap-3 px-10 py-3.5 rounded-full text-white font-medium text-sm tracking-wide btn-forest-pill">
+          <span>View All Classes</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="founders" class="relative py-20 bg-[#FAF6EE] border-b border-[#ECE3CF] overflow-hidden">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+
+        <div class="lg:col-span-5 flex flex-col items-center">
+          <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-amber-200/60 max-w-md group">
+            <img src="assets/images/founders-photo.jpg" alt="Founders Saneejjaa and Shiju" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700">
+          </div>
+          
+          <div class="w-full max-w-sm mt-3 flex justify-center">
+            <div class="bg-amber-100/50 border border-amber-200/60 px-6 py-2 rounded-full text-xs text-[#966D1B] font-medium tracking-wide flex items-center gap-2">
+              <span>✦</span> Sacred Guidance & Conscious Living <span>✦</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <div class="space-y-1">
+            <div class="flex items-center justify-center lg:justify-start gap-3">
+              <span class="text-[#C59A3F] font-serif">≫≫</span>
+              <h2 class="font-serif text-2xl sm:text-3xl font-semibold tracking-wide text-[#173722]">
+                Meet the Founders
+              </h2>
+              <span class="text-[#C59A3F] font-serif">≪≪</span>
+            </div>
+            
+            <h3 class="font-script text-5xl sm:text-6xl text-[#173722] py-1">
+              Saneejjaa & Shiju
+            </h3>
+          </div>
+
+          <p class="text-stone-700 text-sm sm:text-base leading-relaxed max-w-2xl font-light">
+            We are the hearts behind <strong class="font-semibold text-[#173722]">Ishadam</strong> — a sacred space born from our shared passion for healing, consciousness and holistic living.
+          </p>
+
+          <div class="relative inline-block my-2">
+            <span class="bg-[#F8E7A2]/70 text-[#173722] font-serif italic text-2xl sm:text-3xl px-8 py-2 rounded-md shadow-sm border border-[#E5CF77]/50 block">
+              Why Ishadam?
+            </span>
+          </div>
+
+          <p class="text-stone-700 text-sm sm:text-base leading-relaxed max-w-2xl">
+            Ishadam is a blend of our children's names — <br class="hidden sm:inline">
+            <strong class="font-semibold text-[#173722]">Isha + Adam</strong> — <br class="hidden sm:inline">
+            a reflection of our deepest intention to create a nurturing space for healing, learning and transformation for every soul who journeys with us.
+          </p>
+
+          <div class="sacred-divider my-2 lg:justify-start">
+            <span class="swastik-symbol text-base">卐</span>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2 max-w-xl mx-auto lg:mx-0">
+            <div class="flex flex-col items-center text-center p-3 rounded-xl bg-[#FFFDF9] border border-amber-200/50 shadow-sm">
+              <i data-lucide="gem" class="w-6 h-6 text-[#966D1B] mb-2"></i>
+              <span class="text-xs font-semibold text-[#173722]">Crystals</span>
+            </div>
+            <div class="flex flex-col items-center text-center p-3 rounded-xl bg-[#FFFDF9] border border-amber-200/50 shadow-sm">
+              <i data-lucide="sparkles" class="w-6 h-6 text-[#966D1B] mb-2"></i>
+              <span class="text-xs font-semibold text-[#173722]">Tarot</span>
+            </div>
+            <div class="flex flex-col items-center text-center p-3 rounded-xl bg-[#FFFDF9] border border-amber-200/50 shadow-sm">
+              <i data-lucide="flower" class="w-6 h-6 text-[#966D1B] mb-2"></i>
+              <span class="text-xs font-semibold text-[#173722]">Energy Healing</span>
+            </div>
+            <div class="flex flex-col items-center text-center p-3 rounded-xl bg-[#FFFDF9] border border-amber-200/50 shadow-sm">
+              <i data-lucide="book-open" class="w-6 h-6 text-[#966D1B] mb-2"></i>
+              <span class="text-xs font-semibold text-[#173722]">Trainings</span>
+            </div>
+          </div>
+
+          <div class="pt-4">
+            <a href="https://wa.me/918138881308?text=Hello%20Ishadam,%20I%20would%20love%20to%20know%20more%20about%20your%20story" target="_blank" class="inline-flex items-center gap-3 px-8 py-3.5 rounded-full text-white font-medium text-sm tracking-wide btn-forest-pill">
+              <span>Discover Our Story</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="relative py-20 bg-[#FAF6EE] border-b border-[#ECE3CF] overflow-hidden">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
+
+      <div class="text-center space-y-2 mb-14">
+        <div class="sacred-divider">
+          <span class="swastik-symbol">卐</span>
+        </div>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-[#173722]">
+          What Our Community Says
+        </h2>
+        <p class="font-serif italic text-lg sm:text-xl text-[#4A5D4E] flex items-center justify-center gap-2">
+          <span>Real Experiences</span> • <span>Heartfelt Journeys</span> • <span>Genuine Transformations</span>
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <div class="ornate-card p-6 sm:p-8 flex flex-col text-center shadow-card hover:shadow-card-hover group relative">
+          
+          <div class="w-24 h-24 mx-auto rounded-full p-1 border-2 border-amber-300 shadow-sm overflow-hidden mb-4">
+            <img src="assets/images/testimonial-1.jpg" alt="Asha P." class="w-full h-full object-cover rounded-full">
+          </div>
+          
+          <span class="font-serif text-4xl text-[#966D1B] leading-none mb-2">“</span>
+          <p class="text-stone-700 text-xs sm:text-sm leading-relaxed flex-grow italic mb-6">
+            The Angel Therapy training with <strong class="font-semibold text-[#173722]">Ishadam</strong> was a truly transformative experience. I feel more aligned, protected and peaceful than ever before.
+          </p>
+          
+          <div class="mt-auto">
+            <div class="sacred-divider my-1">
+              <span class="swastik-symbol text-xs">卐</span>
+            </div>
+            <h4 class="font-serif text-lg font-bold text-[#173722] mt-1">Asha P.</h4>
+          </div>
+        </div>
+
+        <div class="ornate-card p-6 sm:p-8 flex flex-col text-center shadow-card hover:shadow-card-hover group relative">
+          <div class="w-24 h-24 mx-auto rounded-full p-1 border-2 border-amber-300 shadow-sm overflow-hidden mb-4">
+            <img src="assets/images/testimonial-2.jpg" alt="Rohit M." class="w-full h-full object-cover rounded-full">
+          </div>
+          
+          <span class="font-serif text-4xl text-[#966D1B] leading-none mb-2">“</span>
+          <p class="text-stone-700 text-xs sm:text-sm leading-relaxed flex-grow italic mb-6">
+            The crystals from Ishadam are beautifully charged and their guidance on how to use them is so practical and effective. I can feel a positive shift in my energy and life.
+          </p>
+          
+          <div class="mt-auto">
+            <div class="sacred-divider my-1">
+              <span class="swastik-symbol text-xs">卐</span>
+            </div>
+            <h4 class="font-serif text-lg font-bold text-[#173722] mt-1">Rohit M.</h4>
+          </div>
+        </div>
+
+        <div class="ornate-card p-6 sm:p-8 flex flex-col text-center shadow-card hover:shadow-card-hover group relative">
+          <div class="w-24 h-24 mx-auto rounded-full p-1 border-2 border-amber-300 shadow-sm overflow-hidden mb-4">
+            <img src="assets/images/testimonial-3.jpg" alt="Meera S." class="w-full h-full object-cover rounded-full">
+          </div>
+          
+          <span class="font-serif text-4xl text-[#966D1B] leading-none mb-2">“</span>
+          <p class="text-stone-700 text-xs sm:text-sm leading-relaxed flex-grow italic mb-6">
+            The 21-Day Forgiveness Journey helped me release years of emotional weight. It was gentle, powerful and deeply healing. Thank you, <strong class="font-semibold text-[#173722]">Ishadam!</strong>
+          </p>
+          
+          <div class="mt-auto">
+            <div class="sacred-divider my-1">
+              <span class="swastik-symbol text-xs">卐</span>
+            </div>
+            <h4 class="font-serif text-lg font-bold text-[#173722] mt-1">Meera S.</h4>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="https://wa.me/918138881308?text=Hello%20Ishadam,%20I%20would%20like%20to%20read%20more%20testimonials" target="_blank" class="inline-flex items-center gap-3 px-10 py-3.5 rounded-full text-white font-medium text-sm tracking-wide btn-forest-pill">
+          <span>Read More Testimonials</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact" class="relative bg-[#FAF6EE] pt-12 overflow-hidden">
+
+    <div class="relative py-20 px-4 sm:px-8 overflow-hidden bg-cover bg-center" style="background-image: linear-gradient(to right, rgba(250,246,238,0.92) 0%, rgba(250,246,238,0.82) 50%, rgba(250,246,238,0.92) 100%), url('assets/images/cta-bg.jpg');">
+
+      <div class="max-w-4xl mx-auto text-center space-y-4 relative z-10">
+        <div class="sacred-divider">
+          <span class="swastik-symbol">卐</span>
+        </div>
+        
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-[#173722]">
+          Begin Your Journey with Ishadam
+        </h2>
+        
+        <p class="font-serif italic text-base sm:text-lg text-[#4A5D4E] flex flex-wrap items-center justify-center gap-3">
+          <span>Heal</span> <span class="text-amber-600">✦</span>
+          <span>Learn</span> <span class="text-amber-600">✦</span>
+          <span>Transform</span> <span class="text-amber-600">✦</span>
+          <span>Create a Life in Alignment</span>
+        </p>
+
+        <p class="text-stone-700 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed pt-2">
+          Whether you are seeking healing, clarity, spiritual learning or simply a higher connection with yourself, Ishadam welcomes you with an open heart.
+        </p>
+
+        <p class="font-script text-4xl sm:text-5xl text-[#24422E] tracking-wider py-2">
+          Take it.. It's all Yours!!
+        </p>
+
+        <div class="pt-2">
+          <a href="https://wa.me/918138881308?text=Hello%20Ishadam,%20I%20would%20like%20to%20begin%20my%20spiritual%20journey" target="_blank" class="inline-flex items-center gap-3 px-10 py-3.5 rounded-full text-white font-medium text-sm tracking-wide btn-forest-pill">
+            <span>Explore Ishadam</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-[#122E1A] text-[#EDE7D9] pt-16 pb-8 border-t-4 border-[#C59A3F] relative overflow-hidden">
+      
+      <div class="max-w-7xl mx-auto px-4 sm:px-8">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12">
+
+          <div class="lg:col-span-4 space-y-4">
+            <div class="flex items-center gap-4">
+              <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-amber-300/40 p-1 flex items-center justify-center bg-white/5 shrink-0">
+                <img src="assets/images/ishadam-emblem.png" alt="Ishadam Logo" class="h-full w-full object-contain">
+              </div>
+              <div>
+                <h3 class="font-serif text-3xl font-medium text-white tracking-tight leading-none">Ishadam</h3>
+                <p class="text-[10px] uppercase tracking-widest text-amber-300 font-semibold mt-1.5 leading-none">
+                  卐 From the House of Niyyati 卐
+                </p>
+              </div>
+            </div>
+            <p class="text-xs text-stone-300 leading-relaxed font-light pr-4 pt-2">
+              A sacred sanctuary dedicated to vibrational healing, authentic crystal energies, soul readings, and transformative spiritual wisdom.
+            </p>
+          </div>
+
+          <div class="lg:col-span-3 space-y-3">
+            <div class="flex items-center gap-2 text-amber-400 font-serif text-lg font-semibold border-b border-emerald-800 pb-2">
+              <span>🌿</span>
+              <span>Explore</span>
+            </div>
+            <ul class="space-y-2 text-xs text-stone-300 font-light">
+              <li><a href="#home" class="hover:text-amber-300 flex items-center gap-2 transition"><span class="text-amber-500">›</span> Home</a></li>
+              <li><a href="#founders" class="hover:text-amber-300 flex items-center gap-2 transition"><span class="text-amber-500">›</span> About Us</a></li>
+              <li><a href="#services" class="hover:text-amber-300 flex items-center gap-2 transition"><span class="text-amber-500">›</span> Our Services</a></li>
+              <li><a href="#classes" class="hover:text-amber-300 flex items-center gap-2 transition"><span class="text-amber-500">›</span> Live Classes</a></li>
+              <li><a href="#crystals" class="hover:text-amber-300 flex items-center gap-2 transition"><span class="text-amber-500">›</span> Products (Crystals)</a></li>
+              <li><a href="#testimonials" class="hover:text-amber-300 flex items-center gap-2 transition"><span class="text-amber-500">›</span> Testimonials</a></li>
+              <li><a href="#contact" class="hover:text-amber-300 flex items-center gap-2 transition"><span class="text-amber-500">›</span> Contact Us</a></li>
+            </ul>
+          </div>
+
+          <div class="lg:col-span-2 space-y-3">
+            <div class="flex items-center gap-2 text-amber-400 font-serif text-lg font-semibold border-b border-emerald-800 pb-2">
+              <span>🌿</span>
+              <span>Our Offerings</span>
+            </div>
+            <ul class="space-y-3 text-xs text-stone-300 font-light">
+              <li class="flex items-start gap-2">
+                <i data-lucide="gem" class="w-4 h-4 text-amber-400 mt-0.5 shrink-0"></i>
+                <span>Crystals & Energy Tools</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="sparkles" class="w-4 h-4 text-amber-400 mt-0.5 shrink-0"></i>
+                <span>Psychic & Tarot Readings</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="sun" class="w-4 h-4 text-amber-400 mt-0.5 shrink-0"></i>
+                <span>Energy Healing Sessions</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="graduation-cap" class="w-4 h-4 text-amber-400 mt-0.5 shrink-0"></i>
+                <span>Spiritual Trainings & Courses</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="lg:col-span-3 space-y-4">
+            <div class="flex items-center gap-2 text-amber-400 font-serif text-lg font-semibold border-b border-emerald-800 pb-2">
+              <span>🌿</span>
+              <span>Get in Touch</span>
+            </div>
+            <div class="space-y-2.5 text-xs text-stone-300 font-light">
+              <a href="https://wa.me/918138881308" target="_blank" class="flex items-center gap-2.5 hover:text-amber-300 transition">
+                <i data-lucide="phone" class="w-4 h-4 text-amber-400"></i>
+                <span>+91-8138881308</span>
+              </a>
+              <a href="mailto:saneejjaa@ishadam.com" class="flex items-center gap-2.5 hover:text-amber-300 transition">
+                <i data-lucide="mail" class="w-4 h-4 text-amber-400"></i>
+                <span>saneejjaa@ishadam.com</span>
+              </a>
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="map-pin" class="w-4 h-4 text-amber-400 mt-0.5 shrink-0"></i>
+                <span>Trivandrum, Kerala, India</span>
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <div class="flex items-center gap-2 text-amber-400 text-xs font-medium mb-3">
+                <span>🌿</span>
+                <span>Connect with Us</span>
+              </div>
+              <div class="flex items-center space-x-3 text-stone-200">
+                <a href="#" class="w-8 h-8 rounded-full bg-emerald-900 border border-emerald-700 flex items-center justify-center hover:bg-amber-600 hover:text-white transition"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                <a href="#" class="w-8 h-8 rounded-full bg-emerald-900 border border-emerald-700 flex items-center justify-center hover:bg-amber-600 hover:text-white transition"><i data-lucide="youtube" class="w-4 h-4"></i></a>
+                <a href="#" class="w-8 h-8 rounded-full bg-emerald-900 border border-emerald-700 flex items-center justify-center hover:bg-amber-600 hover:text-white transition"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+                <a href="https://wa.me/918138881308" target="_blank" class="w-8 h-8 rounded-full bg-emerald-900 border border-emerald-700 flex items-center justify-center hover:bg-amber-600 hover:text-white transition"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="border-t border-emerald-900/80 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-400 gap-4">
+          <div class="flex items-center gap-2">
+            <span class="text-amber-400 text-sm">卐</span>
+            <span>© 2026 Ishadam. All Rights Reserved.</span>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-[11px] text-stone-400">
+            <a href="#" class="hover:text-amber-300 transition">Privacy Policy</a>
+            <span>|</span>
+            <a href="#" class="hover:text-amber-300 transition">Terms & Conditions</a>
+            <span>|</span>
+            <a href="#" class="hover:text-amber-300 transition">Shipping Policy</a>
+            <span>|</span>
+            <a href="#" class="hover:text-amber-300 transition">Refund & Cancellation</a>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+  </section>
+
+  <div id="productModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-[#FAF6EE] border border-amber-300/80 rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl relative animate-in fade-in zoom-in duration-200">
+      <button onclick="closeProductModal()" class="absolute top-4 right-4 text-stone-500 hover:text-stone-900 w-8 h-8 rounded-full bg-white/80 flex items-center justify-center z-10">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div class="p-6">
+        <div class="rounded-xl overflow-hidden aspect-square max-h-60 mx-auto mb-4 border border-amber-200">
+          <img id="modalImg" src="" alt="Crystal" class="w-full h-full object-cover">
+        </div>
+        <div class="text-center space-y-2">
+          <div class="sacred-divider my-1">
+            <span class="swastik-symbol text-xs">卐</span>
+          </div>
+          <h3 id="modalTitle" class="font-serif text-2xl font-bold text-[#173722]"></h3>
+          <p id="modalSubtitle" class="text-xs text-amber-800 font-semibold tracking-wider uppercase"></p>
+          <p id="modalDesc" class="text-stone-600 text-xs sm:text-sm leading-relaxed pt-2"></p>
+          
+          <div class="pt-5 flex gap-3 justify-center">
+            <a id="modalBuyBtn" href="#" target="_blank" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-semibold btn-gold uppercase">
+              <span>Order via WhatsApp</span>
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+            </a>
+            <button onclick="closeProductModal()" class="px-5 py-2.5 rounded-full text-xs font-semibold border border-stone-300 hover:bg-stone-100 text-stone-700">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
