@@ -44,6 +44,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  const mainNav = document.getElementById('mainNav');
+  let lastScrollY = window.scrollY;
+
+  window.addEventListener('scroll', () => {
+    if (!mainNav) return;
+    const currentScrollY = window.scrollY;
+
+    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+      return;
+    }
+
+    if (currentScrollY > 60 && currentScrollY > lastScrollY) {
+      mainNav.style.transform = 'translateY(-100%)';
+    } else {
+      mainNav.style.transform = 'translateY(0)';
+    }
+
+    lastScrollY = currentScrollY;
+  }, { passive: true });
+
   const productModal = document.getElementById('productModal');
   const modalImg = document.getElementById('modalImg');
   const modalTitle = document.getElementById('modalTitle');
