@@ -28,8 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }, {
-      rootMargin: '0px 0px -15% 0px',
-      threshold: 0.15
+      rootMargin: '120px 0px 50px 0px',
+      threshold: 0
     });
     observer.observe(servicesSection);
   }
