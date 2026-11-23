@@ -218,6 +218,11 @@ body {
   transform: translate(3px, 5px);
 }
 
+.service-card,
+.blur-in-heading {
+  will-change: filter, opacity, transform;
+}
+
 .authentic-vine-leaf {
   pointer-events: none;
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.14));

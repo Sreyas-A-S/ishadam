@@ -37,6 +37,50 @@ document.addEventListener('DOMContentLoaded', () => {
     sacredSpins.forEach(el => swastikObserver.observe(el));
   }
 
+  // Blur-in animations for Service cards and Section Headings
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const serviceCards = document.querySelectorAll('.service-card');
+    if (serviceCards.length > 0) {
+      gsap.fromTo(serviceCards,
+        { filter: 'blur(12px)', opacity: 0, y: 30 },
+        {
+          filter: 'blur(0px)',
+          opacity: 1,
+          y: 0,
+          duration: 0.85,
+          stagger: 0.18,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '#services',
+            start: 'top 75%',
+            once: true
+          }
+        }
+      );
+    }
+
+    const blurHeadings = document.querySelectorAll('.blur-in-heading');
+    blurHeadings.forEach(heading => {
+      gsap.fromTo(heading,
+        { filter: 'blur(14px)', opacity: 0, y: 22 },
+        {
+          filter: 'blur(0px)',
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: heading,
+            start: 'top 85%',
+            once: true
+          }
+        }
+      );
+    });
+  }
+
   const servicesSection = document.getElementById('services');
   if (servicesSection) {
     const cornerLeaves = servicesSection.querySelectorAll('.services-corner-leaf');
