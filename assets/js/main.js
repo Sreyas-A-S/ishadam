@@ -88,6 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
           duration: 0.5,
           stagger: 0.1,
           ease: 'power2.out',
+          clearProps: 'filter',
           scrollTrigger: {
             trigger: '#services',
             start: 'top 80%',
@@ -107,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
           y: 0,
           duration: 0.5,
           ease: 'power2.out',
+          clearProps: 'filter',
           scrollTrigger: {
             trigger: heading,
             start: 'top 88%',

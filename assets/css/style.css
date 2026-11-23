@@ -314,9 +314,8 @@ body {
   filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.5));
 }
 
-.service-card,
-.blur-in-heading {
-  will-change: filter, opacity, transform;
+.service-card {
+  will-change: opacity, transform;
 }
 
 .authentic-vine-leaf {
