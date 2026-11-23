@@ -25,11 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           cornerLeaves.forEach(leaf => leaf.classList.add('is-visible'));
+        } else {
+          cornerLeaves.forEach(leaf => leaf.classList.remove('is-visible'));
         }
       });
     }, {
-      rootMargin: '120px 0px 50px 0px',
-      threshold: 0
+      rootMargin: '0px 0px 0px 0px',
+      threshold: 0.12
     });
     observer.observe(servicesSection);
   }
