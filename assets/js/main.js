@@ -187,8 +187,8 @@ function initWildRollercoasterVine() {
       scrollTrigger: {
         trigger: '#services',
         endTrigger: '#classes',
-        start: 'top 50%',
-        end: 'bottom 50%',
+        start: 'top 65%',
+        end: 'top 20%',
         scrub: true
       }
     });
