@@ -186,10 +186,10 @@ function initWildRollercoasterVine() {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: '#services',
-        endTrigger: '#crystals',
-        start: 'top top',
-        end: 'bottom bottom',
-        scrub: 1.2
+        endTrigger: '#classes',
+        start: 'top 60%',
+        end: 'bottom 40%',
+        scrub: 1.5
       }
     });
 
