@@ -18,6 +18,23 @@ document.addEventListener('DOMContentLoaded', () => {
     lucide.createIcons();
   }
 
+  const sacredSpins = document.querySelectorAll('.sacred-swastik-spin');
+  if (sacredSpins.length > 0 && ('IntersectionObserver' in window)) {
+    const swastikObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -20px 0px'
+    });
+
+    sacredSpins.forEach(el => swastikObserver.observe(el));
+  }
+
   const servicesSection = document.getElementById('services');
   if (servicesSection) {
     const cornerLeaves = servicesSection.querySelectorAll('.services-corner-leaf');
@@ -107,15 +124,42 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initWildRollercoasterVine() {
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('with') !== 'vine') {
+    return;
+  }
+
+  const container = document.getElementById('rollercoasterVine');
+  if (container) {
+    container.classList.remove('hidden');
+    container.style.display = 'block';
+  }
+
   const spine = document.getElementById('vineSpine');
   const spineShadow = document.getElementById('vineSpineShadow');
   const leavesContainer = document.getElementById('vineLeavesDom');
   const sproutsGroup = document.getElementById('vineSproutsGroup');
-  const container = document.getElementById('rollercoasterVine');
   if (!spine || !leavesContainer || !container) return;
 
-  const width = 1440;
-  const pathD = `
+  const isMobile = window.innerWidth < 768;
+  const width = isMobile ? 420 : 1440;
+
+  const rollerSvg = document.getElementById('rollerSvg');
+  if (rollerSvg) {
+    rollerSvg.setAttribute('viewBox', `0 0 ${width} 2400`);
+  }
+
+  const pathD = isMobile ? `
+    M -20,-30
+    C 80,60 180,120 210,240
+    C 240,360 140,480 80,580
+    C 30,680 50,780 120,890
+    C 190,1000 280,1080 320,1200
+    C 360,1320 300,1460 210,1580
+    C 120,1700 80,1820 160,1940
+    C 240,2060 290,2150 200,2260
+    C 120,2340 30,2380 -20,2420
+  ` : `
     M -40,-40
     C 160,80 320,160 380,260
     C 440,360 310,480 180,560
@@ -145,34 +189,43 @@ function initWildRollercoasterVine() {
     'assets/images/vine-leaf-4.webp'
   ];
 
+  const scaleFactor = isMobile ? 0.65 : 1.0;
+
   const nodeDistributions = [
-    { pct: 0.06, asset: 0, angle: 35,  size: 78, flip: 1 },
-    { pct: 0.11, asset: 1, angle: -65, size: 68, flip: -1 },
-    { pct: 0.17, asset: 2, angle: 40,  size: 88, flip: 1 },
-    { pct: 0.23, asset: 3, angle: -45, size: 84, flip: -1 },
-    { pct: 0.29, asset: 0, angle: 55,  size: 74, flip: 1 },
-    { pct: 0.36, asset: 1, angle: -50, size: 92, flip: -1 },
-    { pct: 0.43, asset: 2, angle: 30,  size: 80, flip: 1 },
-    { pct: 0.50, asset: 3, angle: -60, size: 86, flip: -1 },
-    { pct: 0.57, asset: 0, angle: 45,  size: 96, flip: 1 },
-    { pct: 0.65, asset: 1, angle: -40, size: 76, flip: -1 },
-    { pct: 0.72, asset: 2, angle: 50,  size: 88, flip: 1 },
-    { pct: 0.80, asset: 3, angle: -55, size: 82, flip: -1 },
-    { pct: 0.88, asset: 0, angle: 35,  size: 90, flip: 1 },
-    { pct: 0.95, asset: 1, angle: -48, size: 75, flip: -1 }
+    { pct: 0.05, asset: 0, normalSide: 1,  size: Math.round(75 * scaleFactor) },
+    { pct: 0.11, asset: 1, normalSide: -1, size: Math.round(70 * scaleFactor) },
+    { pct: 0.17, asset: 2, normalSide: 1,  size: Math.round(85 * scaleFactor) },
+    { pct: 0.23, asset: 3, normalSide: -1, size: Math.round(80 * scaleFactor) },
+    { pct: 0.29, asset: 0, normalSide: 1,  size: Math.round(75 * scaleFactor) },
+    { pct: 0.35, asset: 1, normalSide: -1, size: Math.round(88 * scaleFactor) },
+    { pct: 0.42, asset: 2, normalSide: 1,  size: Math.round(78 * scaleFactor) },
+    { pct: 0.49, asset: 3, normalSide: -1, size: Math.round(82 * scaleFactor) },
+    { pct: 0.56, asset: 0, normalSide: 1,  size: Math.round(90 * scaleFactor) },
+    { pct: 0.63, asset: 1, normalSide: -1, size: Math.round(76 * scaleFactor) },
+    { pct: 0.70, asset: 2, normalSide: 1,  size: Math.round(84 * scaleFactor) },
+    { pct: 0.78, asset: 3, normalSide: -1, size: Math.round(80 * scaleFactor) },
+    { pct: 0.86, asset: 0, normalSide: 1,  size: Math.round(85 * scaleFactor) },
+    { pct: 0.94, asset: 1, normalSide: -1, size: Math.round(75 * scaleFactor) }
   ];
 
   const leafItems = [];
 
   nodeDistributions.forEach((n, idx) => {
-    const pt = spine.getPointAtLength(n.pct * totalLen);
+    const distanceAlongPath = n.pct * totalLen;
+    const pt = spine.getPointAtLength(distanceAlongPath);
+
+    const delta = 4;
+    const ptPrev = spine.getPointAtLength(Math.max(0, distanceAlongPath - delta));
+    const ptNext = spine.getPointAtLength(Math.min(totalLen, distanceAlongPath + delta));
+    const tangentAngle = Math.atan2(ptNext.y - ptPrev.y, ptNext.x - ptPrev.x) * (180 / Math.PI);
+    const finalAngle = tangentAngle + (n.normalSide * 65);
 
     if (sproutsGroup && (idx % 2 === 1)) {
       const curl = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      const offset = n.flip > 0 ? 40 : -40;
-      curl.setAttribute('d', `M ${pt.x} ${pt.y} Q ${pt.x + offset} ${pt.y - 20} ${pt.x + offset*1.3} ${pt.y - 45} T ${pt.x + offset*1.1} ${pt.y - 65}`);
+      const offset = (n.normalSide > 0 ? 30 : -30) * (isMobile ? 0.6 : 1.0);
+      curl.setAttribute('d', `M ${pt.x} ${pt.y} Q ${pt.x + offset} ${pt.y - 15} ${pt.x + offset*1.3} ${pt.y - 35} T ${pt.x + offset*1.1} ${pt.y - 50}`);
       curl.setAttribute('class', 'vine-curly-tendril');
-      const curlLen = curl.getTotalLength ? 120 : 120;
+      const curlLen = 100;
       curl.style.strokeDasharray = curlLen;
       curl.style.strokeDashoffset = curlLen;
       sproutsGroup.appendChild(curl);
@@ -185,8 +238,7 @@ function initWildRollercoasterVine() {
     img.style.width = `${n.size}px`;
     img.style.height = 'auto';
 
-    const pctX = (pt.x / width) * 100;
-    img.style.left = `${pctX}%`;
+    img.style.left = `${pt.x}px`;
     img.style.top = `${pt.y}px`;
 
     leavesContainer.appendChild(img);
@@ -194,8 +246,7 @@ function initWildRollercoasterVine() {
     leafItems.push({
       el: img,
       tendrilEl: n.tendrilEl,
-      targetAngle: n.angle,
-      flip: n.flip,
+      targetAngle: finalAngle,
       triggerPct: n.pct
     });
   });
@@ -207,9 +258,9 @@ function initWildRollercoasterVine() {
       scrollTrigger: {
         trigger: '#services',
         endTrigger: '#classes',
-        start: 'top 65%',
-        end: 'top 20%',
-        scrub: true
+        start: 'top 75%',
+        end: 'bottom 40%',
+        scrub: 1.2
       }
     });
 
@@ -228,13 +279,17 @@ function initWildRollercoasterVine() {
     }
 
     leafItems.forEach(item => {
-      tl.to(item.el, {
-        opacity: 1,
-        scale: 1,
-        rotation: item.targetAngle,
-        ease: 'back.out(1.9)',
-        duration: 0.06
-      }, item.triggerPct);
+      tl.fromTo(item.el, 
+        { opacity: 0, scale: 0, rotation: item.targetAngle },
+        {
+          opacity: 1,
+          scale: 1,
+          rotation: item.targetAngle,
+          ease: 'back.out(1.6)',
+          duration: 0.08
+        }, 
+        item.triggerPct
+      );
 
       if (item.tendrilEl) {
         tl.to(item.tendrilEl, {
