@@ -225,6 +225,8 @@ body {
   stroke: #8C6B1C;
   stroke-width: 1.8;
   stroke-linecap: round;
-  opacity: 0.85;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  will-change: opacity, stroke-dashoffset;
 }
 

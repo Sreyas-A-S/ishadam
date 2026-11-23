@@ -152,7 +152,11 @@ function initWildRollercoasterVine() {
       const offset = n.flip > 0 ? 40 : -40;
       curl.setAttribute('d', `M ${pt.x} ${pt.y} Q ${pt.x + offset} ${pt.y - 20} ${pt.x + offset*1.3} ${pt.y - 45} T ${pt.x + offset*1.1} ${pt.y - 65}`);
       curl.setAttribute('class', 'vine-curly-tendril');
+      const curlLen = curl.getTotalLength ? 120 : 120;
+      curl.style.strokeDasharray = curlLen;
+      curl.style.strokeDashoffset = curlLen;
       sproutsGroup.appendChild(curl);
+      n.tendrilEl = curl;
     }
 
     const img = document.createElement('img');
@@ -169,6 +173,7 @@ function initWildRollercoasterVine() {
 
     leafItems.push({
       el: img,
+      tendrilEl: n.tendrilEl,
       targetAngle: n.angle,
       flip: n.flip,
       triggerPct: n.pct
@@ -208,8 +213,17 @@ function initWildRollercoasterVine() {
         scale: 1,
         rotation: item.targetAngle,
         ease: 'back.out(1.9)',
-        duration: 0.08
-      }, Math.max(0, item.triggerPct - 0.02));
+        duration: 0.06
+      }, item.triggerPct);
+
+      if (item.tendrilEl) {
+        tl.to(item.tendrilEl, {
+          opacity: 0.85,
+          strokeDashoffset: 0,
+          duration: 0.08,
+          ease: 'power1.out'
+        }, item.triggerPct + 0.01);
+      }
     });
   }
 }
