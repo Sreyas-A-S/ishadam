@@ -180,9 +180,9 @@ function initWildRollercoasterVine() {
 
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: '#home',
+        trigger: '#services',
         endTrigger: '#crystals',
-        start: 'top top',
+        start: 'top 85%',
         end: 'bottom bottom',
         scrub: 1.2
       }
