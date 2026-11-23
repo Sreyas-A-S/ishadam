@@ -72,6 +72,22 @@ body {
   transform: translateY(-2px);
 }
 
+.services-corner-leaf {
+  opacity: 0;
+  filter: blur(14px);
+  transform: scale(0.92);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              filter 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, filter, transform;
+}
+
+.services-corner-leaf.is-visible {
+  opacity: 1;
+  filter: blur(0px);
+  transform: scale(1);
+}
+
 .floating-leaf {
   animation: floatLeaf 6s ease-in-out infinite alternate;
 }

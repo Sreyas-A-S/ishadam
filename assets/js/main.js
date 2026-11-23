@@ -18,6 +18,22 @@ document.addEventListener('DOMContentLoaded', () => {
     lucide.createIcons();
   }
 
+  const servicesSection = document.getElementById('services');
+  if (servicesSection) {
+    const cornerLeaves = servicesSection.querySelectorAll('.services-corner-leaf');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          cornerLeaves.forEach(leaf => leaf.classList.add('is-visible'));
+        }
+      });
+    }, {
+      rootMargin: '0px 0px -15% 0px',
+      threshold: 0.15
+    });
+    observer.observe(servicesSection);
+  }
+
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
   if (mobileMenuBtn && mobileMenu) {
