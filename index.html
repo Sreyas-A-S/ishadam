@@ -63,7 +63,21 @@
 
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="selection:bg-amber-100 selection:text-emerald-950">
+<body class="selection:bg-amber-100 selection:text-emerald-950 relative">
+
+  <div id="creepingVineContainer" class="creeping-vine-container hidden md:block" aria-hidden="true">
+    <svg viewBox="0 0 140 1000" preserveAspectRatio="none" class="w-full h-full">
+      <path id="vineStem" class="creeping-vine-stem" d="
+        M 10,-20 
+        C 25,60 4,140 22,220 
+        C 40,300 8,380 26,460 
+        C 44,540 10,620 28,700 
+        C 46,780 12,860 30,940 
+        C 40,980 20,1020 25,1060
+      " />
+      <g id="vineLeavesGroup"></g>
+    </svg>
+  </div>
 
   <div id="preloader" class="fixed inset-0 z-[100] bg-[#FAF6EE] flex flex-col items-center justify-center p-6 text-center">
     <div class="relative flex flex-col items-center max-w-sm w-full">

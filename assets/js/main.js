@@ -80,7 +80,64 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  initCreepingVine();
 });
+
+function initCreepingVine() {
+  const vineStem = document.getElementById('vineStem');
+  const leavesGroup = document.getElementById('vineLeavesGroup');
+  if (!vineStem || !leavesGroup) return;
+
+  const stemLength = vineStem.getTotalLength();
+  vineStem.style.strokeDasharray = stemLength;
+  vineStem.style.strokeDashoffset = stemLength;
+
+  const leafConfigs = [
+    { pos: 0.08, type: 'green-leaf', angle: 45, scale: 1.1 },
+    { pos: 0.16, type: 'gold-leaf', angle: -50, scale: 0.95 },
+    { pos: 0.24, type: 'lime-leaf', angle: 40, scale: 1.0 },
+    { pos: 0.33, type: 'green-leaf', angle: -55, scale: 1.15 },
+    { pos: 0.42, type: 'gold-leaf', angle: 48, scale: 1.0 },
+    { pos: 0.51, type: 'lime-leaf', angle: -45, scale: 1.05 },
+    { pos: 0.60, type: 'green-leaf', angle: 52, scale: 1.2 },
+    { pos: 0.69, type: 'gold-leaf', angle: -50, scale: 0.95 },
+    { pos: 0.78, type: 'green-leaf', angle: 45, scale: 1.1 },
+    { pos: 0.88, type: 'lime-leaf', angle: -48, scale: 1.05 },
+    { pos: 0.96, type: 'gold-leaf', angle: 40, scale: 1.0 }
+  ];
+
+  const leafElements = [];
+  leafConfigs.forEach(cfg => {
+    const pt = vineStem.getPointAtLength(cfg.pos * stemLength);
+    const leaf = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    leaf.setAttribute('d', 'M0,0 C12,-10 24,-8 28,0 C24,8 12,10 0,0 Z');
+    leaf.setAttribute('class', `vine-leaf ${cfg.type}`);
+    leaf.style.transformOrigin = `${pt.x}px ${pt.y}px`;
+    leaf.setAttribute('transform', `translate(${pt.x}, ${pt.y}) rotate(${cfg.angle}) scale(${cfg.scale})`);
+    leavesGroup.appendChild(leaf);
+    leafElements.push({ el: leaf, triggerAt: cfg.pos * 0.95 });
+  });
+
+  function updateVine() {
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = maxScroll > 0 ? Math.min(1, Math.max(0, window.scrollY / maxScroll)) : 0;
+
+    const drawLength = stemLength * progress * 1.08;
+    vineStem.style.strokeDashoffset = Math.max(0, stemLength - drawLength);
+
+    leafElements.forEach(item => {
+      if (progress >= item.triggerAt && progress > 0.02) {
+        item.el.classList.add('bloomed');
+      } else {
+        item.el.classList.remove('bloomed');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateVine, { passive: true });
+  updateVine();
+}
 
 function triggerWindLeaves() {
   const hero = document.getElementById('home');

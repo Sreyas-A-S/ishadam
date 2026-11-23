@@ -157,3 +157,52 @@ body {
 .preloader-emblem {
   animation: pulseGlow 2.5s ease-in-out infinite;
 }
+
+.creeping-vine-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 140px;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 40;
+  overflow: visible;
+}
+
+.creeping-vine-stem {
+  fill: none;
+  stroke: #2E5A36;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 2200;
+  stroke-dashoffset: 2200;
+  transition: stroke-dashoffset 0.12s linear;
+  filter: drop-shadow(0 2px 5px rgba(0,0,0,0.12));
+}
+
+.vine-leaf {
+  opacity: 0;
+  transform-origin: center;
+  transform: scale(0) rotate(-15deg);
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease;
+  will-change: transform, opacity;
+}
+
+.vine-leaf.bloomed {
+  opacity: 0.95;
+  transform: scale(1) rotate(0deg);
+}
+
+.vine-leaf.gold-leaf {
+  fill: #D4AF37;
+  filter: drop-shadow(0 1px 4px rgba(212, 175, 55, 0.35));
+}
+.vine-leaf.green-leaf {
+  fill: #3E6B47;
+  filter: drop-shadow(0 1px 3px rgba(30, 67, 42, 0.25));
+}
+.vine-leaf.lime-leaf {
+  fill: #6E9B56;
+}
+
