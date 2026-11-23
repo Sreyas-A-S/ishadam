@@ -218,6 +218,39 @@ body {
   transform: translate(3px, 5px);
 }
 
+/* Preloader Drawing Stroke Animation */
+.preloader-inner-disc {
+  opacity: 0;
+  transform: scale(0.9);
+  animation: preloaderInnerFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.15s;
+}
+
+@keyframes preloaderInnerFade {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.preloader-stroke-circle {
+  stroke-dasharray: 1822;
+  stroke-dashoffset: 1822;
+  animation: drawPaintStroke 1.4s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.3s;
+}
+
+@keyframes drawPaintStroke {
+  0% {
+    stroke-dashoffset: 1822;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
 .service-card,
 .blur-in-heading {
   will-change: filter, opacity, transform;

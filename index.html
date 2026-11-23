@@ -68,12 +68,34 @@
   <div id="preloader" class="fixed inset-0 z-[100] bg-[#FAF6EE] flex flex-col items-center justify-center p-6 text-center">
     <div class="relative flex flex-col items-center max-w-sm w-full">
       
-      <div class="relative w-64 sm:w-72 mb-6 flex items-center justify-center">
+      <div class="relative w-56 h-56 sm:w-64 sm:h-64 mb-4 flex items-center justify-center">
         <div class="absolute inset-0 rounded-full bg-amber-400/20 blur-2xl animate-pulse"></div>
-        <img src="assets/images/ishadam-logo.png" alt="Ishadam — From the House of Niyyati" class="w-full h-auto object-contain preloader-emblem relative z-10">
+
+        <!-- Inner Sunrise & Sacred Unalome Disc -->
+        <img id="preloaderInner" src="assets/images/logo-inner.png" alt="Ishadam Inner" class="absolute inset-0 w-full h-full object-contain z-10 preloader-inner-disc">
+
+        <!-- Outer Paint Stroke Drawing Animation via SVG Mask -->
+        <svg class="absolute inset-0 w-full h-full z-20 pointer-events-none preloader-stroke-svg" viewBox="0 0 887 887">
+          <defs>
+            <mask id="paintStrokeMask">
+              <circle cx="443.5" cy="443.5" r="290" fill="none" stroke="white" stroke-width="260"
+                      stroke-linecap="round"
+                      stroke-dasharray="1822"
+                      stroke-dashoffset="1822"
+                      class="preloader-stroke-circle"
+                      transform="rotate(-90 443.5 443.5)" />
+            </mask>
+          </defs>
+          <image href="assets/images/logo-stroke.png" width="887" height="887" mask="url(#paintStrokeMask)" />
+        </svg>
       </div>
 
-      <div class="w-48 h-1 bg-[#E8DEC7] rounded-full overflow-hidden mt-4 relative">
+      <div class="space-y-1 mb-3">
+        <h2 class="font-serif text-2xl sm:text-3xl font-semibold text-[#173722] tracking-wider">ISHADAM</h2>
+        <p class="text-[11px] uppercase tracking-widest text-[#966D1B] font-semibold">卐 From the House of Niyyati 卐</p>
+      </div>
+
+      <div class="w-48 h-1 bg-[#E8DEC7] rounded-full overflow-hidden mt-1 relative">
         <div class="h-full bg-gradient-to-r from-[#966D1B] via-[#DFC789] to-[#966D1B] rounded-full animate-[progress_1.8s_ease-in-out_infinite]"></div>
       </div>
       <p class="font-serif italic text-stone-500 text-sm mt-3 tracking-wide">Connecting to stillness...</p>

@@ -37,24 +37,24 @@ document.addEventListener('DOMContentLoaded', () => {
     sacredSpins.forEach(el => swastikObserver.observe(el));
   }
 
-  // Blur-in animations for Service cards and Section Headings
+  // Snappy Blur-in animations for Service cards and Section Headings
   if (window.gsap && window.ScrollTrigger) {
     gsap.registerPlugin(ScrollTrigger);
 
     const serviceCards = document.querySelectorAll('.service-card');
     if (serviceCards.length > 0) {
       gsap.fromTo(serviceCards,
-        { filter: 'blur(12px)', opacity: 0, y: 30 },
+        { filter: 'blur(8px)', opacity: 0, y: 20 },
         {
           filter: 'blur(0px)',
           opacity: 1,
           y: 0,
-          duration: 0.85,
-          stagger: 0.18,
+          duration: 0.5,
+          stagger: 0.1,
           ease: 'power2.out',
           scrollTrigger: {
             trigger: '#services',
-            start: 'top 75%',
+            start: 'top 80%',
             once: true
           }
         }
@@ -64,16 +64,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const blurHeadings = document.querySelectorAll('.blur-in-heading');
     blurHeadings.forEach(heading => {
       gsap.fromTo(heading,
-        { filter: 'blur(14px)', opacity: 0, y: 22 },
+        { filter: 'blur(8px)', opacity: 0, y: 16 },
         {
           filter: 'blur(0px)',
           opacity: 1,
           y: 0,
-          duration: 0.9,
+          duration: 0.5,
           ease: 'power2.out',
           scrollTrigger: {
             trigger: heading,
-            start: 'top 85%',
+            start: 'top 88%',
             once: true
           }
         }
@@ -452,10 +452,10 @@ function initSmoothScroll() {
     targetY = clamp(targetY, 0, maxScroll);
     const diff = targetY - currentY;
 
-    // Silky smooth interpolation
-    currentY += diff * 0.085;
+    // Snappy responsive smooth interpolation
+    currentY += diff * 0.14;
 
-    if (Math.abs(diff) < 0.5) {
+    if (Math.abs(diff) < 0.4) {
       currentY = targetY;
       window.scrollTo(0, currentY);
       isRunning = false;
