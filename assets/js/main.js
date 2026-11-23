@@ -2,6 +2,8 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  initSmoothScroll();
+
   window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
     if (preloader) preloader.classList.add('loaded');
@@ -58,6 +60,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (mobileMenuBtn && mobileMenu) {
     mobileMenuBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
     });
   }
 
@@ -137,9 +145,9 @@ function initWildRollercoasterVine() {
 
   const spine = document.getElementById('vineSpine');
   const spineShadow = document.getElementById('vineSpineShadow');
-  const leavesContainer = document.getElementById('vineLeavesDom');
+  const leavesGroup = document.getElementById('vineLeavesSvgGroup');
   const sproutsGroup = document.getElementById('vineSproutsGroup');
-  if (!spine || !leavesContainer || !container) return;
+  if (!spine || !leavesGroup || !container) return;
 
   const isMobile = window.innerWidth < 768;
   const width = isMobile ? 420 : 1440;
@@ -232,21 +240,34 @@ function initWildRollercoasterVine() {
       n.tendrilEl = curl;
     }
 
-    const img = document.createElement('img');
-    img.src = leafAssets[n.asset];
-    img.className = 'authentic-vine-leaf';
-    img.style.width = `${n.size}px`;
-    img.style.height = 'auto';
+    const leafG = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    leafG.setAttribute('class', 'authentic-vine-leaf');
 
-    img.style.left = `${pt.x}px`;
-    img.style.top = `${pt.y}px`;
+    const img = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+    img.setAttributeNS('http://www.w3.org/1999/xlink', 'href', leafAssets[n.asset]);
+    img.setAttribute('href', leafAssets[n.asset]);
+    img.setAttribute('width', n.size);
+    img.setAttribute('height', n.size);
+    img.setAttribute('x', '0');
+    img.setAttribute('y', `-${n.size / 2}`);
 
-    leavesContainer.appendChild(img);
+    leafG.appendChild(img);
+    leavesGroup.appendChild(leafG);
+
+    if (window.gsap) {
+      gsap.set(leafG, {
+        x: pt.x,
+        y: pt.y,
+        rotation: finalAngle,
+        transformOrigin: '0px 0px',
+        scale: 0,
+        opacity: 0
+      });
+    }
 
     leafItems.push({
-      el: img,
+      el: leafG,
       tendrilEl: n.tendrilEl,
-      targetAngle: finalAngle,
       triggerPct: n.pct
     });
   });
@@ -279,12 +300,10 @@ function initWildRollercoasterVine() {
     }
 
     leafItems.forEach(item => {
-      tl.fromTo(item.el, 
-        { opacity: 0, scale: 0, rotation: item.targetAngle },
-        {
-          opacity: 1,
+      tl.to(item.el, 
+        { 
+          opacity: 1, 
           scale: 1,
-          rotation: item.targetAngle,
           ease: 'back.out(1.6)',
           duration: 0.08
         }, 
@@ -352,4 +371,159 @@ function triggerWindLeaves() {
       if (leaf.parentNode) leaf.parentNode.removeChild(leaf);
     }, (delay + dur) * 1000 + 500);
   }
+}
+
+function initSmoothScroll() {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return;
+  }
+
+  // Only run smooth momentum scroller on fine pointer (mouse/trackpad desktop).
+  // Touch screens already have native hardware-accelerated momentum.
+  if (window.matchMedia && !window.matchMedia('(pointer: fine)').matches) {
+    return;
+  }
+
+  // Prevent conflicting double-smoothing from CSS
+  document.documentElement.style.scrollBehavior = 'auto';
+
+  let currentY = window.pageYOffset || document.documentElement.scrollTop;
+  let targetY = currentY;
+  let isRunning = false;
+
+  const getMaxScroll = () => Math.max(
+    0,
+    Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.offsetHeight
+    ) - window.innerHeight
+  );
+
+  const clamp = (val, min, max) => Math.max(min, Math.min(max, val));
+
+  function loop() {
+    const maxScroll = getMaxScroll();
+    targetY = clamp(targetY, 0, maxScroll);
+    const diff = targetY - currentY;
+
+    // Silky smooth interpolation
+    currentY += diff * 0.085;
+
+    if (Math.abs(diff) < 0.5) {
+      currentY = targetY;
+      window.scrollTo(0, currentY);
+      isRunning = false;
+      return;
+    }
+
+    window.scrollTo(0, currentY);
+    if (window.ScrollTrigger) {
+      ScrollTrigger.update();
+    }
+    requestAnimationFrame(loop);
+  }
+
+  function startLoop() {
+    if (!isRunning) {
+      isRunning = true;
+      requestAnimationFrame(loop);
+    }
+  }
+
+  window.addEventListener('wheel', (e) => {
+    // If inside a scrollable child element (e.g. modals), let it scroll natively
+    let el = e.target;
+    while (el && el !== document.body && el !== document.documentElement) {
+      const style = window.getComputedStyle(el);
+      const oy = style.overflowY;
+      if ((oy === 'auto' || oy === 'scroll') && el.scrollHeight > el.clientHeight) {
+        const atTop = el.scrollTop <= 0 && e.deltaY < 0;
+        const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight && e.deltaY > 0;
+        if (!atTop && !atBottom) return;
+      }
+      el = el.parentElement;
+    }
+
+    e.preventDefault();
+
+    let delta = e.deltaY;
+    if (e.deltaMode === 1) delta *= 35; // lines
+    if (e.deltaMode === 2) delta *= window.innerHeight; // pages
+
+    targetY = clamp(targetY + delta, 0, getMaxScroll());
+    startLoop();
+  }, { passive: false });
+
+  // Sync when user drags the native scrollbar
+  window.addEventListener('scroll', () => {
+    if (!isRunning) {
+      currentY = window.pageYOffset || document.documentElement.scrollTop;
+      targetY = currentY;
+    }
+  }, { passive: true });
+
+  // Smooth gliding for anchor links
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+    const hash = link.getAttribute('href');
+    if (!hash || hash === '#') return;
+
+    const targetElement = document.querySelector(hash);
+    if (targetElement) {
+      e.preventDefault();
+      const rect = targetElement.getBoundingClientRect();
+      const headerOffset = 70;
+      targetY = clamp(window.pageYOffset + rect.top - headerOffset, 0, getMaxScroll());
+      startLoop();
+      if (history.pushState) {
+        history.pushState(null, null, hash);
+      }
+    }
+  });
+
+  // Keyboard navigation support
+  window.addEventListener('keydown', (e) => {
+    if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)) return;
+
+    let keyDelta = 0;
+    const scrollStep = 90;
+    const pageStep = window.innerHeight * 0.8;
+
+    switch (e.key) {
+      case 'ArrowDown':
+        keyDelta = scrollStep;
+        break;
+      case 'ArrowUp':
+        keyDelta = -scrollStep;
+        break;
+      case 'PageDown':
+      case ' ':
+        keyDelta = e.shiftKey ? -pageStep : pageStep;
+        break;
+      case 'PageUp':
+        keyDelta = -pageStep;
+        break;
+      case 'Home':
+        e.preventDefault();
+        targetY = 0;
+        startLoop();
+        return;
+      case 'End':
+        e.preventDefault();
+        targetY = getMaxScroll();
+        startLoop();
+        return;
+      default:
+        return;
+    }
+
+    if (keyDelta !== 0) {
+      e.preventDefault();
+      targetY = clamp(targetY + keyDelta, 0, getMaxScroll());
+      startLoop();
+    }
+  });
 }
