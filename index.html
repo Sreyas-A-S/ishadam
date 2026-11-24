@@ -812,86 +812,102 @@
     </div>
   </section>
 
-  <section id="founders" class="relative py-20 bg-[#FAF6EE] border-b border-[#ECE3CF] overflow-hidden">
+  <section id="founders" class="relative min-h-0 lg:min-h-screen py-12 lg:py-0 bg-[#FAF6EE] border-b border-[#ECE3CF] overflow-hidden flex items-center">
+    <!-- Atmospheric Golden-Sunlight Radial Background matching reference -->
+    <div class="absolute inset-0 pointer-events-none z-0 bg-[radial-gradient(ellipse_at_30%_40%,rgba(255,248,220,0.95)_0%,rgba(247,236,204,0.75)_35%,rgba(250,246,238,0.9)_70%,#FAF6EE_100%)]"></div>
+    <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-amber-200/20 blur-3xl pointer-events-none z-0"></div>
+    <div class="absolute top-1/4 left-10 w-80 h-80 rounded-full bg-[#EBD8A5]/30 blur-2xl pointer-events-none z-0"></div>
 
     <img src="assets/images/leaf-layer-top-right.webp" 
          alt="" 
          aria-hidden="true" 
-         class="corner-leaf-tr absolute top-0 right-0 w-32 sm:w-48 md:w-60 lg:w-72 max-h-[30vh] object-contain object-right-top pointer-events-none select-none z-10 floating-leaf"
+         class="corner-leaf-tr absolute top-0 right-0 w-36 sm:w-52 md:w-64 lg:w-80 max-h-[35vh] object-contain object-right-top pointer-events-none select-none z-10 floating-leaf"
          style="animation-delay: -1s;">
+
+    <img src="assets/images/leaf-layer-top-left.webp" 
+         alt="" 
+         aria-hidden="true" 
+         class="corner-leaf-tl absolute top-0 left-0 w-36 sm:w-52 md:w-64 lg:w-80 max-h-[35vh] object-contain object-left-top pointer-events-none select-none z-10 floating-leaf"
+         style="animation-delay: -2.5s;">
 
     <img src="assets/images/leaf-layer-bottom-left.webp" 
          alt="" 
          aria-hidden="true" 
-         class="corner-leaf-bl absolute bottom-0 left-0 w-28 sm:w-44 md:w-56 lg:w-64 max-h-[28vh] object-contain object-left-bottom pointer-events-none select-none z-10">
+         class="corner-leaf-bl absolute bottom-0 left-0 w-32 sm:w-48 md:w-60 lg:w-72 max-h-[32vh] object-contain object-left-bottom pointer-events-none select-none z-10">
 
     <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
 
-        <div class="lg:col-span-5 flex flex-col items-center">
-          <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-amber-200/60 max-w-md group">
-            <img src="assets/images/founders.webp" alt="Founders Saneejjaa and Shiju" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700">
+        <!-- Founders Cutout Image with altar crystals base and soft organic glow -->
+        <div class="lg:col-span-6 flex justify-center lg:justify-end">
+          <div class="relative w-full max-w-[340px] sm:max-w-[420px] md:max-w-[480px] lg:max-w-[540px] xl:max-w-[580px]">
+            <img src="assets/images/founders.webp" 
+                 alt="Founders Saneejjaa and Shiju" 
+                 class="w-full h-auto object-contain [filter:drop-shadow(0_18px_36px_rgba(23,55,34,0.16))]">
           </div>
         </div>
 
-        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+        <!-- Founders Content aligned matching reference design -->
+        <div class="lg:col-span-6 space-y-4 sm:space-y-5 text-center lg:text-left lg:pl-4">
+          
           <div class="space-y-1">
-            <div class="flex items-center justify-center lg:justify-start gap-3">
-              <span class="text-[#C59A3F] font-serif">≫≫</span>
+            <div class="flex items-center justify-center lg:justify-start gap-2.5">
+              <span class="text-[#966D1B] text-lg select-none">🌿</span>
               <h2 class="font-serif text-3xl sm:text-4xl font-bold tracking-wide text-[#173722]">
                 Meet the Founders
               </h2>
-              <span class="text-[#C59A3F] font-serif">≪≪</span>
+              <span class="text-[#966D1B] text-lg select-none">🌿</span>
             </div>
             
-            <h3 class="font-script text-5xl sm:text-6xl text-[#173722] py-1">
+            <h3 class="font-script text-5xl sm:text-6xl text-[#173722] py-0.5">
               Saneejjaa & Shiju
             </h3>
           </div>
 
-          <p class="text-stone-700 text-sm sm:text-base leading-relaxed max-w-2xl font-light">
-            We are the hearts behind <strong class="font-semibold text-[#173722]">Ishadam</strong> — a sacred space born from our shared passion for healing, consciousness and holistic living.
+          <p class="text-stone-700 text-sm sm:text-base leading-relaxed max-w-xl font-normal">
+            We are the hearts behind <strong class="font-bold text-[#173722]">Ishadam</strong> — a sacred space born from our shared passion for healing, consciousness and holistic living.
           </p>
 
-          <div class="relative inline-block my-2">
-            <span class="bg-[#F8E7A2]/70 text-[#173722] font-serif italic text-2xl sm:text-3xl px-8 py-2 rounded-md shadow-sm border border-[#E5CF77]/50 block">
+          <div class="pt-1">
+            <span class="inline-block bg-[#F8E7A2]/80 text-[#173722] font-serif italic text-2xl sm:text-3xl px-7 py-1.5 rounded shadow-sm border border-[#E5CF77]/60">
               Why Ishadam?
             </span>
           </div>
 
-          <p class="text-stone-700 text-sm sm:text-base leading-relaxed max-w-2xl">
+          <p class="text-stone-700 text-sm sm:text-base leading-relaxed max-w-xl font-normal">
             Ishadam is a blend of our children's names — <br class="hidden sm:inline">
-            <strong class="font-semibold text-[#173722]">Isha + Adam</strong> — <br class="hidden sm:inline">
+            <strong class="font-bold text-[#173722]">Isha + Adam</strong> — <br class="hidden sm:inline">
             a reflection of our deepest intention to create a nurturing space for healing, learning and transformation for every soul who journeys with us.
           </p>
 
-          <div class="sacred-divider my-2 lg:justify-start">
+          <div class="sacred-divider my-1 lg:justify-start">
             <span class="swastik-symbol text-base sacred-swastik-spin">卐</span>
           </div>
 
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2 max-w-xl mx-auto lg:mx-0">
-            <div class="flex flex-col items-center text-center p-3 rounded-xl bg-[#FFFDF9] border border-amber-200/50 shadow-sm">
-              <i data-lucide="gem" class="w-6 h-6 text-[#966D1B] mb-2"></i>
-              <span class="text-xs font-semibold text-[#173722]">Crystals</span>
+          <!-- Feature Icons with subtle vertical dividers matching reference -->
+          <div class="flex flex-wrap items-center justify-center lg:justify-start divide-y sm:divide-y-0 sm:divide-x divide-stone-300 gap-y-3 pt-1 max-w-lg">
+            <div class="flex flex-col items-center px-4 sm:px-5">
+              <i data-lucide="gem" class="w-6 h-6 text-[#966D1B] mb-1"></i>
+              <span class="text-xs font-serif font-semibold text-[#173722]">Crystals</span>
             </div>
-            <div class="flex flex-col items-center text-center p-3 rounded-xl bg-[#FFFDF9] border border-amber-200/50 shadow-sm">
-              <i data-lucide="sparkles" class="w-6 h-6 text-[#966D1B] mb-2"></i>
-              <span class="text-xs font-semibold text-[#173722]">Tarot</span>
+            <div class="flex flex-col items-center px-4 sm:px-5">
+              <i data-lucide="sparkles" class="w-6 h-6 text-[#966D1B] mb-1"></i>
+              <span class="text-xs font-serif font-semibold text-[#173722]">Tarot</span>
             </div>
-            <div class="flex flex-col items-center text-center p-3 rounded-xl bg-[#FFFDF9] border border-amber-200/50 shadow-sm">
-              <i data-lucide="flower" class="w-6 h-6 text-[#966D1B] mb-2"></i>
-              <span class="text-xs font-semibold text-[#173722]">Energy Healing</span>
+            <div class="flex flex-col items-center px-4 sm:px-5">
+              <i data-lucide="flower" class="w-6 h-6 text-[#966D1B] mb-1"></i>
+              <span class="text-xs font-serif font-semibold text-[#173722]">Energy Healing</span>
             </div>
-            <div class="flex flex-col items-center text-center p-3 rounded-xl bg-[#FFFDF9] border border-amber-200/50 shadow-sm">
-              <i data-lucide="book-open" class="w-6 h-6 text-[#966D1B] mb-2"></i>
-              <span class="text-xs font-semibold text-[#173722]">Trainings</span>
+            <div class="flex flex-col items-center px-4 sm:px-5">
+              <i data-lucide="graduation-cap" class="w-6 h-6 text-[#966D1B] mb-1"></i>
+              <span class="text-xs font-serif font-semibold text-[#173722]">Trainings</span>
             </div>
           </div>
 
-          <div class="pt-4">
-            <a href="https://wa.me/918138881308?text=Hello%20Ishadam,%20I%20would%20love%20to%20know%20more%20about%20your%20story" target="_blank" class="inline-flex items-center gap-3 px-8 py-3.5 rounded-full text-white font-medium text-sm tracking-wide btn-forest-pill">
+          <div class="pt-3">
+            <a href="https://wa.me/918138881308?text=Hello%20Ishadam,%20I%20would%20love%20to%20know%20more%20about%20your%20story" target="_blank" class="inline-flex items-center gap-3 px-8 py-3.5 rounded-full text-white font-medium text-sm tracking-wide btn-forest-pill shadow-md hover:shadow-lg transition-all">
               <span>Discover Our Story</span>
-              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              <span class="text-base leading-none">&rarr;</span>
             </a>
           </div>
 
