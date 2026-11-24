@@ -210,15 +210,154 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Mobile 3D Services Carousel
+  initServices3DCarousel();
+
+  // Interactive Foliage Ripple & Falling Leaves
+  initFoliageHoverParticles();
+
   initWildRollercoasterVine();
 });
 
-function initWildRollercoasterVine() {
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('with') !== 'vine') {
-    return;
+function initServices3DCarousel() {
+  const container = document.getElementById('services3dCarousel');
+  if (!container) return;
+
+  const cards = Array.from(container.querySelectorAll('.services-3d-card'));
+  const dots = Array.from(container.querySelectorAll('.services-dot'));
+  if (cards.length === 0) return;
+
+  let currentIndex = 0;
+  const total = cards.length;
+
+  function updateCarousel(newIndex) {
+    currentIndex = (newIndex + total) % total;
+
+    cards.forEach((card, i) => {
+      card.classList.remove('active', 'prev', 'next', 'hidden-card');
+      if (i === currentIndex) {
+        card.classList.add('active');
+      } else if (i === (currentIndex - 1 + total) % total) {
+        card.classList.add('prev');
+      } else if (i === (currentIndex + 1) % total) {
+        card.classList.add('next');
+      } else {
+        card.classList.add('hidden-card');
+      }
+    });
+
+    dots.forEach((dot, i) => {
+      if (i === currentIndex) {
+        dot.classList.remove('bg-stone-300');
+        dot.classList.add('bg-[#966D1B]', 'w-6');
+      } else {
+        dot.classList.remove('bg-[#966D1B]', 'w-6');
+        dot.classList.add('bg-stone-300', 'w-2.5');
+      }
+    });
   }
 
+  // Click on cards
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const idx = parseInt(card.dataset.index, 10);
+      if (idx !== currentIndex) {
+        updateCarousel(idx);
+      }
+    });
+  });
+
+  // Click on dots
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const idx = parseInt(dot.dataset.slide, 10);
+      updateCarousel(idx);
+    });
+  });
+
+  // Touch Swipe support
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  container.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  container.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchEndX - touchStartX;
+    if (Math.abs(diff) > 40) {
+      if (diff < 0) {
+        updateCarousel(currentIndex + 1); // Swipe left -> next
+      } else {
+        updateCarousel(currentIndex - 1); // Swipe right -> prev
+      }
+    }
+  }, { passive: true });
+
+  updateCarousel(0);
+}
+
+function initFoliageHoverParticles() {
+  const foliageLeaves = document.querySelectorAll('.corner-leaf-tl, .corner-leaf-tr, .corner-leaf-bl, .corner-leaf-br, .services-corner-leaf');
+  if (foliageLeaves.length === 0) return;
+
+  const leafSprites = [
+    'assets/images/leaf-single-green-1-thumb.webp',
+    'assets/images/leaf-single-green-2-thumb.webp',
+    'assets/images/leaf-single-green-3-thumb.webp',
+    'assets/images/leaf-single-green-4-thumb.webp'
+  ];
+
+  foliageLeaves.forEach(leaf => {
+    leaf.classList.add('interactive-foliage');
+
+    let isCooldown = false;
+
+    const triggerLeaf = (e) => {
+      if (isCooldown) return;
+      isCooldown = true;
+      setTimeout(() => { isCooldown = false; }, 400);
+
+      const rect = leaf.getBoundingClientRect();
+      const spawnX = e.clientX || (rect.left + rect.width * 0.5);
+      const spawnY = e.clientY || (rect.top + rect.height * 0.4);
+
+      const p = document.createElement('img');
+      const randomSprite = leafSprites[Math.floor(Math.random() * leafSprites.length)];
+      p.src = randomSprite;
+      p.className = 'falling-leaf-particle';
+      const size = Math.floor(Math.random() * 12) + 20; // 20px - 32px
+      p.style.width = `${size}px`;
+      p.style.height = 'auto';
+      p.style.left = `${spawnX}px`;
+      p.style.top = `${spawnY}px`;
+
+      document.body.appendChild(p);
+
+      setTimeout(() => {
+        if (p.parentNode) {
+          p.parentNode.removeChild(p);
+        }
+      }, 2500);
+    };
+
+    leaf.addEventListener('mouseenter', (e) => {
+      leaf.classList.remove('foliage-rustling');
+      void leaf.offsetWidth; // re-trigger single impulse animation
+      leaf.classList.add('foliage-rustling');
+      triggerLeaf(e);
+    });
+
+    leaf.addEventListener('animationend', () => {
+      leaf.classList.remove('foliage-rustling');
+    });
+
+    leaf.addEventListener('click', triggerLeaf);
+  });
+}
+
+function initWildRollercoasterVine() {
   const container = document.getElementById('rollercoasterVine');
   if (container) {
     container.classList.remove('hidden');
@@ -515,6 +654,11 @@ function initSmoothScroll() {
   }
 
   window.addEventListener('wheel', (e) => {
+    // Never intercept Ctrl+Wheel or Meta+Wheel (browser zoom)
+    if (e.ctrlKey || e.metaKey) {
+      return;
+    }
+
     // If inside a scrollable child element (e.g. modals), let it scroll natively
     let el = e.target;
     while (el && el !== document.body && el !== document.documentElement) {

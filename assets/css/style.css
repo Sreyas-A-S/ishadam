@@ -237,7 +237,103 @@ body {
   transform: translate(3px, 5px);
 }
 
-/* Preloader Drawing Stroke Animation */
+/* Foliage Interactive Wind Ripple */
+.interactive-foliage {
+  pointer-events: auto !important;
+  cursor: pointer;
+  transform: rotate(0deg);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+  will-change: transform;
+}
+.interactive-foliage.foliage-rustling {
+  animation: singleRustleSettle 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  filter: drop-shadow(0 6px 14px rgba(30, 67, 42, 0.2)) drop-shadow(0 0 8px rgba(197, 154, 63, 0.25));
+}
+
+@keyframes singleRustleSettle {
+  0% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(3deg);
+  }
+  45% {
+    transform: rotate(-2deg);
+  }
+  70% {
+    transform: rotate(1deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Falling Leaf Particle */
+.falling-leaf-particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform, opacity;
+  animation: driftDownFade 2.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes driftDownFade {
+  0% {
+    opacity: 0.95;
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(0.7);
+  }
+  25% {
+    transform: translate3d(24px, 50px, 0) rotate(45deg) scale(0.9);
+  }
+  50% {
+    transform: translate3d(-18px, 110px, 0) rotate(90deg) scale(0.85);
+  }
+  75% {
+    transform: translate3d(28px, 180px, 0) rotate(135deg) scale(0.75);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate3d(-12px, 260px, 0) rotate(180deg) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* 3D Services Carousel for Mobile */
+.services-3d-stage {
+  perspective: 1000px;
+}
+.services-3d-carousel {
+  perspective: 1000px;
+}
+.services-3d-card {
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+  user-select: none;
+}
+.services-3d-card.active {
+  transform: translate3d(0, 0, 0) scale(1);
+  opacity: 1;
+  z-index: 10;
+  pointer-events: auto;
+}
+.services-3d-card.prev {
+  transform: translate3d(-38%, 0, -80px) rotateY(16deg) scale(0.88);
+  opacity: 0.65;
+  z-index: 5;
+  pointer-events: auto;
+}
+.services-3d-card.next {
+  transform: translate3d(38%, 0, -80px) rotateY(-16deg) scale(0.88);
+  opacity: 0.65;
+  z-index: 5;
+  pointer-events: auto;
+}
+.services-3d-card.hidden-card {
+  transform: translate3d(0, 0, -140px) scale(0.7);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
 .preloader-emblem-wrap {
   transform: translate3d(0, 0, 0);
   -webkit-backface-visibility: hidden;
