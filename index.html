@@ -40,6 +40,33 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
   <meta name="theme-color" content="#173722">
 
+  <!-- Dynamic Origin Resolution Script (supports custom domain & GitHub Pages seamlessly) -->
+  <script>
+    (function() {
+      try {
+        var origin = window.location.origin;
+        var pathname = window.location.pathname;
+        // Keep repository subpath for GitHub Pages (e.g. /ishadam/) or root for custom domains
+        var basePath = pathname.substring(0, pathname.lastIndexOf('/') + 1);
+        if (!basePath.endsWith('/')) basePath += '/';
+        var baseUrl = origin + basePath;
+        var imageUrl = baseUrl + 'assets/images/og-preview.jpg';
+
+        var ogImg = document.querySelector('meta[property="og:image"]');
+        var ogSecImg = document.querySelector('meta[property="og:image:secure_url"]');
+        var twImg = document.querySelector('meta[name="twitter:image"]');
+        var ogUrl = document.querySelector('meta[property="og:url"]');
+        var canUrl = document.querySelector('link[rel="canonical"]');
+
+        if (ogImg) ogImg.setAttribute('content', imageUrl);
+        if (ogSecImg) ogSecImg.setAttribute('content', imageUrl);
+        if (twImg) twImg.setAttribute('content', imageUrl);
+        if (ogUrl) ogUrl.setAttribute('content', baseUrl);
+        if (canUrl) canUrl.setAttribute('href', baseUrl);
+      } catch(e) {}
+    })();
+  </script>
+
   <script src="https://cdn.tailwindcss.com"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
