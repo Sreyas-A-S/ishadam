@@ -73,6 +73,25 @@ document.addEventListener('DOMContentLoaded', () => {
     sacredSpins.forEach(el => swastikObserver.observe(el));
   }
 
+  // Sequential Rotating Reveal for Founders Offerings Icons
+  const offeringsList = document.getElementById('foundersOfferingsList');
+  if (offeringsList && ('IntersectionObserver' in window)) {
+    const offeringsObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const items = entry.target.querySelectorAll('.founder-offering-item');
+          items.forEach(item => item.classList.add('is-revealed'));
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.2,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    offeringsObserver.observe(offeringsList);
+  }
+
   // Snappy Blur-in animations for Service cards and Section Headings
   if (window.gsap && window.ScrollTrigger) {
     gsap.registerPlugin(ScrollTrigger);
@@ -119,35 +138,48 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  const servicesSection = document.getElementById('services');
-  if (servicesSection) {
-    const cornerLeaves = servicesSection.querySelectorAll('.services-corner-leaf');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          cornerLeaves.forEach(leaf => leaf.classList.add('is-visible'));
-        } else {
-          cornerLeaves.forEach(leaf => leaf.classList.remove('is-visible'));
-        }
+  ['services', 'founders'].forEach(id => {
+    const section = document.getElementById(id);
+    if (section) {
+      const cornerLeaves = section.querySelectorAll('.services-corner-leaf');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            cornerLeaves.forEach(leaf => leaf.classList.add('is-visible'));
+          } else {
+            cornerLeaves.forEach(leaf => leaf.classList.remove('is-visible'));
+          }
+        });
+      }, {
+        rootMargin: '0px 0px 0px 0px',
+        threshold: 0.12
       });
-    }, {
-      rootMargin: '0px 0px 0px 0px',
-      threshold: 0.12
-    });
-    observer.observe(servicesSection);
-  }
+      observer.observe(section);
+    }
+  });
 
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
   if (mobileMenuBtn && mobileMenu) {
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
+    let isOpen = false;
+
+    const toggleMobileMenu = (open) => {
+      isOpen = (typeof open === 'boolean') ? open : !isOpen;
+      if (isOpen) {
+        mobileMenu.classList.remove('grid-rows-[0fr]', 'opacity-0', 'border-transparent');
+        mobileMenu.classList.add('grid-rows-[1fr]', 'opacity-100', 'border-amber-200/50');
+        mobileMenuBtn.style.transform = 'rotate(90deg)';
+      } else {
+        mobileMenu.classList.remove('grid-rows-[1fr]', 'opacity-100', 'border-amber-200/50');
+        mobileMenu.classList.add('grid-rows-[0fr]', 'opacity-0', 'border-transparent');
+        mobileMenuBtn.style.transform = 'rotate(0deg)';
+      }
+    };
+
+    mobileMenuBtn.addEventListener('click', () => toggleMobileMenu());
 
     mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-      });
+      link.addEventListener('click', () => toggleMobileMenu(false));
     });
   }
 
