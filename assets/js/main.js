@@ -248,6 +248,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Interactive Foliage Ripple & Falling Leaves
   initFoliageHoverParticles();
 
+  // Creeping Altar Vine on Founders Section
+  initFoundersAltarVine();
+
   initWildRollercoasterVine();
 });
 
@@ -387,6 +390,157 @@ function initFoliageHoverParticles() {
 
     leaf.addEventListener('click', triggerLeaf);
   });
+}
+
+function initFoundersAltarVine() {
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('with') !== 'vine') {
+    const track = document.getElementById('foundersVineTrack');
+    if (track) track.style.display = 'none';
+    return;
+  }
+
+  const spine = document.getElementById('foundersVineSpine');
+  const spineShadow = document.getElementById('foundersVineSpineShadow');
+  const leavesGroup = document.getElementById('foundersVineLeavesSvgGroup');
+  const sproutsGroup = document.getElementById('foundersVineSproutsGroup');
+  const section = document.getElementById('founders');
+  if (!spine || !leavesGroup || !section) return;
+
+  const isMobile = window.innerWidth < 768;
+  const width = isMobile ? 420 : 1440;
+  const height = isMobile ? 800 : 900;
+
+  const svg = document.getElementById('foundersVineSvg');
+  if (svg) {
+    svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+  }
+
+  // Vine path sweeps organically down the left side, curls naturally around the crystal altar base and rests
+  const pathD = isMobile ? `
+    M -10, 80
+    C 45, 180 30, 360 25, 520
+    C 20, 640 50, 720 120, 755
+    C 180, 780 260, 770 320, 760
+  ` : `
+    M -25, 90
+    C 75, 240 45, 460 35, 650
+    C 25, 780 140, 855 300, 860
+    C 450, 865 600, 845 720, 825
+  `;
+
+  spine.setAttribute('d', pathD);
+  if (spineShadow) {
+    spineShadow.setAttribute('d', pathD);
+  }
+
+  const totalLen = spine.getTotalLength ? spine.getTotalLength() : 1100;
+  spine.style.strokeDasharray = totalLen;
+  spine.style.strokeDashoffset = totalLen;
+  if (spineShadow) {
+    spineShadow.style.strokeDasharray = totalLen;
+    spineShadow.style.strokeDashoffset = totalLen;
+  }
+
+  const leafAssets = [
+    'assets/images/vine-leaf-1.webp',
+    'assets/images/vine-leaf-2.webp',
+    'assets/images/vine-leaf-3.webp',
+    'assets/images/vine-leaf-4.webp'
+  ];
+
+  const scaleFactor = isMobile ? 0.65 : 0.95;
+  const nodeDistributions = [
+    { pct: 0.12, asset: 0, normalSide: 1,  size: Math.round(72 * scaleFactor) },
+    { pct: 0.24, asset: 1, normalSide: -1, size: Math.round(68 * scaleFactor) },
+    { pct: 0.38, asset: 2, normalSide: 1,  size: Math.round(84 * scaleFactor) },
+    { pct: 0.50, asset: 3, normalSide: -1, size: Math.round(76 * scaleFactor) },
+    { pct: 0.64, asset: 0, normalSide: 1,  size: Math.round(86 * scaleFactor) },
+    { pct: 0.76, asset: 1, normalSide: -1, size: Math.round(74 * scaleFactor) },
+    { pct: 0.88, asset: 2, normalSide: 1,  size: Math.round(88 * scaleFactor) },
+    { pct: 0.96, asset: 3, normalSide: -1, size: Math.round(70 * scaleFactor) }
+  ];
+
+  const leafItems = [];
+
+  nodeDistributions.forEach((n) => {
+    const distanceAlongPath = n.pct * totalLen;
+    const pt = spine.getPointAtLength(distanceAlongPath);
+
+    const delta = 4;
+    const ptPrev = spine.getPointAtLength(Math.max(0, distanceAlongPath - delta));
+    const ptNext = spine.getPointAtLength(Math.min(totalLen, distanceAlongPath + delta));
+    const tangentAngle = Math.atan2(ptNext.y - ptPrev.y, ptNext.x - ptPrev.x) * (180 / Math.PI);
+    const finalAngle = tangentAngle + (n.normalSide * 65);
+
+    // Authentic botanical leaf attached cleanly to stem
+    const leafG = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    leafG.setAttribute('class', 'authentic-vine-leaf');
+
+    const img = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+    img.setAttribute('href', leafAssets[n.asset]);
+    img.setAttribute('width', n.size);
+    img.setAttribute('height', n.size);
+    img.setAttribute('x', '0');
+    img.setAttribute('y', `-${n.size / 2}`);
+
+    leafG.appendChild(img);
+    leavesGroup.appendChild(leafG);
+
+    if (window.gsap) {
+      gsap.set(leafG, {
+        x: pt.x,
+        y: pt.y,
+        rotation: finalAngle,
+        transformOrigin: '0px 0px',
+        scale: 0,
+        opacity: 0
+      });
+    }
+
+    leafItems.push({
+      el: leafG,
+      triggerPct: n.pct
+    });
+  });
+
+  if (window.gsap && window.ScrollTrigger) {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#founders',
+        start: 'top 75%',
+        end: 'bottom 85%',
+        scrub: 1.2
+      }
+    });
+
+    tl.to(spine, {
+      strokeDashoffset: 0,
+      ease: 'none',
+      duration: 1
+    }, 0);
+
+    if (spineShadow) {
+      tl.to(spineShadow, {
+        strokeDashoffset: 0,
+        ease: 'none',
+        duration: 1
+      }, 0);
+    }
+
+    leafItems.forEach(item => {
+      tl.fromTo(item.el,
+        { opacity: 0, scale: 0 },
+        {
+          opacity: 1,
+          scale: 1,
+          ease: 'back.out(1.8)',
+          duration: 0.12
+        },
+        item.triggerPct * 0.95
+      );
+    });
+  }
 }
 
 function initWildRollercoasterVine() {

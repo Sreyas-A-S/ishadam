@@ -816,34 +816,56 @@
   </section>
 
   <section id="founders" class="relative min-h-0 lg:h-[calc(100vh-80px)] lg:max-h-[calc(100vh-80px)] py-12 lg:py-0 bg-[#FAF6EE] border-b border-[#ECE3CF] overflow-hidden flex items-end">
-    <!-- Atmospheric Golden-Sunlight Radial Background matching reference -->
+    <!-- Atmospheric Golden-Sunlight Radial Background matching reference (Layer 1-2) -->
     <div class="absolute inset-0 pointer-events-none z-0 bg-[radial-gradient(ellipse_at_30%_40%,rgba(255,248,220,0.95)_0%,rgba(247,236,204,0.75)_35%,rgba(250,246,238,0.9)_70%,#FAF6EE_100%)]"></div>
     <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-amber-200/20 blur-3xl pointer-events-none z-0"></div>
     <div class="absolute top-1/4 left-10 w-80 h-80 rounded-full bg-[#EBD8A5]/30 blur-2xl pointer-events-none z-0"></div>
 
+    <!-- LAYER 4: Creeping Botanical Vine Track (sits above Layer 3 founders photo, below Layer 5 corner foliage) -->
+    <div id="foundersVineTrack" class="absolute inset-0 pointer-events-none z-20 overflow-visible">
+      <svg id="foundersVineSvg" viewBox="0 0 1440 900" preserveAspectRatio="none" class="w-full h-full overflow-visible">
+        <defs>
+          <linearGradient id="foundersVineStemGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#1B3F24" />
+            <stop offset="45%" stop-color="#2D5A36" />
+            <stop offset="75%" stop-color="#497530" />
+            <stop offset="100%" stop-color="#7C9D3F" />
+          </linearGradient>
+          <filter id="foundersVineShadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="2" dy="5" stdDeviation="4" flood-opacity="0.22" flood-color="#112718"/>
+          </filter>
+        </defs>
+
+        <path id="foundersVineSpineShadow" class="vine-spine-shadow" d="" />
+        <path id="foundersVineSpine" class="vine-spine" filter="url(#foundersVineShadow)" stroke="url(#foundersVineStemGrad)" stroke-width="4.5" stroke-linecap="round" fill="none" d="" />
+        <g id="foundersVineLeavesSvgGroup"></g>
+      </svg>
+    </div>
+
+    <!-- LAYER 5: Corner Foliage Leaves (topmost corner frame) -->
     <img src="assets/images/leaf-layer-top-right.webp" 
          alt="" 
          aria-hidden="true" 
-         class="services-corner-leaf leaf-tr corner-leaf-tr absolute top-0 right-0 w-36 sm:w-52 md:w-64 lg:w-80 max-h-[35vh] object-contain object-right-top pointer-events-none select-none z-10"
+         class="services-corner-leaf leaf-tr corner-leaf-tr absolute top-0 right-0 w-36 sm:w-52 md:w-64 lg:w-80 max-h-[35vh] object-contain object-right-top pointer-events-none select-none z-30"
          style="transition-delay: 0.15s;">
 
     <img src="assets/images/leaf-layer-top-left.webp" 
          alt="" 
          aria-hidden="true" 
-         class="services-corner-leaf leaf-tl corner-leaf-tl absolute top-0 left-0 w-36 sm:w-52 md:w-64 lg:w-80 max-h-[35vh] object-contain object-left-top pointer-events-none select-none z-10"
+         class="services-corner-leaf leaf-tl corner-leaf-tl absolute top-0 left-0 w-36 sm:w-52 md:w-64 lg:w-80 max-h-[35vh] object-contain object-left-top pointer-events-none select-none z-30"
          style="transition-delay: 0.05s;">
 
     <img src="assets/images/leaf-layer-bottom-left.webp" 
          alt="" 
          aria-hidden="true" 
-         class="services-corner-leaf leaf-bl corner-leaf-bl absolute bottom-0 left-0 w-32 sm:w-48 md:w-60 lg:w-72 max-h-[32vh] object-contain object-left-bottom pointer-events-none select-none z-10"
+         class="services-corner-leaf leaf-bl corner-leaf-bl absolute bottom-0 left-0 w-32 sm:w-48 md:w-60 lg:w-72 max-h-[32vh] object-contain object-left-bottom pointer-events-none select-none z-30"
          style="transition-delay: 0.25s;">
 
     <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10 w-full">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
 
-        <!-- Founders Cutout Image with altar crystals base anchored flush to the bottom -->
-        <div class="lg:col-span-6 flex justify-center lg:justify-end self-center lg:self-end pb-2 lg:pb-0">
+        <!-- LAYER 3: Founders Cutout Image with altar crystals base anchored flush to the bottom -->
+        <div class="lg:col-span-6 flex justify-center lg:justify-end self-center lg:self-end pb-2 lg:pb-0 relative z-10">
           <div class="relative w-full max-w-[360px] sm:max-w-[480px] md:max-w-[560px] lg:max-w-[700px] xl:max-w-[780px] 2xl:max-w-[840px] max-h-[82vh] flex items-end justify-center lg:justify-end">
             <img src="assets/images/founders.webp" 
                  alt="Founders Saneejjaa and Shiju" 

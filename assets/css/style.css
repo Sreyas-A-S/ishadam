@@ -471,11 +471,11 @@ body {
 
 .vine-curly-tendril {
   fill: none;
-  stroke: #8C6B1C;
-  stroke-width: 1.8;
+  stroke: #A8842E;
+  stroke-width: 2.2;
   stroke-linecap: round;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  will-change: opacity, stroke-dashoffset;
+  stroke-linejoin: round;
+  opacity: 1 !important;
+  will-change: stroke-dashoffset, transform;
 }
 
