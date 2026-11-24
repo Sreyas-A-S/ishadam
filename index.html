@@ -165,13 +165,13 @@
   </header>
 
   <nav id="mainNav" class="bg-[#FDF9EE] sticky top-0 z-50 border-b border-[#EADFC7] transition-transform duration-300 ease-in-out shrink-0">
-    <div class="w-full px-4 sm:px-8 lg:px-12 py-2.5 flex items-center justify-between">
+    <div class="w-full px-4 sm:px-8 lg:px-12 py-1.5 md:py-2.5 flex items-center justify-between">
 
       <div class="flex items-center shrink-0">
         <a href="#" class="flex items-center group py-0.5">
-          <img src="assets/images/ishadam-header-logo-hd.png" alt="Ishadam — From the House of Niyyati" class="h-11 sm:h-12 w-auto object-contain">
+          <img src="assets/images/ishadam-header-logo-hd.png" alt="Ishadam — From the House of Niyyati" class="h-9 sm:h-11 md:h-12 w-auto object-contain">
         </a>
-        <div class="h-8 w-[1px] bg-[#D8C89E] ml-5 mr-8 opacity-85"></div>
+        <div class="hidden sm:block h-7 md:h-8 w-[1px] bg-[#D8C89E] ml-4 md:ml-5 mr-6 md:mr-8 opacity-85"></div>
       </div>
 
       <div class="hidden md:flex items-center space-x-9 font-serif text-[18px] text-[#111111]">
@@ -216,9 +216,10 @@
     </div>
 
     <!-- Smooth Collapsible Mobile Menu -->
-    <div id="mobileMenu" class="md:hidden grid grid-rows-[0fr] opacity-0 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] bg-[#FAF6EE] border-b border-transparent font-medium text-sm overflow-hidden">
-      <div class="min-h-0 px-6 pt-2 pb-6 space-y-2.5">
-        <div class="pb-3 border-b border-[#E8DEC7] flex flex-col gap-2">
+    <div id="mobileMenu" class="md:hidden grid grid-rows-[0fr] opacity-0 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] bg-[#FAF6EE] font-medium text-sm overflow-hidden">
+      <div class="min-h-0 overflow-hidden">
+        <div class="px-6 pt-2 pb-6 space-y-2.5 border-t border-[#EADFC7]/70">
+          <div class="pb-3 border-b border-[#E8DEC7] flex flex-col gap-2">
           <div class="flex items-center space-x-2 text-[#1E432A] font-serif text-[13px] font-semibold">
             <svg class="w-4 h-4 text-[#2D5A36] stroke-[1.8]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
@@ -821,8 +822,8 @@
     <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-amber-200/20 blur-3xl pointer-events-none z-0"></div>
     <div class="absolute top-1/4 left-10 w-80 h-80 rounded-full bg-[#EBD8A5]/30 blur-2xl pointer-events-none z-0"></div>
 
-    <!-- LAYER 4: Creeping Botanical Vine Track (sits above Layer 3 founders photo, below Layer 5 corner foliage) -->
-    <div id="foundersVineTrack" class="absolute inset-0 pointer-events-none z-20 overflow-visible">
+    <!-- LAYER 4: Creeping Botanical Vine Track (sits behind text content & interactive buttons) -->
+    <div id="foundersVineTrack" class="absolute inset-0 pointer-events-none z-10 overflow-visible">
       <svg id="foundersVineSvg" viewBox="0 0 1440 900" preserveAspectRatio="none" class="w-full h-full overflow-visible">
         <defs>
           <linearGradient id="foundersVineStemGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -861,20 +862,20 @@
          class="services-corner-leaf leaf-bl corner-leaf-bl absolute bottom-0 left-0 w-32 sm:w-48 md:w-60 lg:w-72 max-h-[32vh] object-contain object-left-bottom pointer-events-none select-none z-30"
          style="transition-delay: 0.25s;">
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10 w-full">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-20 w-full">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
 
-        <!-- LAYER 3: Founders Cutout Image with altar crystals base anchored flush to the bottom -->
-        <div class="lg:col-span-6 flex justify-center lg:justify-end self-center lg:self-end pb-2 lg:pb-0 relative z-10">
-          <div class="relative w-full max-w-[360px] sm:max-w-[480px] md:max-w-[560px] lg:max-w-[700px] xl:max-w-[780px] 2xl:max-w-[840px] max-h-[82vh] flex items-end justify-center lg:justify-end">
+        <!-- LAYER 3: Founders Cutout Image (centered on mobile, anchored right-bottom on desktop) -->
+        <div class="lg:col-span-6 flex justify-center lg:justify-end self-center lg:self-end pb-2 lg:pb-0 relative z-10 w-full">
+          <div class="relative w-full max-w-[320px] sm:max-w-[440px] md:max-w-[520px] lg:max-w-[700px] xl:max-w-[780px] 2xl:max-w-[840px] max-h-[82vh] flex items-end justify-center lg:justify-end mx-auto lg:mx-0">
             <img src="assets/images/founders.webp" 
                  alt="Founders Saneejjaa and Shiju" 
-                 class="w-full h-auto max-h-[80vh] object-contain object-bottom block [filter:drop-shadow(0_20px_40px_rgba(23,55,34,0.18))]">
+                 class="w-full h-auto max-h-[55vh] lg:max-h-[80vh] object-contain object-bottom block mx-auto lg:mx-0 [filter:drop-shadow(0_20px_40px_rgba(23,55,34,0.18))]">
           </div>
         </div>
 
-        <!-- Founders Content aligned matching reference design -->
-        <div class="lg:col-span-6 space-y-3 lg:space-y-3.5 text-center lg:text-left lg:pl-4 self-center pb-4 lg:pb-6">
+        <!-- Founders Content sitting above vine (z-20) -->
+        <div class="lg:col-span-6 space-y-3 lg:space-y-3.5 text-center lg:text-left lg:pl-4 self-center pb-4 lg:pb-6 relative z-20">
           
           <div class="space-y-0.5">
             <div class="flex items-center justify-center lg:justify-start gap-2.5">

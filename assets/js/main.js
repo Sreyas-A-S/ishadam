@@ -416,12 +416,12 @@ function initFoundersAltarVine() {
     svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
   }
 
-  // Vine path sweeps organically down the left side, curls naturally around the crystal altar base and rests
+  // Vine path on mobile curves wide around the bottom so it never cuts through text or buttons
   const pathD = isMobile ? `
-    M -10, 80
-    C 45, 180 30, 360 25, 520
-    C 20, 640 50, 720 120, 755
-    C 180, 780 260, 770 320, 760
+    M -15, 60
+    C 30, 200 20, 480 15, 680
+    C 10, 840 60, 940 180, 960
+    C 280, 975 360, 960 410, 930
   ` : `
     M -25, 90
     C 75, 240 45, 460 35, 650
