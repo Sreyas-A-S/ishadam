@@ -79,16 +79,31 @@ body {
 }
 
 .btn-forest-pill {
+  position: relative;
+  overflow: hidden;
   background: linear-gradient(90deg, #132E1C 0%, #1E432A 100%);
   border: 1.5px solid #DFC789;
   color: #FFFFFF;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.btn-forest-pill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(243, 229, 171, 0.22), transparent);
+  transition: left 0.55s ease;
+  pointer-events: none;
 }
 .btn-forest-pill:hover {
-  background: #112818;
   border-color: #F3E5AB;
-  box-shadow: 0 6px 20px rgba(19, 46, 28, 0.35);
+  box-shadow: 0 8px 22px rgba(19, 46, 28, 0.35);
   transform: translateY(-2px);
+}
+.btn-forest-pill:hover::after {
+  left: 140%;
 }
 
 .services-corner-leaf {
@@ -407,6 +422,8 @@ body {
   transform: translate3d(0, 0, 0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  will-change: transform;
+  shape-rendering: geometricPrecision;
 }
 
 .preloader-text-group {
