@@ -941,3 +941,210 @@ function initSmoothScroll() {
 }
 
 
+
+
+(function () {
+  const sec = document.getElementById('calendar-2027');
+  const stand = document.getElementById('cal3dStand');
+  const leaf = document.getElementById('calCornerLeaf');
+  const tableWrap = document.getElementById('calTableWrap');
+  const flowerLeft = document.getElementById('calFlowerLeft');
+  const lotusRight = document.getElementById('calLotusRight');
+  const sheet1 = document.getElementById('calFlipSheet1');
+  const sheet2 = document.getElementById('calFlipSheet2');
+  const content = document.getElementById('calRevealContent');
+  if (!sec || !stand) return;
+
+  let target = 0;
+  let current = 0;
+  let rafId = null;
+
+  function render() {
+    current += (target - current) * 0.12;
+    const enter = Math.min(1, current * 3.5);
+    const settle = Math.min(1, Math.max(0, (current - 0.88) * 8.33));
+    const tx = (1 - enter) * -70;
+    const ty = window.innerWidth >= 1024 ? (-16 + settle * 88) : 0;
+    const ry = (1 - enter) * 18;
+    const rx = (1 - enter) * 4;
+    stand.style.transform = `translate3d(${tx}px, ${ty}px, 0) rotateY(${ry}deg) rotateX(${rx}deg)`;
+    stand.style.opacity = Math.min(1, enter * 1.4);
+
+    if (sheet1) {
+      const f1 = Math.min(1, Math.max(0, (current - 0.14) * 4.5));
+      sheet1.style.transform = `perspective(1600px) rotateX(${f1 * 95}deg) scaleX(${1 - f1 * 0.14})`;
+      sheet1.style.opacity = f1 >= 0.96 ? 0 : 1;
+    }
+    if (sheet2) {
+      const f2 = Math.min(1, Math.max(0, (current - 0.28) * 4.5));
+      sheet2.style.transform = `perspective(1600px) rotateX(${f2 * 95}deg) scaleX(${1 - f2 * 0.14})`;
+      sheet2.style.opacity = f2 >= 0.96 ? 0 : 1;
+    }
+
+    if (leaf) {
+      const lx = (1 - enter) * -28;
+      const ly = (1 - enter) * -18;
+      const lrot = (1 - enter) * -6;
+      leaf.style.transform = `translate3d(${lx}px, ${ly}px, 0) rotate(${lrot}deg)`;
+      leaf.style.opacity = Math.min(1, enter * 1.5);
+    }
+
+    if (tableWrap) {
+      const tRev = Math.min(1, Math.max(0, (current - 0.1) * 2.5));
+      tableWrap.style.transform = `translate3d(0, ${(1 - tRev) * 32}px, 0)`;
+      tableWrap.style.opacity = tRev;
+    }
+
+    const flRev = Math.min(1, Math.max(0, (current - 0.25) * 2.0));
+    if (flowerLeft) {
+      flowerLeft.style.transform = `translate3d(${(1 - flRev) * -36}px, ${(1 - flRev) * 12}px, 0)`;
+      flowerLeft.style.opacity = flRev;
+    }
+    if (lotusRight) {
+      lotusRight.style.transform = `translate3d(${(1 - flRev) * 36}px, ${(1 - flRev) * 12}px, 0)`;
+      lotusRight.style.opacity = flRev;
+    }
+
+    if (content) {
+      const rev = Math.min(1, Math.max(0, (current - 0.22) * 3.6));
+      content.style.opacity = rev;
+      content.style.transform = `translateY(${(1 - rev) * 24}px)`;
+      content.style.filter = `blur(${(1 - rev) * 8}px)`;
+    }
+
+    if (Math.abs(target - current) > 0.001) {
+      rafId = requestAnimationFrame(render);
+    } else {
+      rafId = null;
+    }
+  }
+
+  function onScroll() {
+    const rect = sec.getBoundingClientRect();
+    const scrollable = Math.max(1, sec.offsetHeight - window.innerHeight);
+    target = Math.min(1, Math.max(0, -rect.top / scrollable));
+    if (!rafId) rafId = requestAnimationFrame(render);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+(function () {
+  const frame = document.getElementById('calFrameImg');
+  const page = document.getElementById('calPageImg');
+  if (!frame || !page) return;
+
+  function solve3x3(A, b) {
+    const m = A.map((r, i) => [...r, b[i]]);
+    for (let i = 0; i < 3; i++) {
+      let maxR = i;
+      for (let k = i + 1; k < 3; k++) if (Math.abs(m[k][i]) > Math.abs(m[maxR][i])) maxR = k;
+      [m[i], m[maxR]] = [m[maxR], m[i]];
+      for (let k = i + 1; k < 3; k++) {
+        const f = m[k][i] / m[i][i];
+        for (let j = i; j < 4; j++) m[k][j] -= f * m[i][j];
+      }
+    }
+    const x = [0, 0, 0];
+    for (let i = 2; i >= 0; i--) {
+      x[i] = (m[i][3] - m[i].slice(i + 1, 3).reduce((s, v, j) => s + v * x[i + 1 + j], 0)) / m[i][i];
+    }
+    return x;
+  }
+
+  function basisToPoints(p) {
+    const M = [
+      [p[0][0], p[1][0], p[2][0]],
+      [p[0][1], p[1][1], p[2][1]],
+      [1, 1, 1]
+    ];
+    const v = solve3x3(M, [p[3][0], p[3][1], 1]);
+    return [
+      [p[0][0] * v[0], p[1][0] * v[1], p[2][0] * v[2]],
+      [p[0][1] * v[0], p[1][1] * v[1], p[2][1] * v[2]],
+      [v[0], v[1], v[2]]
+    ];
+  }
+
+  function adj(m) {
+    return [
+      [m[1][1] * m[2][2] - m[1][2] * m[2][1], m[0][2] * m[2][1] - m[0][1] * m[2][2], m[0][1] * m[1][2] - m[0][2] * m[1][1]],
+      [m[1][2] * m[2][0] - m[1][0] * m[2][2], m[0][0] * m[2][2] - m[0][2] * m[2][0], m[0][2] * m[1][0] - m[0][0] * m[1][2]],
+      [m[1][0] * m[2][1] - m[1][1] * m[2][0], m[0][1] * m[2][0] - m[0][0] * m[2][1], m[0][0] * m[1][1] - m[0][1] * m[1][0]]
+    ];
+  }
+
+  function mul3(a, b) {
+    const r = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+    for (let i = 0; i < 3; i++)
+      for (let j = 0; j < 3; j++)
+        for (let k = 0; k < 3; k++) r[i][j] += a[i][k] * b[k][j];
+    return r;
+  }
+
+  function fitCalPage() {
+    const w = frame.clientWidth;
+    const h = frame.clientHeight;
+    if (!w || !h) return;
+    const src = [[0, 0], [w, 0], [0, h], [w, h]];
+    const dst = [
+      [0.08787 * w, 0.09729 * h],
+      [0.92984 * w, 0.12254 * h],
+      [0.11717 * w, 0.89804 * h],
+      [0.96322 * w, 0.85875 * h]
+    ];
+    const t = mul3(basisToPoints(dst), adj(basisToPoints(src)));
+    const s = t[2][2];
+    const m = t.map(r => r.map(v => v / s));
+    const mat = `matrix3d(${m[0][0]},${m[1][0]},0,${m[2][0]},${m[0][1]},${m[1][1]},0,${m[2][1]},0,0,1,0,${m[0][2]},${m[1][2]},0,1)`;
+    page.style.transform = mat;
+    const fl1 = document.getElementById('calFlipLayer1');
+    const fl2 = document.getElementById('calFlipLayer2');
+    if (fl1) fl1.style.transform = mat;
+    if (fl2) fl2.style.transform = mat;
+  }
+
+  frame.addEventListener('load', fitCalPage);
+  window.addEventListener('resize', fitCalPage);
+  if (window.ResizeObserver) new ResizeObserver(fitCalPage).observe(frame);
+  fitCalPage();
+})();
+
+document.addEventListener('contextmenu', (e) => {
+  if (e.target && e.target.closest('#calendar-2027') && e.target.tagName === 'IMG') e.preventDefault();
+});
+document.addEventListener('dragstart', (e) => {
+  if (e.target && e.target.closest('#calendar-2027') && e.target.tagName === 'IMG') e.preventDefault();
+});
+
+(function () {
+  const sec = document.getElementById('testimonials');
+  const header = document.getElementById('testimonialsHeader');
+  if (!sec || !header) return;
+
+  let target = 0;
+  let current = 0;
+  let rafId = null;
+
+  function render() {
+    current += (target - current) * 0.14;
+    header.style.opacity = current;
+    header.style.transform = `translate3d(0, ${(1 - current) * 48}px, 0)`;
+    if (Math.abs(target - current) > 0.002) {
+      rafId = requestAnimationFrame(render);
+    } else {
+      rafId = null;
+    }
+  }
+
+  function onScroll() {
+    const rect = sec.getBoundingClientRect();
+    const vh = window.innerHeight || 800;
+    target = Math.min(1, Math.max(0, (vh * 0.9 - rect.top) / (vh * 0.35)));
+    if (!rafId) rafId = requestAnimationFrame(render);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
