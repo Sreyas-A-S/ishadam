@@ -479,3 +479,37 @@ body {
   will-change: stroke-dashoffset, transform;
 }
 
+
+@keyframes ishadam-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.swastik-symbol,
+.sacred-swastik-spin {
+  display: inline-block;
+  transition: transform 0.6s ease;
+}
+
+.swastik-symbol:hover,
+.sacred-swastik-spin:hover {
+  animation: ishadam-spin 2.5s linear infinite !important;
+}
+
+#foundersOfferingsList > div svg,
+footer li svg,
+footer a:not(.rounded-full) svg,
+footer .flex > svg {
+  transition: transform 0.6s ease !important;
+}
+
+#foundersOfferingsList > div:hover svg,
+footer li:hover svg,
+footer a:not(.rounded-full):hover svg,
+footer .flex:hover > svg {
+  transform: rotate(360deg) !important;
+}
+
+footer a.rounded-full:hover svg {
+  transform: none !important;
+}
