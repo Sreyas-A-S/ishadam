@@ -972,13 +972,13 @@ function initSmoothScroll() {
 
     if (sheet1) {
       const f1 = Math.min(1, Math.max(0, (current - 0.14) * 4.5));
-      sheet1.style.transform = `perspective(1600px) rotateX(${f1 * 95}deg) scaleX(${1 - f1 * 0.14})`;
-      sheet1.style.opacity = f1 >= 0.96 ? 0 : 1;
+      sheet1.style.transform = `perspective(8000px) rotateX(${f1 * 95}deg)`;
+      sheet1.style.opacity = f1 >= 0.82 ? Math.max(0, 1 - (f1 - 0.82) / 0.18) : 1;
     }
     if (sheet2) {
       const f2 = Math.min(1, Math.max(0, (current - 0.28) * 4.5));
-      sheet2.style.transform = `perspective(1600px) rotateX(${f2 * 95}deg) scaleX(${1 - f2 * 0.14})`;
-      sheet2.style.opacity = f2 >= 0.96 ? 0 : 1;
+      sheet2.style.transform = `perspective(8000px) rotateX(${f2 * 95}deg)`;
+      sheet2.style.opacity = f2 >= 0.82 ? Math.max(0, 1 - (f2 - 0.82) / 0.18) : 1;
     }
 
     if (leaf) {
@@ -1154,4 +1154,14 @@ document.addEventListener('dragstart', (e) => {
 
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+})();
+
+(function () {
+  const path = window.location.pathname;
+  const isHome = path === '/' || path.endsWith('/index.html') || path === '';
+  if (isHome) return;
+  document.querySelectorAll('#mainNav a[href^="#"], footer a[href^="#"]').forEach((a) => {
+    const hash = a.getAttribute('href');
+    if (hash && hash.length > 1) a.setAttribute('href', 'index.html' + hash);
+  });
 })();
