@@ -1023,6 +1023,13 @@ function initSmoothScroll() {
     const rect = sec.getBoundingClientRect();
     const scrollable = Math.max(1, sec.offsetHeight - window.innerHeight);
     target = Math.min(1, Math.max(0, -rect.top / scrollable));
+
+    const mainNav = document.getElementById('mainNav');
+    if (mainNav) {
+      const shouldHide = window.innerWidth < 1024 && rect.top <= 10 && rect.bottom > window.innerHeight * 0.85;
+      mainNav.classList.toggle('-translate-y-full', shouldHide);
+    }
+
     if (!rafId) rafId = requestAnimationFrame(render);
   }
 
