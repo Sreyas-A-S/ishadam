@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services &amp; Posts — Ishadam | From the House of Niyyati</title>
+  <meta name="description" content="Explore Ishadam's specialized services, instrument care & restoration, and upcoming temple events.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#173722">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: { 800: '#1D4329', 900: '#132C1B', 950: '#0C1E12' },
+            cream: { 50: '#FDFBF7', 100: '#FAF6EE', 200: '#F2EBD9' },
+            gold: { 400: '#E5BE67', 500: '#C59A3F', 600: '#9E731B', 700: '#7D580E' }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            script: ['"Great Vibes"', 'cursive']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-[#FAF6EE] text-[#173722] font-sans antialiased overflow-x-hidden selection:bg-[#C59A3F]/25 selection:text-[#173722]">
+
+  <div id="site-header"></div>
+
+  <!-- Dynamic Service / Post Hero -->
+  <section class="relative py-16 sm:py-20 bg-[#FAF6EE] border-b border-[#ECE3CF] overflow-hidden">
+    <img src="assets/images/leaf-layer-top-left.webp" alt="" aria-hidden="true" class="corner-leaf-tl absolute top-0 left-0 w-28 sm:w-44 md:w-56 max-h-[30vh] object-contain object-left-top pointer-events-none select-none z-10 floating-leaf">
+    <img src="assets/images/leaf-layer-bottom-right.webp" alt="" aria-hidden="true" class="corner-leaf-br absolute bottom-0 right-0 w-28 sm:w-44 md:w-56 max-h-[28vh] object-contain object-right-bottom pointer-events-none select-none z-10">
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-8 text-center relative z-20 space-y-4">
+      <div class="sacred-divider">
+        <span class="swastik-symbol sacred-swastik-spin">卐</span>
+      </div>
+      <p id="svcEyebrow" class="text-xs sm:text-sm font-serif uppercase tracking-[0.22em] text-[#966D1B] font-semibold">
+        Ishadam Care &amp; Craft
+      </p>
+      <h1 id="svcTitle" class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-[#173722] leading-tight">
+        Instrument Service
+      </h1>
+      <p id="svcSubtitle" class="font-serif italic text-lg sm:text-xl text-[#4A5D4E] max-w-2xl mx-auto leading-relaxed">
+        Expert tuning, leather-head replacement, cord re-lacing, and traditional restoration for sacred percussion and classical instruments.
+      </p>
+    </div>
+  </section>
+
+  <!-- Posts / Service Cards -->
+  <section class="py-16 lg:py-20 bg-[#FDFBF7] border-b border-[#ECE3CF]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-8">
+      <div id="svcCards" class="grid grid-cols-1 md:grid-cols-3 gap-7 lg:gap-8"></div>
+    </div>
+  </section>
+
+  <div class="w-full h-8 sm:h-10 bg-[#FAF6EE] bg-repeat-x bg-center opacity-55 border-b border-[#ECE3CF]" style="background-image: url('assets/images/botanical-divider-pattern.webp'); background-size: auto 100%;"></div>
+
+  <!-- Inquiry / Booking CTA -->
+  <section class="py-14 lg:py-16 bg-[#FAF6EE]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-8 text-center space-y-4">
+      <h2 id="svcCtaTitle" class="font-serif text-3xl font-bold text-[#173722]">Book an Instrument Service</h2>
+      <p id="svcCtaDesc" class="text-sm sm:text-base text-stone-700 leading-relaxed">
+        Share a photo or brief note about your instrument on WhatsApp and our artisans will advise on turnaround time and care.
+      </p>
+      <div class="pt-2">
+        <a id="svcCtaBtn" href="https://wa.me/918138881308?text=Hello%20Ishadam,%20I%20would%20like%20to%20book%20an%20Instrument%20Service" target="_blank" class="inline-flex items-center gap-3 px-8 py-3.5 rounded-full text-white font-medium text-sm tracking-wide btn-forest-pill shadow-md">
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
+          <span id="svcCtaBtnText">Connect on WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="layout/header.js"></script>
+  <script src="layout/footer.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    (function () {
+      const TOPICS = {
+        'instrument-service': {
+          title: 'Instrument Service',
+          eyebrow: 'Ishadam Care & Craft • Restoration',
+          subtitle: 'Expert tuning, leather-head replacement, cord re-lacing, and traditional restoration for sacred percussion and classical instruments.',
+          ctaTitle: 'Book an Instrument Service',
+          ctaDesc: 'Share a photo or brief note about your instrument on WhatsApp and our artisans will advise on turnaround time and care.',
+          ctaBtn: 'Request Service on WhatsApp',
+          waText: 'Hello Ishadam, I would like to inquire about Instrument Service',
+          cards: [
+            { tag: 'Tuning & Alignment', image: 'assets/images/sacred-idakka.webp', title: 'Idakka & Maddalam Re-heading', body: 'Precision replacement of seasoned leather heads, jiva strings, and cotton tension cords to restore warm, authentic resonance.' },
+            { tag: 'Wood & Shell Care', image: 'assets/images/Ornamental Lantern with Crystals and Stones.webp', title: 'Jackwood Polishing & Crack Repair', body: 'Gentle natural-oil conditioning and structural care for heirloom Chenda, Idakka, and Veena shells.' },
+            { tag: 'Reeds & Acoustics', image: 'assets/images/sacred-notes-swirl.webp', title: 'Harmonium & Shruti Box Tuning', body: 'Bellows sealing, reed cleaning, and 440Hz pitch calibration for clear, sustained devotional accompaniment.' }
+          ]
+        },
+        'temple-events': {
+          title: 'Temple Events',
+          eyebrow: 'Ishadam Sacred Gatherings • Announcements',
+          subtitle: 'Upcoming Sopana Sangeetham offerings, temple festival ensembles, spiritual gatherings, and community highlights.',
+          ctaTitle: 'Invite or Participate in a Temple Event',
+          ctaDesc: 'Reach out to coordinate a Sopana Sangeetham recital, devotional ensemble, or sacred gathering at your temple or community space.',
+          ctaBtn: 'Coordinate on WhatsApp',
+          waText: 'Hello Ishadam, I would like to inquire about Temple Events',
+          cards: [
+            {
+              tag: 'Upcoming • Festival',
+              image: 'assets/images/sacred-idakka.webp',
+              title: 'Sopana Sangeetham Sandhya',
+              dateTime: 'Sat, 14 Dec 2026 • 6:00 PM – 8:00 PM',
+              venue: 'Sree Padmanabha Courtyard, Trivandrum',
+              body: 'Evening devotional Ashtapadi and Idakka recital offered in traditional temple acoustics. Open to devotees and students.'
+            },
+            {
+              tag: 'Community Gathering',
+              image: 'assets/images/Ornamental Lantern with Crystals and Stones.webp',
+              title: 'Full Moon Meditation & Chants',
+              dateTime: 'Fri, 25 Dec 2026 • 7:00 PM – 8:30 PM',
+              venue: 'Ishadam Sanctuary, Trivandrum',
+              body: 'Guided group meditation, sacred mantra chanting, and crystal-aligned stillness held monthly.'
+            },
+            {
+              tag: 'Temple Ensemble',
+              image: 'assets/images/sacred-notes-swirl.webp',
+              title: 'Utsavam & Special Offerings',
+              dateTime: 'By Appointment • Morning / Evening',
+              venue: 'Temples & Cultural Spaces Across Kerala',
+              body: 'Book our trained Sopana Sangeetham and percussion ensemble for annual temple festivals and consecrations.'
+            }
+          ]
+        }
+      };
+
+      const params = new URLSearchParams(window.location.search);
+      const key = params.get('topic') || 'instrument-service';
+      const data = TOPICS[key] || TOPICS['instrument-service'];
+
+      document.title = data.title + ' — Ishadam | From the House of Niyyati';
+      document.getElementById('svcEyebrow').textContent = data.eyebrow;
+      document.getElementById('svcTitle').textContent = data.title;
+      document.getElementById('svcSubtitle').textContent = data.subtitle;
+      document.getElementById('svcCtaTitle').textContent = data.ctaTitle;
+      document.getElementById('svcCtaDesc').textContent = data.ctaDesc;
+      document.getElementById('svcCtaBtnText').textContent = data.ctaBtn;
+      document.getElementById('svcCtaBtn').href = 'https://wa.me/918138881308?text=' + encodeURIComponent(data.waText);
+
+      const grid = document.getElementById('svcCards');
+      grid.innerHTML = data.cards.map((c) => `
+        <article class="bg-[#FFFDF9] border border-[#DFC789] rounded-2xl p-4 sm:p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            ${c.image ? `
+              <div class="h-44 rounded-xl bg-[#FAF6EE] border border-[#EADFC7] overflow-hidden flex items-center justify-center p-2">
+                <img src="${c.image}" alt="${c.title}" class="w-full h-full object-contain">
+              </div>` : ''}
+            <span class="inline-block text-[11px] font-serif uppercase tracking-wider text-[#966D1B] font-semibold">${c.tag}</span>
+            <h2 class="font-serif text-2xl font-bold text-[#173722]">${c.title}</h2>
+            ${(c.dateTime || c.venue) ? `
+              <div class="space-y-1.5 text-xs text-[#4A5D4E] font-medium pt-0.5">
+                ${c.dateTime ? `<p class="flex items-center gap-1.5"><i data-lucide="calendar" class="w-3.5 h-3.5 text-[#9E731B] shrink-0"></i><span>${c.dateTime}</span></p>` : ''}
+                ${c.venue ? `<p class="flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#9E731B] shrink-0"></i><span>${c.venue}</span></p>` : ''}
+              </div>` : ''}
+            <p class="text-sm text-stone-700 leading-relaxed">${c.body}</p>
+          </div>
+          <div class="pt-3 border-t border-[#EADFC7]">
+            <a href="https://wa.me/918138881308?text=${encodeURIComponent('Hello Ishadam, I would like to know more about ' + c.title)}" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-serif font-semibold text-[#966D1B] hover:text-[#173722] transition">
+              <span>Inquire Details</span>
+              <span>&rarr;</span>
+            </a>
+          </div>
+        </article>
+      `).join('');
+      if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons();
+      }
+    })();
+  </script>
+</body>
+</html>

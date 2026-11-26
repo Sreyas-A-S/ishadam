@@ -952,12 +952,44 @@ function initSmoothScroll() {
   const lotusRight = document.getElementById('calLotusRight');
   const sheet1 = document.getElementById('calFlipSheet1');
   const sheet2 = document.getElementById('calFlipSheet2');
+  const sheet1Img = sheet1 ? sheet1.querySelector('img') : null;
+  const pageImg = document.getElementById('calPageImg');
+  const pageLabel = document.getElementById('calPageIndicator');
   const content = document.getElementById('calRevealContent');
   if (!sec || !stand) return;
+
+  const SCRUB_PAGES = [
+    { src: 'assets/images/calendar-pages/page-01.webp', label: 'January 2027' },
+    { src: 'assets/images/calendar-pages/page-02.webp', label: 'February 2027' },
+    { src: 'assets/images/calendar-pages/page-03.webp', label: 'March 2027' },
+    { src: 'assets/images/calendar-pages/page-04.webp', label: 'April 2027' },
+    { src: 'assets/images/calendar-pages/page-05.webp', label: 'May 2027' },
+    { src: 'assets/images/calendar-pages/page-06.webp', label: 'June 2027' },
+    { src: 'assets/images/calendar-pages/page-07.webp', label: 'July 2027' },
+    { src: 'assets/images/calendar-pages/page-08.webp', label: 'August 2027' },
+    { src: 'assets/images/calendar-pages/page-09.webp', label: 'September 2027' },
+    { src: 'assets/images/calendar-pages/page-10.webp', label: 'October 2027' },
+    { src: 'assets/images/calendar-pages/page-11.webp', label: 'November 2027' },
+    { src: 'assets/images/calendar-pages/page-12.webp', label: 'December 2027' },
+    { src: 'assets/images/calendar-cover.webp', label: 'Cover • 2027' }
+  ];
+
+  let preloaded = false;
+  if (window.IntersectionObserver) {
+    const preObs = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !preloaded) {
+        preloaded = true;
+        SCRUB_PAGES.forEach((p) => { const im = new Image(); im.src = p.src; });
+        preObs.disconnect();
+      }
+    }, { rootMargin: '500px 0px' });
+    preObs.observe(sec);
+  }
 
   let target = 0;
   let current = 0;
   let rafId = null;
+  let lastStep = -1;
 
   function render() {
     current += (target - current) * 0.12;
@@ -971,14 +1003,27 @@ function initSmoothScroll() {
     stand.style.opacity = Math.min(1, enter * 1.4);
 
     if (sheet1) {
-      const f1 = Math.min(1, Math.max(0, (current - 0.14) * 4.5));
-      sheet1.style.transform = `perspective(8000px) rotateX(${f1 * 95}deg)`;
-      sheet1.style.opacity = f1 >= 0.82 ? Math.max(0, 1 - (f1 - 0.82) / 0.18) : 1;
-    }
-    if (sheet2) {
-      const f2 = Math.min(1, Math.max(0, (current - 0.28) * 4.5));
-      sheet2.style.transform = `perspective(8000px) rotateX(${f2 * 95}deg)`;
-      sheet2.style.opacity = f2 >= 0.82 ? Math.max(0, 1 - (f2 - 0.82) / 0.18) : 1;
+      if (sheet2) sheet2.style.opacity = 0;
+      const fp = Math.min(1, Math.max(0, (current - 0.10) / 0.72));
+      const totalFlips = SCRUB_PAGES.length - 1;
+      const scaled = fp * totalFlips;
+      const step = Math.min(totalFlips, Math.floor(scaled));
+      const local = fp >= 1 ? 1 : (scaled - step);
+
+      if (step !== lastStep) {
+        lastStep = step;
+        const under = SCRUB_PAGES[Math.min(totalFlips, step + (fp >= 1 ? 0 : 1))];
+        if (pageImg && pageImg.getAttribute('src') !== under.src) pageImg.src = under.src;
+        if (pageLabel) pageLabel.textContent = under.label;
+        if (sheet1Img && step < totalFlips) sheet1Img.src = SCRUB_PAGES[step].src;
+      }
+
+      if (fp >= 1) {
+        sheet1.style.opacity = 0;
+      } else {
+        sheet1.style.transform = `perspective(8000px) rotateX(${local * 95}deg)`;
+        sheet1.style.opacity = local >= 0.82 ? Math.max(0, 1 - (local - 0.82) / 0.18) : 1;
+      }
     }
 
     if (leaf) {
@@ -1202,9 +1247,50 @@ document.addEventListener('dragstart', (e) => {
     const rect = sec.getBoundingClientRect();
     const scrollable = Math.max(1, sec.offsetHeight - window.innerHeight);
     target = Math.min(1, Math.max(0, -rect.top / scrollable));
+
+    const mainNav = document.getElementById('mainNav');
+    if (mainNav) {
+      const shouldHide = window.innerWidth < 1024 && rect.top <= 10 && rect.bottom > window.innerHeight * 0.85;
+      mainNav.classList.toggle('-translate-y-full', shouldHide);
+    }
+
     if (!rafId) rafId = requestAnimationFrame(render);
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+})();
+
+(function () {
+  const pageImg = document.getElementById('calPageImg');
+  const prevBtn = document.getElementById('calPrevPage');
+  const nextBtn = document.getElementById('calNextPage');
+  const label = document.getElementById('calPageIndicator');
+  if (!pageImg || !prevBtn || !nextBtn) return;
+
+  const PAGES = [
+    { src: 'assets/images/calendar-cover.webp', label: 'Cover • 2027' },
+    { src: 'assets/images/calendar-pages/page-01.webp', label: 'January 2027' },
+    { src: 'assets/images/calendar-pages/page-02.webp', label: 'February 2027' },
+    { src: 'assets/images/calendar-pages/page-03.webp', label: 'March 2027' },
+    { src: 'assets/images/calendar-pages/page-04.webp', label: 'April 2027' },
+    { src: 'assets/images/calendar-pages/page-05.webp', label: 'May 2027' },
+    { src: 'assets/images/calendar-pages/page-06.webp', label: 'June 2027' },
+    { src: 'assets/images/calendar-pages/page-07.webp', label: 'July 2027' },
+    { src: 'assets/images/calendar-pages/page-08.webp', label: 'August 2027' },
+    { src: 'assets/images/calendar-pages/page-09.webp', label: 'September 2027' },
+    { src: 'assets/images/calendar-pages/page-10.webp', label: 'October 2027' },
+    { src: 'assets/images/calendar-pages/page-11.webp', label: 'November 2027' },
+    { src: 'assets/images/calendar-pages/page-12.webp', label: 'December 2027' }
+  ];
+
+  let idx = 0;
+  function show(i) {
+    idx = (i + PAGES.length) % PAGES.length;
+    pageImg.src = PAGES[idx].src;
+    if (label) label.textContent = PAGES[idx].label;
+  }
+
+  prevBtn.addEventListener('click', () => show(idx - 1));
+  nextBtn.addEventListener('click', () => show(idx + 1));
 })();
