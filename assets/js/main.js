@@ -1165,3 +1165,46 @@ document.addEventListener('dragstart', (e) => {
     if (hash && hash.length > 1) a.setAttribute('href', 'index.html' + hash);
   });
 })();
+
+(function () {
+  const sec = document.getElementById('sacredLineage');
+  const notes = document.querySelectorAll('#lineageFloatingNotes .lineage-note');
+  const idakka = document.getElementById('lineageIdakka');
+  if (!sec || (!notes.length && !idakka)) return;
+
+  let target = 0;
+  let current = 0;
+  let rafId = null;
+
+  function render() {
+    current += (target - current) * 0.12;
+    notes.forEach((n, i) => {
+      const dir = i % 2 === 0 ? 1 : -1;
+      const tx = (current - 0.5) * (140 + i * 25);
+      const ty = Math.sin(current * Math.PI * 2 + i) * 26 * dir;
+      const rot = (current - 0.5) * 35 * dir;
+      n.style.transform = `translate3d(${tx}px, ${ty}px, 0) rotate(${rot}deg)`;
+    });
+    if (idakka) {
+      const ty = (0.5 - current) * 110;
+      const rot = (current - 0.5) * 28;
+      const sc = 0.94 + current * 0.14;
+      idakka.style.transform = `translate3d(0, ${ty}px, 0) rotate(${rot}deg) scale(${sc})`;
+    }
+    if (Math.abs(target - current) > 0.002) {
+      rafId = requestAnimationFrame(render);
+    } else {
+      rafId = null;
+    }
+  }
+
+  function onScroll() {
+    const rect = sec.getBoundingClientRect();
+    const scrollable = Math.max(1, sec.offsetHeight - window.innerHeight);
+    target = Math.min(1, Math.max(0, -rect.top / scrollable));
+    if (!rafId) rafId = requestAnimationFrame(render);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();

@@ -69,8 +69,26 @@
   </section>
 
   <!-- Tradition & Overview -->
-  <section class="py-16 lg:py-20 bg-[#FDFBF7] border-b border-[#ECE3CF]">
-    <div class="max-w-6xl mx-auto px-4 sm:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+  <section id="sacredLineage" class="relative min-h-[175vh] bg-[#FDFBF7] border-b border-[#ECE3CF]">
+    <div class="sticky top-16 sm:top-20 min-h-[calc(100vh-64px)] sm:min-h-[calc(100vh-80px)] flex items-center py-12 lg:py-16 overflow-hidden">
+      <img id="lineageNotesSwirl"
+           src="assets/images/sacred-notes-swirl.webp"
+           alt=""
+           aria-hidden="true"
+           class="absolute inset-0 w-full h-full object-contain opacity-25 pointer-events-none select-none z-0">
+      <div id="lineageFloatingNotes" class="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden" aria-hidden="true">
+        <span data-note="0" class="lineage-note absolute left-[12%] top-[28%] font-serif text-3xl sm:text-4xl text-[#C59A3F]/60 will-change-transform">♪</span>
+        <span data-note="1" class="lineage-note absolute left-[30%] top-[44%] font-serif text-4xl sm:text-5xl text-[#9E731B]/55 will-change-transform">♫</span>
+        <span data-note="2" class="lineage-note absolute left-[52%] top-[24%] font-serif text-3xl sm:text-4xl text-[#173722]/45 will-change-transform">♩</span>
+        <span data-note="3" class="lineage-note absolute left-[68%] top-[54%] font-serif text-4xl sm:text-5xl text-[#C59A3F]/65 will-change-transform">♬</span>
+        <span data-note="4" class="lineage-note absolute left-[82%] top-[34%] font-serif text-3xl sm:text-4xl text-[#9E731B]/55 will-change-transform">♪</span>
+      </div>
+      <img id="lineageIdakka"
+           src="assets/images/sacred-idakka.webp"
+           alt=""
+           aria-hidden="true"
+           class="absolute -right-4 sm:right-6 bottom-4 w-44 sm:w-56 md:w-72 h-auto opacity-45 pointer-events-none select-none z-0 will-change-transform">
+      <div class="max-w-6xl mx-auto px-4 sm:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10 w-full">
       <div class="lg:col-span-6 space-y-4">
         <div class="flex items-center gap-2 text-[#966D1B] text-sm font-serif font-semibold uppercase tracking-wider">
           <span>🌿</span>
@@ -127,6 +145,7 @@
           </ul>
         </div>
       </div>
+    </div>
     </div>
   </section>
 
