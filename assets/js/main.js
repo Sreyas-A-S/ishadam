@@ -993,7 +993,7 @@ function initSmoothScroll() {
 
   function render() {
     current += (target - current) * 0.12;
-    const enter = Math.min(1, current * 3.5);
+    const enter = Math.min(1, current * 8.0);
     const settle = Math.min(1, Math.max(0, (current - 0.88) * 8.33));
     const tx = (1 - enter) * -70;
     const ty = window.innerWidth >= 1024 ? (-16 + settle * 88) : 0;
@@ -1021,8 +1021,10 @@ function initSmoothScroll() {
       if (fp >= 1) {
         sheet1.style.opacity = 0;
       } else {
-        sheet1.style.transform = `perspective(8000px) rotateX(${local * 95}deg)`;
-        sheet1.style.opacity = local >= 0.82 ? Math.max(0, 1 - (local - 0.82) / 0.18) : 1;
+        // Hold each page flat for 35% of its slice, then flip smoothly
+        const flipPhase = Math.max(0, (local - 0.35) / 0.65);
+        sheet1.style.transform = `perspective(8000px) rotateX(${flipPhase * 95}deg)`;
+        sheet1.style.opacity = flipPhase >= 0.82 ? Math.max(0, 1 - (flipPhase - 0.82) / 0.18) : 1;
       }
     }
 
@@ -1035,12 +1037,12 @@ function initSmoothScroll() {
     }
 
     if (tableWrap) {
-      const tRev = Math.min(1, Math.max(0, (current - 0.1) * 2.5));
+      const tRev = Math.min(1, Math.max(0, (current - 0.02) * 8.0));
       tableWrap.style.transform = `translate3d(0, ${(1 - tRev) * 32}px, 0)`;
       tableWrap.style.opacity = tRev;
     }
 
-    const flRev = Math.min(1, Math.max(0, (current - 0.25) * 2.0));
+    const flRev = Math.min(1, Math.max(0, (current - 0.05) * 8.0));
     if (flowerLeft) {
       flowerLeft.style.transform = `translate3d(${(1 - flRev) * -36}px, ${(1 - flRev) * 12}px, 0)`;
       flowerLeft.style.opacity = flRev;
@@ -1051,7 +1053,7 @@ function initSmoothScroll() {
     }
 
     if (content) {
-      const rev = Math.min(1, Math.max(0, (current - 0.22) * 3.6));
+      const rev = Math.min(1, Math.max(0, (current - 0.06) * 8.5));
       content.style.opacity = rev;
       content.style.transform = `translateY(${(1 - rev) * 24}px)`;
       content.style.filter = `blur(${(1 - rev) * 8}px)`;
@@ -1261,36 +1263,3 @@ document.addEventListener('dragstart', (e) => {
   onScroll();
 })();
 
-(function () {
-  const pageImg = document.getElementById('calPageImg');
-  const prevBtn = document.getElementById('calPrevPage');
-  const nextBtn = document.getElementById('calNextPage');
-  const label = document.getElementById('calPageIndicator');
-  if (!pageImg || !prevBtn || !nextBtn) return;
-
-  const PAGES = [
-    { src: 'assets/images/calendar-cover.webp', label: 'Cover • 2027' },
-    { src: 'assets/images/calendar-pages/page-01.webp', label: 'January 2027' },
-    { src: 'assets/images/calendar-pages/page-02.webp', label: 'February 2027' },
-    { src: 'assets/images/calendar-pages/page-03.webp', label: 'March 2027' },
-    { src: 'assets/images/calendar-pages/page-04.webp', label: 'April 2027' },
-    { src: 'assets/images/calendar-pages/page-05.webp', label: 'May 2027' },
-    { src: 'assets/images/calendar-pages/page-06.webp', label: 'June 2027' },
-    { src: 'assets/images/calendar-pages/page-07.webp', label: 'July 2027' },
-    { src: 'assets/images/calendar-pages/page-08.webp', label: 'August 2027' },
-    { src: 'assets/images/calendar-pages/page-09.webp', label: 'September 2027' },
-    { src: 'assets/images/calendar-pages/page-10.webp', label: 'October 2027' },
-    { src: 'assets/images/calendar-pages/page-11.webp', label: 'November 2027' },
-    { src: 'assets/images/calendar-pages/page-12.webp', label: 'December 2027' }
-  ];
-
-  let idx = 0;
-  function show(i) {
-    idx = (i + PAGES.length) % PAGES.length;
-    pageImg.src = PAGES[idx].src;
-    if (label) label.textContent = PAGES[idx].label;
-  }
-
-  prevBtn.addEventListener('click', () => show(idx - 1));
-  nextBtn.addEventListener('click', () => show(idx + 1));
-})();

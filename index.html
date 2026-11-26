@@ -68,44 +68,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Sacramento&display=swap" rel="stylesheet">
 
   <script src="https://unpkg.com/lucide@latest"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              cream: '#FAF6EE',
-              creamCard: '#FFFDF9',
-              creamLight: '#FDFBF7',
-              forest: '#1E432A',
-              forestDark: '#132E1C',
-              gold: '#C59A3F',
-              goldDark: '#A67C24',
-              goldLight: '#E8D5A3',
-              goldBorder: '#DFC789',
-              goldBtn: '#966D1B',
-              goldBtnHover: '#7D5911',
-              charcoal: '#2D312E',
-              sand: '#EFE7D5'
-            }
-          },
-          fontFamily: {
-            serif: ['"Cormorant Garamond"', 'serif'],
-            display: ['"Cinzel"', 'serif'],
-            playfair: ['"Playfair Display"', 'serif'],
-            script: ['"Great Vibes"', 'cursive'],
-            body: ['"Montserrat"', 'sans-serif'],
-          },
-          boxShadow: {
-            'card': '0 10px 30px -5px rgba(184, 150, 77, 0.12), 0 4px 12px -2px rgba(0, 0, 0, 0.04)',
-            'card-hover': '0 20px 35px -5px rgba(166, 124, 36, 0.22), 0 8px 16px -2px rgba(0, 0, 0, 0.08)',
-            'gold-glow': '0 0 25px rgba(212, 175, 55, 0.35)',
-          }
-        }
-      }
-    }
-  </script>
+  <script src="assets/js/tailwind-config.js"></script>
 
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -822,7 +785,7 @@
     </div>
   </section>
 
-  <section id="calendar-2027" class="relative min-h-[260vh] bg-[#FAF6EE] border-b border-[#ECE3CF]">
+  <section id="calendar-2027" class="relative min-h-[420vh] bg-[#FAF6EE] border-b border-[#ECE3CF]">
     <div class="sticky top-0 lg:top-20 min-h-[100dvh] lg:min-h-[calc(100vh-80px)] flex items-center pt-6 lg:pt-14 pb-16 lg:pb-20 overflow-hidden">
       <img id="calCornerLeaf"
            src="assets/images/leaf-layer-top-left.webp"
@@ -876,11 +839,6 @@
                      class="absolute inset-0 w-full h-full object-fill pointer-events-none z-20">
               </div>
               <div class="mx-6 h-5 bg-[#2A1604]/65 blur-md rounded-full -mt-3"></div>
-              <div class="mt-2 flex items-center justify-center gap-3 relative z-30">
-                <button type="button" id="calPrevPage" aria-label="Previous calendar page" class="w-7 h-7 rounded-full bg-[#FFFDF9]/90 border border-[#DFC789] text-[#173722] hover:bg-amber-50 flex items-center justify-center text-xs shadow-sm transition">&lsaquo;</button>
-                <span id="calPageIndicator" class="text-[11px] font-serif font-semibold tracking-wider uppercase text-[#173722] bg-[#FFFDF9]/90 border border-[#DFC789]/70 px-3 py-1 rounded-full shadow-sm">Cover • 2027</span>
-                <button type="button" id="calNextPage" aria-label="Next calendar page" class="w-7 h-7 rounded-full bg-[#FFFDF9]/90 border border-[#DFC789] text-[#173722] hover:bg-amber-50 flex items-center justify-center text-xs shadow-sm transition">&rsaquo;</button>
-              </div>
             </div>
           </div>
         </div>
@@ -901,7 +859,7 @@
           </blockquote>
 
           <p class="font-script text-3xl sm:text-4xl text-[#24422E] tracking-wide">
-            Take it, it's all Yours..!
+            365 Days of Mindful Alignment
           </p>
 
           <div class="grid grid-cols-2 gap-4 max-w-md mx-auto lg:mx-0 pt-1">
@@ -1075,7 +1033,7 @@
           </p>
 
           <p class="font-script text-4xl sm:text-5xl text-[#24422E] tracking-wider py-1 blur-in-heading">
-            Take it.. It's all Yours!!
+            Your Sanctuary Awaits
           </p>
 
           <div class="pt-2">
