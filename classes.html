@@ -182,7 +182,7 @@
   </section>
 
   <!-- Curriculum / Levels -->
-  <section id="curriculum" class="py-6 lg:py-0 lg:pt-5 lg:h-[calc(100vh-80px)] lg:flex lg:flex-col lg:justify-between bg-[#FAF6EE] border-b border-[#ECE3CF] overflow-hidden">
+  <section id="curriculum" class="py-6 lg:py-0 lg:pt-5 lg:min-h-[calc(100vh-80px)] lg:flex lg:flex-col lg:justify-between bg-[#FAF6EE] border-b border-[#ECE3CF] overflow-hidden">
     <div class="max-w-6xl mx-auto px-4 sm:px-8">
       <div class="text-center space-y-1.5 mb-5">
         <div class="sacred-divider">
@@ -224,24 +224,25 @@
         <img src="assets/images/vighnesh-chenda-smile.webp"
              alt=""
              aria-hidden="true"
-             class="pointer-events-none select-none hidden sm:block absolute bottom-0 left-[14%] lg:left-[24%] max-h-[24vh] w-auto object-contain z-[1] drop-shadow-[0_6px_18px_rgba(23,55,34,0.16)]">
+             class="pointer-events-none select-none absolute bottom-0 -left-4 sm:left-[18%] lg:left-[29%] max-h-[22vh] sm:max-h-[30vh] lg:max-h-[34vh] w-auto object-contain z-[1] drop-shadow-[0_6px_18px_rgba(23,55,34,0.16)]">
         <img src="assets/images/vighnesh-chenda-prayer.webp"
              alt=""
              aria-hidden="true"
-             class="pointer-events-none select-none absolute bottom-0 left-[22%] lg:left-[32%] max-h-[29vh] w-auto object-contain z-[2] drop-shadow-[0_6px_18px_rgba(23,55,34,0.18)]">
+             class="pointer-events-none select-none absolute bottom-6 sm:bottom-0 left-[10%] sm:left-[26%] lg:left-[35%] max-h-[28vh] sm:max-h-[35vh] lg:max-h-[40vh] w-auto object-contain z-[2] drop-shadow-[0_6px_18px_rgba(23,55,34,0.18)]">
         <img src="assets/images/vighnesh-chenda-bg.webp"
              alt=""
              aria-hidden="true"
-             class="pointer-events-none select-none absolute bottom-0 right-[22%] lg:right-[32%] max-h-[29vh] w-auto object-contain z-[2] drop-shadow-[0_6px_18px_rgba(23,55,34,0.18)]">
+             class="pointer-events-none select-none absolute bottom-6 sm:bottom-0 right-[2%] sm:right-[26%] lg:right-[35%] max-h-[28vh] sm:max-h-[35vh] lg:max-h-[40vh] w-auto object-contain z-[2] drop-shadow-[0_6px_18px_rgba(23,55,34,0.18)]">
         <img src="assets/images/vighnesh-idakka-stand.webp"
              alt=""
              aria-hidden="true"
-             class="pointer-events-none select-none hidden sm:block absolute bottom-0 right-[14%] lg:right-[24%] max-h-[24vh] w-auto object-contain z-[1] drop-shadow-[0_6px_18px_rgba(23,55,34,0.16)]">
+             class="pointer-events-none select-none absolute bottom-0 -right-2 sm:right-[18%] lg:right-[29%] max-h-[22vh] sm:max-h-[30vh] lg:max-h-[34vh] w-auto object-contain z-[3] sm:z-[1] drop-shadow-[0_6px_18px_rgba(23,55,34,0.16)]">
         <div class="relative z-10 flex flex-col items-center justify-end">
           <img src="assets/images/vighnesh-chenda.webp"
                alt="Vighnesh playing Chenda"
-               class="max-h-[36vh] w-auto mx-auto object-contain translate-y-2 scale-105 drop-shadow-[0_10px_28px_rgba(250,246,238,0.95)]">
+               class="max-h-[36vh] lg:max-h-[48vh] w-auto mx-auto object-contain translate-y-0 scale-105 lg:scale-105 drop-shadow-[0_10px_28px_rgba(250,246,238,0.95)]">
         </div>
+        <div class="pointer-events-none select-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#FAF6EE] via-[#FAF6EE]/80 to-transparent z-20"></div>
       </div>
   </section>
 
@@ -346,7 +347,33 @@
       if (idakkaSection) idakkaSection.classList.add('hidden');
 
       const chendaShowcase = document.getElementById('chendaArtistShowcase');
-      if (chendaShowcase) chendaShowcase.classList.remove('hidden');
+      if (chendaShowcase) {
+        chendaShowcase.classList.remove('hidden');
+        const layers = [
+          chendaShowcase.querySelectorAll('img[src*="smile"], img[src*="idakka-stand"]'),
+          chendaShowcase.querySelectorAll('img[src*="prayer"], img[src*="chenda-bg"]'),
+          chendaShowcase.querySelectorAll('img[src*="vighnesh-chenda.webp"]')
+        ];
+        layers.forEach((group, idx) => {
+          group.forEach((el) => {
+            el.style.opacity = '0';
+            el.style.filter = 'blur(8px)';
+            el.style.transition = `opacity 0.65s ease-out ${idx * 0.2}s, filter 0.65s ease-out ${idx * 0.2}s`;
+          });
+        });
+        if ('IntersectionObserver' in window) {
+          const obs = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+              layers.forEach((group) => group.forEach((el) => {
+                el.style.opacity = '1';
+                el.style.filter = 'blur(0px)';
+              }));
+              obs.disconnect();
+            }
+          }, { threshold: 0.15 });
+          obs.observe(chendaShowcase);
+        }
+      }
 
       const enrollH2 = document.querySelector('#enroll h2');
       if (enrollH2) {

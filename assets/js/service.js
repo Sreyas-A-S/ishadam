@@ -159,28 +159,38 @@
           }, { threshold: 0.15 });
           heroObs.observe(heroEl);
         }
-        if (window.gsap && window.ScrollTrigger) {
-          gsap.registerPlugin(ScrollTrigger);
-          grid.querySelectorAll('img[alt="Panchavarnam"], img[alt="Kalamezhuthu"]').forEach((img) => {
-            gsap.fromTo(img,
-              {
-                webkitMaskImage: 'radial-gradient(circle at 50% 50%, black 0%, transparent 25%)',
-                maskImage: 'radial-gradient(circle at 50% 50%, black 0%, transparent 25%)',
-                opacity: 0.4
-              },
-              {
-                webkitMaskImage: 'radial-gradient(circle at 50% 50%, black 70%, transparent 100%)',
-                maskImage: 'radial-gradient(circle at 50% 50%, black 70%, transparent 100%)',
-                opacity: 1,
-                ease: 'none',
-                scrollTrigger: {
-                  trigger: img,
-                  start: 'top 85%',
-                  end: 'top 40%',
-                  scrub: true
-                }
+        if ('IntersectionObserver' in window) {
+          const kalamImgs = grid.querySelectorAll('img[alt="Panchavarnam"], img[alt="Kalamezhuthu"]');
+          kalamImgs.forEach((img) => {
+            img.style.opacity = '0';
+            img.style.transform = 'scale(0.92)';
+            img.style.transition = 'opacity 0.9s ease-out, transform 0.9s ease-out';
+            const obs = new IntersectionObserver((entries) => {
+              if (entries[0].isIntersecting) {
+                img.style.opacity = '1';
+                img.style.transform = 'scale(1)';
+              } else {
+                img.style.opacity = '0';
+                img.style.transform = 'scale(0.92)';
               }
-            );
+            }, { threshold: 0.15 });
+            obs.observe(img);
+          });
+
+          grid.querySelectorAll('h2, p, ul').forEach((el) => {
+            el.style.opacity = '0';
+            el.style.filter = 'blur(8px)';
+            el.style.transform = 'translateY(14px)';
+            el.style.transition = 'opacity 0.55s ease-out, filter 0.55s ease-out, transform 0.55s ease-out';
+            const textObs = new IntersectionObserver((entries) => {
+              if (entries[0].isIntersecting) {
+                el.style.opacity = '1';
+                el.style.filter = 'blur(0px)';
+                el.style.transform = 'translateY(0)';
+                textObs.disconnect();
+              }
+            }, { threshold: 0.15 });
+            textObs.observe(el);
           });
         }
       } else {
