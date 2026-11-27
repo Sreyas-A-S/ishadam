@@ -70,6 +70,18 @@
       const data = TOPICS[key] || TOPICS['instrument-service'];
       if (key === 'kalam-varaykkal') {
         document.body.classList.add("font-['Noto_Sans_Malayalam',sans-serif]");
+        const heroSection = document.querySelector('section');
+        if (heroSection) {
+          heroSection.classList.add('relative', 'overflow-hidden', 'pb-24', 'sm:pb-28', 'lg:pb-32', 'min-h-[80svh]', 'flex', 'items-center');
+          const bg = document.createElement('img');
+          bg.src = 'assets/images/kalam-hero-bg.webp';
+          bg.alt = '';
+          bg.setAttribute('aria-hidden', 'true');
+          bg.className = 'pointer-events-none select-none absolute bottom-0 inset-x-0 w-full max-h-[65%] object-cover object-bottom opacity-35 mix-blend-multiply z-0';
+          bg.style.webkitMaskImage = 'linear-gradient(to bottom, transparent 0%, black 45%)';
+          bg.style.maskImage = 'linear-gradient(to bottom, transparent 0%, black 45%)';
+          heroSection.prepend(bg);
+        }
         const sTitle = document.querySelector('h1');
         const sSub = document.querySelector('h1 + p');
         if (sTitle) {
@@ -99,9 +111,12 @@
 
       const grid = document.getElementById('svcCards');
       if (key === 'kalam-varaykkal') {
-        grid.className = 'space-y-12 sm:space-y-16';
+        grid.className = 'relative space-y-12 sm:space-y-16';
         grid.innerHTML = `
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div class="pointer-events-none select-none absolute -top-10 -left-16 w-72 h-72 rounded-full bg-[#EBD8A5]/45 blur-3xl -z-0"></div>
+          <div class="pointer-events-none select-none absolute top-1/3 -right-16 w-80 h-80 rounded-full bg-[#D97757]/15 blur-3xl -z-0"></div>
+          <div class="pointer-events-none select-none absolute -bottom-10 left-1/4 w-72 h-72 rounded-full bg-[#C8DCB6]/30 blur-3xl -z-0"></div>
+          <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             <div class="lg:col-span-7 space-y-4">
               <span class="text-[11px] font-serif uppercase tracking-[0.2em] text-[#966D1B] font-semibold">പരമ്പരാഗത സേവനങ്ങൾ</span>
               <h2 class="font-['Noto_Sans_Malayalam',sans-serif] text-2xl sm:text-3xl font-bold text-[#173722] leading-snug">പരമ്പരാഗത കളമെഴുത്ത് സേവനങ്ങൾ</h2>
@@ -119,7 +134,7 @@
             </div>
           </div>
 
-          <div class="border-t border-[#EADFC7] pt-10 sm:pt-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div class="relative z-10 border-t border-[#EADFC7] pt-10 sm:pt-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             <div class="lg:col-span-5 order-2 lg:order-1 flex items-center justify-center">
               <img src="assets/images/kalam-ritual-art.webp" alt="Kalamezhuthu" class="w-full max-w-sm rounded-2xl object-contain mix-blend-multiply">
             </div>
@@ -129,7 +144,45 @@
               <p class="font-['Noto_Sans_Malayalam',sans-serif] text-sm sm:text-[16px] text-stone-700 leading-loose">കേരളത്തിന്റെ തനതായ ക്ഷേത്രകലകളെയും അനുഷ്ഠാനപാരമ്പര്യങ്ങളെയും ആദരവോടും ഉത്തരവാദിത്തത്തോടും അടുത്ത തലമുറയിലേക്ക് എത്തിക്കുക എന്നതാണ് Ishadam-ന്റെ ലക്ഷ്യം.</p>
             </div>
           </div>
+
+          <div id="kalamSideBg" class="pointer-events-none select-none fixed lg:absolute -left-24 lg:-left-44 top-1/2 -translate-y-1/2 -translate-x-1/2 w-[320px] sm:w-[460px] lg:w-[560px] opacity-0 lg:opacity-25 transition-opacity duration-500 mix-blend-multiply z-0">
+            <img src="assets/images/kalam-artist.webp" alt="" aria-hidden="true" class="w-full h-auto object-contain">
+          </div>
         `;
+        const sideBg = document.getElementById('kalamSideBg');
+        const heroEl = document.querySelector('section');
+        if (sideBg && heroEl && 'IntersectionObserver' in window) {
+          const heroObs = new IntersectionObserver((entries) => {
+            const heroVisible = entries[0].isIntersecting;
+            sideBg.classList.toggle('opacity-0', heroVisible);
+            sideBg.classList.toggle('opacity-25', !heroVisible);
+          }, { threshold: 0.15 });
+          heroObs.observe(heroEl);
+        }
+        if (window.gsap && window.ScrollTrigger) {
+          gsap.registerPlugin(ScrollTrigger);
+          grid.querySelectorAll('img[alt="Panchavarnam"], img[alt="Kalamezhuthu"]').forEach((img) => {
+            gsap.fromTo(img,
+              {
+                webkitMaskImage: 'radial-gradient(circle at 50% 50%, black 0%, transparent 25%)',
+                maskImage: 'radial-gradient(circle at 50% 50%, black 0%, transparent 25%)',
+                opacity: 0.4
+              },
+              {
+                webkitMaskImage: 'radial-gradient(circle at 50% 50%, black 70%, transparent 100%)',
+                maskImage: 'radial-gradient(circle at 50% 50%, black 70%, transparent 100%)',
+                opacity: 1,
+                ease: 'none',
+                scrollTrigger: {
+                  trigger: img,
+                  start: 'top 85%',
+                  end: 'top 40%',
+                  scrub: true
+                }
+              }
+            );
+          });
+        }
       } else {
         grid.innerHTML = data.cards.map((c) => `
         <article class="bg-[#FFFDF9] border border-[#DFC789] rounded-2xl p-4 sm:p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between space-y-4">

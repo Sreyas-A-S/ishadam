@@ -182,9 +182,9 @@
   </section>
 
   <!-- Curriculum / Levels -->
-  <section id="curriculum" class="py-16 lg:py-20 bg-[#FAF6EE] border-b border-[#ECE3CF]">
+  <section id="curriculum" class="py-6 lg:py-0 lg:pt-5 lg:h-[calc(100vh-80px)] lg:flex lg:flex-col lg:justify-between bg-[#FAF6EE] border-b border-[#ECE3CF] overflow-hidden">
     <div class="max-w-6xl mx-auto px-4 sm:px-8">
-      <div class="text-center space-y-2 mb-12">
+      <div class="text-center space-y-1.5 mb-5">
         <div class="sacred-divider">
           <span class="swastik-symbol sacred-swastik-spin">卐</span>
         </div>
@@ -220,6 +220,29 @@
         </div>
       </div>
     </div>
+      <div id="chendaArtistShowcase" class="hidden relative mt-2 pt-0 overflow-hidden">
+        <img src="assets/images/vighnesh-chenda-smile.webp"
+             alt=""
+             aria-hidden="true"
+             class="pointer-events-none select-none hidden sm:block absolute bottom-0 left-[14%] lg:left-[24%] max-h-[24vh] w-auto object-contain z-[1] drop-shadow-[0_6px_18px_rgba(23,55,34,0.16)]">
+        <img src="assets/images/vighnesh-chenda-prayer.webp"
+             alt=""
+             aria-hidden="true"
+             class="pointer-events-none select-none absolute bottom-0 left-[22%] lg:left-[32%] max-h-[29vh] w-auto object-contain z-[2] drop-shadow-[0_6px_18px_rgba(23,55,34,0.18)]">
+        <img src="assets/images/vighnesh-chenda-bg.webp"
+             alt=""
+             aria-hidden="true"
+             class="pointer-events-none select-none absolute bottom-0 right-[22%] lg:right-[32%] max-h-[29vh] w-auto object-contain z-[2] drop-shadow-[0_6px_18px_rgba(23,55,34,0.18)]">
+        <img src="assets/images/vighnesh-idakka-stand.webp"
+             alt=""
+             aria-hidden="true"
+             class="pointer-events-none select-none hidden sm:block absolute bottom-0 right-[14%] lg:right-[24%] max-h-[24vh] w-auto object-contain z-[1] drop-shadow-[0_6px_18px_rgba(23,55,34,0.16)]">
+        <div class="relative z-10 flex flex-col items-center justify-end">
+          <img src="assets/images/vighnesh-chenda.webp"
+               alt="Vighnesh playing Chenda"
+               class="max-h-[36vh] w-auto mx-auto object-contain translate-y-2 scale-105 drop-shadow-[0_10px_28px_rgba(250,246,238,0.95)]">
+        </div>
+      </div>
   </section>
 
   <!-- Enrollment / Booking -->
@@ -321,6 +344,9 @@
 
       const idakkaSection = document.getElementById('idakkaFeature');
       if (idakkaSection) idakkaSection.classList.add('hidden');
+
+      const chendaShowcase = document.getElementById('chendaArtistShowcase');
+      if (chendaShowcase) chendaShowcase.classList.remove('hidden');
 
       const enrollH2 = document.querySelector('#enroll h2');
       if (enrollH2) {
