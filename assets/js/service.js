@@ -78,6 +78,14 @@
         if (sSub) {
           sSub.className = "font-['Noto_Sans_Malayalam',sans-serif] text-[13px] sm:text-[16.5px] text-stone-700 max-w-2xl mx-auto leading-relaxed sm:leading-loose";
         }
+        const ctaTitle = document.getElementById('svcCtaTitle');
+        const ctaDesc = document.getElementById('svcCtaDesc');
+        if (ctaTitle) {
+          ctaTitle.className = "font-['Noto_Sans_Malayalam',sans-serif] text-2xl sm:text-3xl font-bold text-[#173722] leading-snug";
+        }
+        if (ctaDesc) {
+          ctaDesc.className = "font-['Noto_Sans_Malayalam',sans-serif] text-stone-700 text-sm sm:text-base max-w-xl mx-auto leading-loose";
+        }
       }
 
       document.title = data.title + ' — Ishadam | From the House of Niyyati';
