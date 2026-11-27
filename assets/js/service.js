@@ -14,6 +14,20 @@
             { tag: 'Reeds & Acoustics', image: 'assets/images/sacred-notes-swirl.webp', title: 'Harmonium & Shruti Box Tuning', body: 'Bellows sealing, reed cleaning, and 440Hz pitch calibration for clear, sustained devotional accompaniment.' }
           ]
         },
+        'kalam-varaykkal': {
+          title: 'Kalam Varaykkal',
+          eyebrow: 'Ishadam Sacred Art • Ritual Floor Drawing',
+          subtitle: 'Traditional Kerala ritual floor art crafted with natural five-color powders (Panchavarnam) for temples, festivals, and sacred ceremonies.',
+          ctaTitle: 'Book a Kalam Varaykkal Offering',
+          ctaDesc: 'Share your temple or event date, deity preference, and space details on WhatsApp to coordinate with our traditional Kalam artists.',
+          ctaBtn: 'Book on WhatsApp',
+          waText: 'Hello Ishadam, I would like to inquire about Kalam Varaykkal',
+          cards: [
+            { tag: 'Sacred Ritual Art', image: 'assets/images/kalam-panchavarnam.webp', title: 'Panchavarnam Powder Craft', body: 'Hand-drawn deity forms using natural rice flour, turmeric, burnt husk, green leaf powder, and slaked lime with turmeric.' },
+            { tag: 'Temple & Home', image: 'assets/images/kalam-ritual-art.webp', title: 'Bhadrakali, Ayyappa & Naga Kalams', body: 'Authentic ritual floor drawings tailored for temple utsavam, sarpa bali, and auspicious housewarming or spiritual ceremonies.' },
+            { tag: 'Complete Offering', image: 'assets/images/kalam-sopana.webp', title: 'Kalam & Sopana Accompaniment', body: 'Traditional Kalam Varaykkal paired with Idakka and Sopana Sangeetham offerings for a complete sacred atmosphere.' }
+          ]
+        },
         'temple-events': {
           title: 'Temple Events',
           eyebrow: 'Ishadam Sacred Gatherings • Announcements',
