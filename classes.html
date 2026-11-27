@@ -53,7 +53,7 @@
 
   <!-- Tradition & Overview -->
   <section id="sacredLineage" class="relative min-h-[175vh] bg-[#FDFBF7] border-b border-[#ECE3CF]">
-    <div class="sticky top-0 lg:top-20 min-h-[100dvh] lg:min-h-[calc(100vh-80px)] flex items-center py-5 sm:py-8 lg:py-16 overflow-hidden">
+    <div class="sticky top-0 lg:top-20 min-h-[100dvh] lg:min-h-[calc(100vh-80px)] flex items-center py-5 sm:py-8 lg:py-6 overflow-hidden">
       <img id="lineageNotesSwirl"
            src="assets/images/sacred-notes-swirl.webp"
            alt=""
@@ -311,6 +311,12 @@
           </li>
         `;
         if (window.lucide) lucide.createIcons();
+      }
+
+      const idakkaImg = document.getElementById('lineageIdakka');
+      if (idakkaImg) {
+        idakkaImg.src = 'assets/images/sacred-chenda.webp';
+        idakkaImg.classList.add('mix-blend-multiply');
       }
 
       const idakkaSection = document.getElementById('idakkaFeature');

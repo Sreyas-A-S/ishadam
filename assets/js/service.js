@@ -15,17 +15,17 @@
           ]
         },
         'kalam-varaykkal': {
-          title: 'Kalam Varaykkal',
-          eyebrow: 'Ishadam Sacred Art • Ritual Floor Drawing',
-          subtitle: 'Traditional Kerala ritual floor art crafted with natural five-color powders (Panchavarnam) for temples, festivals, and sacred ceremonies.',
-          ctaTitle: 'Book a Kalam Varaykkal Offering',
-          ctaDesc: 'Share your temple or event date, deity preference, and space details on WhatsApp to coordinate with our traditional Kalam artists.',
-          ctaBtn: 'Book on WhatsApp',
-          waText: 'Hello Ishadam, I would like to inquire about Kalam Varaykkal',
+          title: 'കളമെഴുത്ത് • Kalamezhuthu',
+          eyebrow: 'Kalamezhuthu – Traditional Ritual Art of Kerala',
+          subtitle: 'കേരളത്തിന്റെ പൈതൃകത്തിലും ക്ഷേത്രാനുഷ്ഠാനങ്ങളിലും വേരൂന്നിയ മനോഹരമായ ഒരു പരമ്പരാഗത കലയാണ് കളമെഴുത്ത്. അരിപ്പൊടി, മഞ്ഞൾപ്പൊടി, കരിപ്പൊടി, ഇലകളിൽ നിന്നുള്ള പച്ചപ്പൊടി തുടങ്ങിയ പ്രകൃതിദത്ത വർണ്ണങ്ങൾ ഉപയോഗിച്ച് ക്ഷേത്രങ്ങളിലെ പവിത്രമായ ഇടങ്ങളിൽ തറയിൽ ദേവതാരൂപങ്ങൾ വരയ്ക്കുന്ന സവിശേഷമായ അനുഷ്ഠാനകലയാണിത്. ഓരോ കളത്തിനും അതിന്റേതായ രൂപഭംഗിയും ആചാരപരമായ പ്രാധാന്യവുമുണ്ട്. ചിത്രകലയും ഭക്തിയും പാരമ്പര്യവും ഒത്തുചേരുന്ന ഈ കലാരൂപം കേരളത്തിന്റെ സാംസ്കാരിക പൈതൃകത്തിന്റെ അമൂല്യമായ ഭാഗമാണ്.',
+          ctaTitle: 'അന്വേഷണങ്ങൾക്കും ബുക്കിംഗുകൾക്കും',
+          ctaDesc: 'ക്ഷേത്രങ്ങൾ, ഉത്സവങ്ങൾ, മറ്റ് പരമ്പരാഗത ചടങ്ങുകൾ എന്നിവയ്ക്കായി കളമെഴുത്ത് സേവനങ്ങൾ ക്രമീകരിക്കുന്നതിന് ഞങ്ങളുമായി ബന്ധപ്പെടുക.',
+          ctaBtn: 'WhatsApp വഴി ബന്ധപ്പെടുക',
+          waText: 'Hello Ishadam, I would like to inquire about Kalamezhuthu',
           cards: [
-            { tag: 'Sacred Ritual Art', image: 'assets/images/kalam-panchavarnam.webp', title: 'Panchavarnam Powder Craft', body: 'Hand-drawn deity forms using natural rice flour, turmeric, burnt husk, green leaf powder, and slaked lime with turmeric.' },
-            { tag: 'Temple & Home', image: 'assets/images/kalam-ritual-art.webp', title: 'Bhadrakali, Ayyappa & Naga Kalams', body: 'Authentic ritual floor drawings tailored for temple utsavam, sarpa bali, and auspicious housewarming or spiritual ceremonies.' },
-            { tag: 'Complete Offering', image: 'assets/images/kalam-sopana.webp', title: 'Kalam & Sopana Accompaniment', body: 'Traditional Kalam Varaykkal paired with Idakka and Sopana Sangeetham offerings for a complete sacred atmosphere.' }
+            { tag: 'പരമ്പരാഗത സേവനങ്ങൾ', image: 'assets/images/kalam-panchavarnam.webp', title: 'പരമ്പരാഗത കളമെഴുത്ത് സേവനങ്ങൾ', body: 'Ishadam വഴി പരമ്പരാഗത രീതിയിലുള്ള കളമെഴുത്ത് സേവനങ്ങൾ ലഭ്യമാണ് — വിവിധ ദേവതാരൂപങ്ങളിലും, ക്ഷേത്രോത്സവങ്ങളോടനുബന്ധിച്ചും, പ്രത്യേക വഴിപാടുകളുടെയും ആചാരങ്ങളുടെയും ഭാഗമായും.' },
+            { tag: 'ദേവതാരൂപങ്ങൾ & ഏകോപനം', image: 'assets/images/kalam-ritual-art.webp', title: 'ഭദ്രകാളി, അയ്യപ്പൻ & നാഗദേവത കളങ്ങൾ', body: 'ഭദ്രകാളി, അയ്യപ്പൻ, നാഗദേവത തുടങ്ങിയ ദേവതകളുടെ കളങ്ങൾ, കൂടാതെ ആവശ്യാനുസരണം കളമെഴുത്തുപാട്ടും അനുബന്ധ അനുഷ്ഠാനകലകളുടെ ഏകോപനവും.' },
+            { tag: 'Ishadam ദൗത്യം', image: 'assets/images/kalam-sopana.webp', title: 'നമ്മുടെ പാരമ്പര്യം, നമ്മുടെ അഭിമാനം', body: 'കേരളത്തിന്റെ തനതായ ക്ഷേത്രകലകളെയും അനുഷ്ഠാനപാരമ്പര്യങ്ങളെയും ആദരവോടും ഉത്തരവാദിത്തത്തോടും അടുത്ത തലമുറയിലേക്ക് എത്തിക്കുക എന്നതാണ് Ishadam-ന്റെ ലക്ഷ്യം.' }
           ]
         },
         'temple-events': {
@@ -68,6 +68,17 @@
       const params = new URLSearchParams(window.location.search);
       const key = params.get('topic') || 'instrument-service';
       const data = TOPICS[key] || TOPICS['instrument-service'];
+      if (key === 'kalam-varaykkal') {
+        document.body.classList.add("font-['Noto_Sans_Malayalam',sans-serif]");
+        const sTitle = document.querySelector('h1');
+        const sSub = document.querySelector('h1 + p');
+        if (sTitle) {
+          sTitle.className = "font-['Noto_Sans_Malayalam',sans-serif] text-2xl sm:text-3xl lg:text-4xl font-bold text-[#173722] leading-snug";
+        }
+        if (sSub) {
+          sSub.className = "font-['Noto_Sans_Malayalam',sans-serif] text-[13px] sm:text-[16.5px] text-stone-700 max-w-2xl mx-auto leading-relaxed sm:leading-loose";
+        }
+      }
 
       document.title = data.title + ' — Ishadam | From the House of Niyyati';
       document.getElementById('svcEyebrow').textContent = data.eyebrow;
@@ -79,7 +90,40 @@
       document.getElementById('svcCtaBtn').href = 'https://wa.me/918138881308?text=' + encodeURIComponent(data.waText);
 
       const grid = document.getElementById('svcCards');
-      grid.innerHTML = data.cards.map((c) => `
+      if (key === 'kalam-varaykkal') {
+        grid.className = 'space-y-12 sm:space-y-16';
+        grid.innerHTML = `
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div class="lg:col-span-7 space-y-4">
+              <span class="text-[11px] font-serif uppercase tracking-[0.2em] text-[#966D1B] font-semibold">പരമ്പരാഗത സേവനങ്ങൾ</span>
+              <h2 class="font-['Noto_Sans_Malayalam',sans-serif] text-2xl sm:text-3xl font-bold text-[#173722] leading-snug">പരമ്പരാഗത കളമെഴുത്ത് സേവനങ്ങൾ</h2>
+              <p class="font-['Noto_Sans_Malayalam',sans-serif] text-sm sm:text-[16px] text-stone-700 leading-relaxed">Ishadam വഴി പരമ്പരാഗത രീതിയിലുള്ള കളമെഴുത്ത് സേവനങ്ങൾ ലഭ്യമാണ്.</p>
+              <ul class="font-['Noto_Sans_Malayalam',sans-serif] space-y-2.5 text-sm sm:text-[15.5px] text-stone-700 leading-relaxed pt-1">
+                <li class="flex items-start gap-2.5"><span class="text-[#9E731B] mt-0.5">•</span><span>വിവിധ ദേവതാരൂപങ്ങളിലുള്ള കളമെഴുത്ത്</span></li>
+                <li class="flex items-start gap-2.5"><span class="text-[#9E731B] mt-0.5">•</span><span>ക്ഷേത്രോത്സവങ്ങളോടനുബന്ധിച്ചുള്ള കളമെഴുത്ത്</span></li>
+                <li class="flex items-start gap-2.5"><span class="text-[#9E731B] mt-0.5">•</span><span>പ്രത്യേക വഴിപാടുകളുടെയും ആചാരങ്ങളുടെയും ഭാഗമായുള്ള കളമെഴുത്ത്</span></li>
+                <li class="flex items-start gap-2.5"><span class="text-[#9E731B] mt-0.5">•</span><span>ഭദ്രകാളി, അയ്യപ്പൻ, നാഗദേവത തുടങ്ങിയ ദേവതകളുടെ കളങ്ങൾ</span></li>
+                <li class="flex items-start gap-2.5"><span class="text-[#9E731B] mt-0.5">•</span><span>കളമെഴുത്തുപാട്ട്, അനുബന്ധ അനുഷ്ഠാനകലകൾ എന്നിവയുടെ ഏകോപനം (ആവശ്യാനുസരണം)</span></li>
+              </ul>
+            </div>
+            <div class="lg:col-span-5 flex items-center justify-center">
+              <img src="assets/images/kalam-panchavarnam.webp" alt="Panchavarnam" class="w-full max-w-sm rounded-2xl object-contain mix-blend-multiply">
+            </div>
+          </div>
+
+          <div class="border-t border-[#EADFC7] pt-10 sm:pt-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div class="lg:col-span-5 order-2 lg:order-1 flex items-center justify-center">
+              <img src="assets/images/kalam-ritual-art.webp" alt="Kalamezhuthu" class="w-full max-w-sm rounded-2xl object-contain mix-blend-multiply">
+            </div>
+            <div class="lg:col-span-7 order-1 lg:order-2 space-y-3">
+              <span class="text-[11px] font-serif uppercase tracking-[0.2em] text-[#966D1B] font-semibold">Ishadam ദൗത്യം</span>
+              <h2 class="font-['Noto_Sans_Malayalam',sans-serif] text-2xl sm:text-3xl font-bold text-[#173722] leading-snug">നമ്മുടെ പാരമ്പര്യം, നമ്മുടെ അഭിമാനം</h2>
+              <p class="font-['Noto_Sans_Malayalam',sans-serif] text-sm sm:text-[16px] text-stone-700 leading-loose">കേരളത്തിന്റെ തനതായ ക്ഷേത്രകലകളെയും അനുഷ്ഠാനപാരമ്പര്യങ്ങളെയും ആദരവോടും ഉത്തരവാദിത്തത്തോടും അടുത്ത തലമുറയിലേക്ക് എത്തിക്കുക എന്നതാണ് Ishadam-ന്റെ ലക്ഷ്യം.</p>
+            </div>
+          </div>
+        `;
+      } else {
+        grid.innerHTML = data.cards.map((c) => `
         <article class="bg-[#FFFDF9] border border-[#DFC789] rounded-2xl p-4 sm:p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between space-y-4">
           <div class="space-y-3">
             ${c.image ? `
@@ -103,6 +147,7 @@
           </div>
         </article>
       `).join('');
+      }
       if (window.lucide && typeof window.lucide.createIcons === 'function') {
         window.lucide.createIcons();
       }
