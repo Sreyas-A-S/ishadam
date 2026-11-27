@@ -72,12 +72,12 @@
         document.body.classList.add("font-['Noto_Sans_Malayalam',sans-serif]");
         const heroSection = document.querySelector('section');
         if (heroSection) {
-          heroSection.classList.add('relative', 'overflow-hidden', 'pb-24', 'sm:pb-28', 'lg:pb-32', 'min-h-[80svh]', 'flex', 'items-center');
+          heroSection.classList.add('relative', 'overflow-hidden', 'pb-28', 'sm:pb-32', 'min-h-[calc(100svh-64px)]', 'lg:min-h-[calc(100svh-80px)]', 'flex', 'items-center');
           const bg = document.createElement('img');
           bg.src = 'assets/images/kalam-hero-bg.webp';
           bg.alt = '';
           bg.setAttribute('aria-hidden', 'true');
-          bg.className = 'pointer-events-none select-none absolute bottom-0 inset-x-0 w-full max-h-[65%] object-cover object-bottom opacity-35 mix-blend-multiply z-0';
+          bg.className = 'pointer-events-none select-none absolute bottom-0 inset-x-0 w-full h-56 sm:h-auto sm:max-h-[65%] object-cover object-[78%_bottom] sm:object-bottom opacity-35 mix-blend-multiply z-0';
           bg.style.webkitMaskImage = 'linear-gradient(to bottom, transparent 0%, black 45%)';
           bg.style.maskImage = 'linear-gradient(to bottom, transparent 0%, black 45%)';
           heroSection.prepend(bg);
